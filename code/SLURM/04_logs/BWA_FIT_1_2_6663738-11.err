@@ -1,0 +1,31 @@
+samblaster: Version 0.1.24
+samblaster: Inputting from stdin
+samblaster: Outputting to stdout
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 224646 sequences (30844364 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (51, 86206, 20, 8)
+[M::mem_pestat] analyzing insert size distribution for orientation FF...
+[M::mem_pestat] (25, 50, 75) percentile: (280, 408, 601)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 1243)
+[M::mem_pestat] mean and std.dev: (451.06, 220.75)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 1564)
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (249, 331, 427)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 783)
+[M::mem_pestat] mean and std.dev: (345.59, 129.48)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 961)
+[M::mem_pestat] analyzing insert size distribution for orientation RF...
+[M::mem_pestat] (25, 50, 75) percentile: (152, 392, 2807)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 8117)
+[M::mem_pestat] mean and std.dev: (1498.80, 2153.23)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 10772)
+[M::mem_pestat] skip orientation RR as there are not enough pairs
+[M::mem_pestat] skip orientation FF
+[M::mem_pestat] skip orientation RF
+[M::mem_process_seqs] Processed 224646 reads in 70.867 CPU sec, 13.195 real sec
+samblaster: Loaded 23 header sequence entries.
+[main] Version: 0.7.17-r1188
+[main] CMD: bwasamblaster: Marked 14594 of 112323 (12.99%) read ids as duplicates mem using 3192k memory in  -t0.235S 20 CPU seconds and  -R15S @RG\tID:FG_GL_19T_081\tPL:ILLUMINA\tPU:HJMFJDSX7.1\tSM:FG_GL_19T_081\tCN:MCGILL\tBC:GTGACACGCA-GTCCGTAAGC wall time.
+ /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/ref_A_X/stickleback_v5_assembly_A_X.fasta /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/trimmed/FG_GL_19T_081.R1.trimmed.fastq.gz /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/trimmed/FG_GL_19T_081.R2.trimmed.fastq.gz
+[main] Real time: 14.862 sec; CPU: 71.943 sec
+[bam_sort_core] merging from 0 files and 20 in-memory blocks...

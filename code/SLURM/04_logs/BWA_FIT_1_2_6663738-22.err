@@ -1,0 +1,36 @@
+samblaster: Version 0.1.24
+samblaster: Inputting from stdin
+samblaster: Outputting to stdout
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 763442 sequences (105126002 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (63, 295551, 68, 41)
+[M::mem_pestat] analyzing insert size distribution for orientation FF...
+[M::mem_pestat] (25, 50, 75) percentile: (205, 303, 477)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 1021)
+[M::mem_pestat] mean and std.dev: (330.88, 182.93)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 1293)
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (237, 311, 399)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 723)
+[M::mem_pestat] mean and std.dev: (324.80, 119.02)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 885)
+[M::mem_pestat] analyzing insert size distribution for orientation RF...
+[M::mem_pestat] (25, 50, 75) percentile: (94, 383, 1771)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 5125)
+[M::mem_pestat] mean and std.dev: (719.30, 999.91)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 6802)
+[M::mem_pestat] analyzing insert size distribution for orientation RR...
+[M::mem_pestat] (25, 50, 75) percentile: (249, 328, 644)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 1434)
+[M::mem_pestat] mean and std.dev: (406.00, 283.53)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 1829)
+[M::mem_pestat] skip orientation FF
+[M::mem_pestat] skip orientation RF
+[M::mem_pestat] skip orientation RR
+[M::mem_process_seqs] Processed 763442 reads in 232.327 CPU sec, 43.391 real sec
+samblaster: Loaded 23 header sequence entries.
+[main] Version: 0.7.17-r1188
+samblaster: Marked 35971 of 381721 (9.42%) read ids as duplicates[main] CMD: using 7768k memory in  bwa0.831S mem CPU seconds and  -t50S 20 wall time.
+ -R @RG\tID:FG_GL_19T_149\tPL:ILLUMINA\tPU:HJMFJDSX7.4\tSM:FG_GL_19T_149\tCN:MCGILL\tBC:GGCCAATATT-TATCGGACCG /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/ref_A_X/stickleback_v5_assembly_A_X.fasta /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/trimmed/FG_GL_19T_149.R1.trimmed.fastq.gz /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/trimmed/FG_GL_19T_149.R2.trimmed.fastq.gz
+[main] Real time: 49.563 sec; CPU: 235.315 sec
+[bam_sort_core] merging from 0 files and 20 in-memory blocks...

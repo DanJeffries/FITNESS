@@ -1,0 +1,21 @@
+samblaster: Version 0.1.24
+samblaster: Inputting from stdin
+samblaster: Outputting to stdout
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 19164 sequences (1913952 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (0, 454, 0, 0)
+[M::mem_pestat] skip orientation FF as there are not enough pairs
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (276, 363, 459)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 825)
+[M::mem_pestat] mean and std.dev: (379.36, 144.79)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 1008)
+[M::mem_pestat] skip orientation RF as there are not enough pairs
+[M::mem_pestat] skip orientation RR as there are not enough pairs
+[M::mem_process_seqs] Processed 19164 reads in 70.415 CPU sec, 11.834 real sec
+samblaster: Loaded 23 header sequence entries.
+[main] Version: 0.7.17-r1188
+samblaster: Marked 5778 of 9582 (60.30%) read ids as duplicates[main] CMD: using 1396k memory in  bwa0.025S mem CPU seconds and  -t14S 20 wall time.
+ -R @RG\tID:SR_LO_19T_205\tPL:ILLUMINA\tPU:HJMNCDSX7.2\tSM:SR_LO_19T_205\tCN:MCGILL\tBC:AAGAGAGTCT-AAGATTCGTA /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/ref_A_X/stickleback_v5_assembly_A_X.fasta /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/trimmed/SR_LO_19T_205.R1.trimmed.fastq.gz /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS//data/trimmed/SR_LO_19T_205.R2.trimmed.fastq.gz
+[main] Real time: 13.668 sec; CPU: 70.988 sec
+[bam_sort_core] merging from 0 files and 20 in-memory blocks...
