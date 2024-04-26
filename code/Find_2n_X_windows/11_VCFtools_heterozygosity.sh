@@ -17,8 +17,8 @@ module add UHTS/Analysis/vcftools/0.1.15;
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/Find_2n_X_windows/
 INVCF=$WD/Filtered_VCF/Filtered_BiAL_QUAL_GQ30_MinDP10_AF085_HARD.vcf
 
-MALES=
-FEMALES=
+MALES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/Find_2n_X_windows/males.txt
+FEMALES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/Find_2n_X_windows/females.txt
 
 OUTDIR=$WD/VCF_STATS
 OUT_PREFIX=$OUTDIR/Filtered_BiAL_QUAL_GQ30_MinDP10_AF085_HARD
@@ -31,12 +31,14 @@ fi
 vcftools \
     --gzvcf $INVCF \
     --keep $MALES \
+    --max-missing-count 10 \
     --hardy \
-    --out $OUT_PREFIX
+    --out ${OUT_PREFIX}_MALES
 
 vcftools \
     --gzvcf $INVCF \
     --keep $FEMALES \
+    --max-missing-count 10 \
     --hardy \
-    --out $OUT_PREFIX
+    --out ${OUT_PREFIX}_FEMALES
 
