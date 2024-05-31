@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH --partition=bdw
+#SBATCH --partition=epyc2
 #SBATCH --time=02:00:00
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --mem=110G
+#SBATCH --mem=200G
 #SBATCH --export=NONE
-#SBATCH --array=11 #-12
+#SBATCH --array=1-10
 #SBATCH --job-name=MAKE_EX_CHR1_TEST
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
@@ -14,13 +14,27 @@
 ####script to run make_examples
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/
 REF=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/ref/GCF_016920845.1_GAculeatus_UGA_version5_genomic_formatted_shortnames.fna
-SAMPLES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/parents.txt
-
+SAMPLES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/offspring.txt
 SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $SAMPLES)
 
-# Make temp dirs to be used instead of in /tmp.
-#export APPTAINER_TMPDIR="/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/apptained_tmp" #Set Singularity temporary dir
-#export TMPDIR="/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/parralel_tmp" #Set global temporary dir for parallel
+## Get the regions to use for this step
+
+CROSS=$(echo $SAMPLE | cut -f1 -d'_') ## get cross ID so I can get the regions for this cross
+
+## I created the training regions files manually 
+
+REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/training_regions_$CROSS.bed
+
+for CHROM in $(echo $REGIONS); 
+  do
+    CHROM_NAME=$(grep $CHROM $FAI | cut -f1)
+    END=$(grep $CHROM $FAI | cut -f2)
+    echo -e "$CHROM_NAME\t0\t$END"
+  
+  done > $REGIONS_BED
+
+
+# Make temp dirs to be used instead of in /tmp. (need to be in $HOME)
 
 export APPTAINER_TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/apptained_tmp" #Set Singularity temporary dir
 export TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/parralel_tmp" #Set global temporary dir for parallel
@@ -42,9 +56,10 @@ parallel -q --halt 2 --line-buffer \
 --mode training \
 --ref $REF \
 --reads /wd/bams/${SAMPLE}.fixmate.coordsorted.bam \
---truth_variants /wd/Filtered_variants/${SAMPLE}.vcf.gz \
---confident_regions /wd/Confident_regions/${SAMPLE}.conf.1n_repeats_removed.bed \
---examples /wd/examples/${SAMPLE}/make_examples.tfrecord@20 \
+--truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS.CORRECTED.vcf.gz \
+--confident_regions /wd/Confident_regions/${SAMPLE}.conf.bed \
+--examples /wd/examples/${SAMPLE}/training_examples.tfrecord@20 \
+--regions /wd/training_regions/training_regions_$CROSS.bed \
 --channels "insert_size" \
 --task {} ::: `seq 0 19` #split the task into 20 jobs
 

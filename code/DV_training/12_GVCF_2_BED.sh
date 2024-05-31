@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=10G
 #SBATCH --export=NONE
-#SBATCH --array=1,3,4,5,6
+#SBATCH --array=1-5
 #SBATCH --job-name=GVCF_2_BED
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
@@ -34,6 +34,7 @@ MOTHER_CONF_GVCF=$FILTERED_GVCF_DIR/${CROSS}_fem_par.conf.g.vcf.gz
 FATHER_BED=$CONF_BED_DIR/${CROSS}_male_par.conf.bed
 MOTHER_BED=$CONF_BED_DIR/${CROSS}_fem_par.conf.bed
 
+OFFSPRING_BED=$CONF_BED_DIR/${CROSS}_male.conf.bed
 
 ##################################################
 ## converting VCF coordinates
@@ -73,7 +74,7 @@ zcat $MOTHER_CONF_GVCF | cut -f1,2,8  | grep 'END' | grep -v '#' | sed 's/END=//
 awk '{print $1 "\t" ($2 - 1) "\t" $3}' | bedtools merge > $MOTHER_BED
 
 #################################################################################
-#### FINALLAY, REMOVE THE REPEAT MASK AND 1N WINDOWS FROM THE CONF REGIONS ######
+#### REMOVE THE REPEAT MASK AND 1N WINDOWS FROM THE CONF REGIONS ######
 #################################################################################
 
 GA_1N_WINDOW_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/Find_2n_X_windows/results/Ga_1n_windows.bed
@@ -94,6 +95,29 @@ bedtools subtract -a $FATHER_BED -b $COMBINED_EXCLUDE_MASK > $FATHER_BED_FINAL
 
 ## MOTHER
 bedtools subtract -a $MOTHER_BED -b $COMBINED_EXCLUDE_MASK > $MOTHER_BED_FINAL
+
+#################################################################################
+################ CREATE OFFSPRING CONFIDENT_REGIONS BED FILES ###################
+#################################################################################
+
+# Confident regions in the offspring should not be defined by the evidence in the offspring themsleves
+# as we are not using any evidence in the offspring. Instead, these will also be defined by the parent's data
+
+# We know where we are confident in the parents that there are no variants. Thus, excluding the extremely low likelihood of de novo variants, we can assume that these regions are also monomorphic in the offspring. 
+
+# To find the offspring confident regions I will therefore take the intersection of the parents confident regions bed file. 
+
+# E.g. the below confident region situation could occur
+
+# MOTHER = Chr1:100-115
+# FATHER = Chr1:107-122
+#  Thus
+# OFFSRPING = Chr1:107-115
+
+# I will do this with bedtools intersect. 
+
+## OFFSPRING
+bedtools intersect -a $FATHER_BED -b $MOTHER_BED > $OFFSPRING_BED
 
 
 
