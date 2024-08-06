@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#SBATCH --partition=epyc2
-#SBATCH --time=02:00:00
+#SBATCH --partition=gpu
+#SBATCH --time=24:00:00
 #SBATCH --tasks=1
-#SBATCH --cpus-per-task=20
-#SBATCH --mem=200G
+#SBATCH --cpus-per-task=2
+#SBATCH --gres=gpu:rtx3090:1
+#SBATCH --mem-per-cpu=50G
 #SBATCH --export=NONE
-#SBATCH --array=4
-#SBATCH --job-name=MAKE_EXAMPLES_TRAIN
+#SBATCH --job-name=TRAIN
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -21,10 +21,6 @@ CROSS=$(echo $SAMPLE | cut -f1 -d'_') ## get cross ID so I can get the regions f
 
 ## I created the training regions files manually - note I cant use this bash var in the docker, this is just to show where it is. 
 
-REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/training_regions_$CROSS.bed
-
-# Make temp dirs to be used instead of in /tmp. (need to be in $HOME)
-
 export APPTAINER_TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/apptained_tmp" #Set Singularity temporary dir
 export TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/parralel_tmp" #Set global temporary dir for parallel
 
@@ -33,22 +29,33 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 # make output dir
 
-if [ ! -d "$WD/examples/${SAMPLE}" ]; then
-   mkdir $WD/examples/${SAMPLE}
+if [ ! -d "$WD/examples/validate/${SAMPLE}" ]; then
+   mkdir -p $WD/examples/validate/${SAMPLE}
 fi
 
 apptainer run \
--B $WD:/wd \
-$DV_PATH  \
-parallel -q --halt 2 --line-buffer \
-/opt/deepvariant/bin/make_examples \
---mode training \
---ref $REF \
---reads /wd/bams/${SAMPLE}.fixmate.coordsorted.bam \
---truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS.CORRECTED.vcf.gz \
---confident_regions /wd/Confident_regions/${SAMPLE}.conf.bed \
---examples /wd/examples/train/${SAMPLE}/training_examples.tfrecord@20 \
---regions /wd/training_regions/training_regions_$CROSS.bed \
---channels "insert_size" \
---task {} ::: `seq 0 19` #split the task into 20 jobs
+--nv \
+-B $WD:/home \
+$DV_PATH \
+/opt/deepvariant/bin/train \
+--config=/home/dv_config.py:base \
+--config.train_dataset_pbtxt="/home/examples_shuffled/All_samples_training_examples.dataset_config_editedpath.pbtxt" \
+--config.tune_dataset_pbtxt="/home/examples_shuffled/All_samples_validation_examples.dataset_config_editedpath.pbtxt" \
+--config.num_epochs=1 \
+--config.learning_rate=0.01 \
+--config.num_validation_examples=0 \
+--experiment_dir=/home/training_outs/ \
+--strategy=mirrored \
+--config.batch_size=128 
+
+#--config.init_checkpoint=/home/deepvariant.wgs.ckpt \
+
+#--dataset_config_pbtxt="/home/examples_shuffled/All_samples_training_examples.dataset_config.pbtxt" \
+#--train_dir="/home/examples_shuffled/All_samples_validation_examples.dataset_config.pbtxt" \
+#--model_name="test_v1" \
+#--number_of_steps=1000000 \
+#--save_interval_secs=600 \
+#--batch_size=128 \
+#--learning_rate=0.01 \
+
 
