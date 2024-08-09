@@ -33,7 +33,6 @@ MOTHER="${CROSS}_fem_par"
 FATHERS_VCF=$FILTERED_VCF_DIR/$FATHER.vcf
 MOTHERS_VCF=$FILTERED_VCF_DIR/$MOTHER.vcf
 
-#MASK=
 
 ## Filters (required to KEEP loci)
 

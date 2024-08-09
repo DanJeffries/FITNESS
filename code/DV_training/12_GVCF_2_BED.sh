@@ -18,7 +18,7 @@ module load BEDTools/2.30.0-GCC-10.3.0
 
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
 CROSSES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/crossIDs.txt
-FILTERED_GVCF_DIR=$WD/Confident_regions/
+FILTERED_GVCF_DIR=$WD/Filtered_GVCFs
 
 CONF_BED_DIR=$WD/Confident_regions
 
@@ -78,12 +78,12 @@ awk '{print $1 "\t" ($2 - 1) "\t" $3}' | bedtools merge > $MOTHER_BED
 #################################################################################
 
 GA_1N_WINDOW_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/Find_2n_X_windows/results/Ga_1n_windows.bed
-REPEAT_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/repeat_mask/Ga.repeats.bed
-COMBINED_EXCLUDE_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/exclude_mask.bed
+REPEAT_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/masks/Ga.repeats.bed
+COMBINED_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/masks/combined_mask.bed
 
 ## combine the repeats and 1n mask - these are regions we want to exclude. Need to remove these from the confident regions 
 
-cat $GA_1N_WINDOW_MASK $REPEAT_MASK | bedtools sort | bedtools merge > $COMBINED_EXCLUDE_MASK
+cat $GA_1N_WINDOW_MASK $REPEAT_MASK | bedtools sort | bedtools merge > $COMBINED_MASK
 
 ## REMOVE THESE REGIONS FROM THE CONFIDENT REGIONS IN FATHER AND MOTHER ##
 
@@ -91,10 +91,10 @@ FATHER_BED_FINAL=$CONF_BED_DIR/${CROSS}_male_par.conf.1n_repeats_removed.bed
 MOTHER_BED_FINAL=$CONF_BED_DIR/${CROSS}_fem_par.conf.1n_repeats_removed.bed
 
 ## FATHER
-bedtools subtract -a $FATHER_BED -b $COMBINED_EXCLUDE_MASK > $FATHER_BED_FINAL
+bedtools subtract -a $FATHER_BED -b $COMBINED_MASK > $FATHER_BED_FINAL
 
 ## MOTHER
-bedtools subtract -a $MOTHER_BED -b $COMBINED_EXCLUDE_MASK > $MOTHER_BED_FINAL
+bedtools subtract -a $MOTHER_BED -b $COMBINED_MASK > $MOTHER_BED_FINAL
 
 #################################################################################
 ################ CREATE OFFSPRING CONFIDENT_REGIONS BED FILES ###################

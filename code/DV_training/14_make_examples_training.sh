@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=200G
 #SBATCH --export=NONE
-#SBATCH --array=4
-#SBATCH --job-name=MAKE_EXAMPLES_TRAIN
+#SBATCH --array=1
+#SBATCH --job-name=MAKE_EX_TRAIN
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -21,7 +21,7 @@ CROSS=$(echo $SAMPLE | cut -f1 -d'_') ## get cross ID so I can get the regions f
 
 ## I created the training regions files manually - note I cant use this bash var in the docker, this is just to show where it is. 
 
-REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/training_regions_$CROSS.bed
+REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/${CROSS}_train_partitions.bed
 
 # Make temp dirs to be used instead of in /tmp. (need to be in $HOME)
 
@@ -48,7 +48,7 @@ parallel -q --halt 2 --line-buffer \
 --truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS.CORRECTED.vcf.gz \
 --confident_regions /wd/Confident_regions/${SAMPLE}.conf.bed \
 --examples /wd/examples/train/${SAMPLE}/training_examples.tfrecord@20 \
---regions /wd/training_regions/training_regions_$CROSS.bed \
+--regions /wd/training_regions/${CROSS}_train_partitions.bed \
 --channels "insert_size" \
 --task {} ::: `seq 0 19` #split the task into 20 jobs
 

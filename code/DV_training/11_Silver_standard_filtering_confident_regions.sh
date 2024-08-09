@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=99G
 #SBATCH --export=NONE
-#SBATCH --array=2-6
+#SBATCH --array=1-5
 #SBATCH --job-name=Conf_filter
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
@@ -19,10 +19,10 @@ WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
 GVCFs=$WD/GVCF
 MERGED_GVCFs=$WD/GVCFs_merged
 CROSSES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/crossIDs.txt
-FILTERED_VCF_DIR=$WD/Filtered_VCFs
+FILTERED_GVCF_DIR=$WD/Filtered_GVCFs
 
-if [ ! -d "$FILTERED_VCF_DIR" ]; then
-   mkdir $FILTERED_VCF_DIR
+if [ ! -d "$FILTERED_GVCF_DIR" ]; then
+   mkdir $FILTERED_GVCF_DIR
 fi
 
 CROSS=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $CROSSES)
@@ -40,8 +40,8 @@ MOTHER_MERGED_GVCF=$MERGED_GVCFs/$MOTHER.g.vcf.gz
 bcftools concat -O z $GVCFs/$FATHER*chromosome*gz > $FATHER_MERGED_GVCF
 bcftools concat -O z $GVCFs/$MOTHER*chromosome*gz > $MOTHER_MERGED_GVCF
 
-FATHERS_CONF_GVCF=$FILTERED_VCF_DIR/$FATHER.conf.g.vcf.gz
-MOTHERS_CONF_GVCF=$FILTERED_VCF_DIR/$MOTHER.conf.g.vcf.gz
+FATHERS_CONF_GVCF=$FILTERED_GVCF_DIR/$FATHER.conf.g.vcf.gz
+MOTHERS_CONF_GVCF=$FILTERED_GVCF_DIR/$MOTHER.conf.g.vcf.gz
 
 #####################################################################################
 ## Filters to keep confident regions 

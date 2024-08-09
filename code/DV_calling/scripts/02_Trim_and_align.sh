@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #SBATCH --partition=bdw
-#SBATCH --time=04:00:00
+#SBATCH --time=08:00:00
 #SBATCH --nodes=1
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=10
-#SBATCH --mem=60G
+#SBATCH --mem=99G
 #SBATCH --export=NONE
-#SBATCH --array=1-940
+#SBATCH --array=800,801,931,933,934,935,936
 #SBATCH --job-name=Trim_and_align_leftovers
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err

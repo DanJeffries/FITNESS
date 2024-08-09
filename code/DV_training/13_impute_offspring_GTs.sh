@@ -18,8 +18,8 @@ WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/
 CROSSES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/crossIDs.txt
 CROSS=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $CROSSES)
 
-FATHERS_FILTERED_VARIANTS=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/Filtered_variants/${CROSS}_male_par.vcf.gz
-MOTHERS_FILTERED_VARIANTS=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/Filtered_variants/${CROSS}_fem_par.vcf.gz
+FATHERS_FILTERED_VARIANTS=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/Filtered_variants/${CROSS}_male_par.vcf
+MOTHERS_FILTERED_VARIANTS=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/Filtered_variants/${CROSS}_fem_par.vcf
 
 #########
 ## Step 1 - Get HOM_REF and HOM_ALT locus lists for each parent. 
@@ -64,8 +64,8 @@ OFFSPRING_MERGED_GVCF=$WD/GVCFs_merged/${CROSS}_male_1.g.vcf.gz
 
 #bcftools concat -O z $GVCFs/${CROSS}_male_1_*chromosome*gz > $OFFSPRING_MERGED_GVCF
 
-OFFSPRING_HET_VCF=$WD/Filtered_variants/${CROSS}_male_1.HET.vcf
-OFFSPRING_HOM_ALT_VCF=$WD/Filtered_variants/${CROSS}_male_1.HOM_ALT.vcf
+OFFSPRING_HET_VCF=$WD/Filtered_variants/${CROSS}_male_1.HET
+OFFSPRING_HOM_ALT_VCF=$WD/Filtered_variants/${CROSS}_male_1.HOM_ALT
 
 #vcftools --gzvcf $OFFSPRING_MERGED_GVCF --positions $OFFSRPING_HET_LIST --recode --out $OFFSPRING_HET_VCF
 #vcftools --gzvcf $OFFSPRING_MERGED_GVCF --positions $OFFSRPING_HOM_ALT_LIST --recode --out $OFFSPRING_HOM_ALT_VCF
@@ -79,21 +79,26 @@ OFFSPRING_HOM_ALT_VCF=$WD/Filtered_variants/${CROSS}_male_1.HOM_ALT.vcf
 
 OFFSPRING_HET_CORRECTED_VCF=$WD/Filtered_variants/${CROSS}_male_1.HET.CORRECTED.vcf
 
-#sed 's/0\/0/0\/1/g' $OFFSPRING_HET_VCF.recode.vcf | sed 's/0|0/0|1/g' | sed 's/1\/1/0\/1/g' | sed 's/1|1/0|1/g' > $OFFSPRING_HET_CORRECTED_VCF
+#sed 's/0\/0/0\/1/g' ${OFFSPRING_HET_VCF}.recode.vcf | sed 's/0|0/0|1/g' | sed 's/1\/1/0\/1/g' | sed 's/1|1/0|1/g' > $OFFSPRING_HET_CORRECTED_VCF
+
+#bgzip $OFFSPRING_HET_CORRECTED_VCF
+#tabix $OFFSPRING_HET_CORRECTED_VCF.gz
 
 ## HOM_ALT
 # Change any 0/0, 0|0, 0/1, 0|1 to 1/1
 
 OFFSPRING_HOM_ALT_CORRECTED_VCF=$WD/Filtered_variants/${CROSS}_male_1.HOM_ALT.CORRECTED.vcf
 
-#sed 's/0\/0/1\/1/g' $OFFSPRING_HOM_ALT_VCF.recode.vcf | sed 's/0|0/1|1/g' | sed 's/0\/1/1\/1/g' | sed 's/0|1/1|1/g' > $OFFSPRING_HOM_ALT_CORRECTED_VCF
+#sed 's/0\/0/1\/1/g' ${OFFSPRING_HOM_ALT_VCF}.recode.vcf | sed 's/0|0/1|1/g' | sed 's/0\/1/1\/1/g' | sed 's/0|1/1|1/g' > $OFFSPRING_HOM_ALT_CORRECTED_VCF
 
+#bgzip $OFFSPRING_HOM_ALT_CORRECTED_VCF
+#tabix $OFFSPRING_HOM_ALT_CORRECTED_VCF.gz
 
 ## Step 5. Concatenate the HET and HOM_ALT corrected VCFs, gzip and index them. 
 
 OFFSPRING_ALL_TRUTH_VARS_VCF=$WD/Filtered_variants/${CROSS}_male_1.ALL_TRUTH_VARS.CORRECTED.vcf
 
-bcftools concat $OFFSPRING_HET_CORRECTED_VCF $OFFSPRING_HOM_ALT_CORRECTED_VCF > $OFFSPRING_ALL_TRUTH_VARS_VCF
+#bcftools concat -a $OFFSPRING_HET_CORRECTED_VCF.gz $OFFSPRING_HOM_ALT_CORRECTED_VCF.gz > $OFFSPRING_ALL_TRUTH_VARS_VCF
 
 bgzip $OFFSPRING_ALL_TRUTH_VARS_VCF
 
