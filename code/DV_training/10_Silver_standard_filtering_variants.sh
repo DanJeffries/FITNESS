@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=99G
 #SBATCH --export=NONE
-#SBATCH --array=1-6
+#SBATCH --array=1-5
 #SBATCH --job-name=BCFtools_VarFilter
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
@@ -16,8 +16,9 @@ module load BCFtools/1.12-GCC-10.3.0
 module load VCFtools/0.1.16-GCC-10.3.0
 
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
+STORAGE=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training
 CROSSES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/crossIDs.txt
-JOINT_CALL_VCF=$WD/Unfiltered_VCF/Joint_all_unfiltered.vcf
+JOINT_CALL_VCF=$STORAGE/Unfiltered_VCF/Joint_all_unfiltered.vcf
 FILTERED_VCF_DIR=$WD/Filtered_variants
 
 if [ ! -d "$FILTERED_VCF_DIR" ]; then

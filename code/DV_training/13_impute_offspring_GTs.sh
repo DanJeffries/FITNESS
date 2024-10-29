@@ -100,10 +100,20 @@ OFFSPRING_ALL_TRUTH_VARS_VCF=$WD/Filtered_variants/${CROSS}_male_1.ALL_TRUTH_VAR
 
 #bcftools concat -a $OFFSPRING_HET_CORRECTED_VCF.gz $OFFSPRING_HOM_ALT_CORRECTED_VCF.gz > $OFFSPRING_ALL_TRUTH_VARS_VCF
 
-bgzip $OFFSPRING_ALL_TRUTH_VARS_VCF
+#bgzip $OFFSPRING_ALL_TRUTH_VARS_VCF
 
-tabix $OFFSPRING_ALL_TRUTH_VARS_VCF.gz
+#tabix $OFFSPRING_ALL_TRUTH_VARS_VCF.gz
 
+## Step 6. VCF formatting - remove unseen alleles
+# The offspring VCFs have a lot of <NON_REF> or "*" alleles, which could be messing up the make_examples step. So I will remove these with bcftools and retain only biallelic sites. 
+
+OFFSPRING_ALL_TRUTH_VARS_VCF_FORMATTED=$WD/Filtered_variants/${CROSS}_male_1.ALL_TRUTH_VARS.CORRECTED.FORMATTED.vcf
+
+bcftools view --trim-alt-alleles $OFFSPRING_ALL_TRUTH_VARS_VCF.gz | grep -v 'NON_REF' > $OFFSPRING_ALL_TRUTH_VARS_VCF_FORMATTED
+
+bgzip $OFFSPRING_ALL_TRUTH_VARS_VCF_FORMATTED
+
+tabix $OFFSPRING_ALL_TRUTH_VARS_VCF_FORMATTED.gz
 
 
 

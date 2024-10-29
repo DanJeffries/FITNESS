@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=200G
 #SBATCH --export=NONE
-#SBATCH --array=1
-#SBATCH --job-name=MAKE_EX_TRAIN
+#SBATCH --array=1-5
+#SBATCH --job-name=MAKE_EX_TUNE_NEW_DOWNSAMPLE
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -21,7 +21,7 @@ CROSS=$(echo $SAMPLE | cut -f1 -d'_') ## get cross ID so I can get the regions f
 
 ## I created the training regions files manually - note I cant use this bash var in the docker, this is just to show where it is. 
 
-REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/${CROSS}_train_partitions.bed
+REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/${CROSS}_tune_partitions.bed
 
 # Make temp dirs to be used instead of in /tmp. (need to be in $HOME)
 
@@ -33,9 +33,11 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 # make output dir
 
-if [ ! -d "$WD/examples/${SAMPLE}" ]; then
-   mkdir $WD/examples/${SAMPLE}
+if [ ! -d "$WD/examples/tune/" ]; then
+   mkdir -p $WD/examples/tune/
 fi
+
+SAMPLE_BED_NAME=$(echo $SAMPLE | cut -f-2 -d'_')
 
 apptainer run \
 -B $WD:/wd \
@@ -45,10 +47,13 @@ parallel -q --halt 2 --line-buffer \
 --mode training \
 --ref $REF \
 --reads /wd/bams/${SAMPLE}.fixmate.coordsorted.bam \
---truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS.CORRECTED.vcf.gz \
---confident_regions /wd/Confident_regions/${SAMPLE}.conf.bed \
---examples /wd/examples/train/${SAMPLE}/training_examples.tfrecord@20 \
---regions /wd/training_regions/${CROSS}_train_partitions.bed \
+--truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS.vcf.gz \
+--confident_regions /wd/Confident_regions/${SAMPLE_BED_NAME}_conf_regions_inc_vars.bed \
+--examples /wd/examples/tune/${SAMPLE}_tune_examples_positional.downsampled_05.tfrecord@20 \
+--regions /wd/training_regions/${CROSS}_tune_partitions.bed \
+--downsample_fraction=0.5 \
 --channels "insert_size" \
 --task {} ::: `seq 0 19` #split the task into 20 jobs
+
+#--labeler_algorithm=positional_labeler \
 
