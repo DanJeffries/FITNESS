@@ -16,10 +16,15 @@ module load BCFtools/1.12-GCC-10.3.0
 module load VCFtools/0.1.16-GCC-10.3.0
 
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
-GVCFs=$WD/GVCF
+RESEARCH=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training
+GVCFs=$RESEARCH/GVCF
 MERGED_GVCFs=$WD/GVCFs_merged
 CROSSES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/crossIDs.txt
 FILTERED_GVCF_DIR=$WD/Filtered_GVCFs
+
+if [ ! -d "$MERGED_GVCFs" ]; then
+   mkdir $MERGED_GVCFs
+fi
 
 if [ ! -d "$FILTERED_GVCF_DIR" ]; then
    mkdir $FILTERED_GVCF_DIR
@@ -29,6 +34,7 @@ CROSS=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $CROSSES)
 
 FATHER="${CROSS}_male_par"
 MOTHER="${CROSS}_fem_par"
+OFFSPRING="${CROSS}_male_1"
 
 #####################################################################################
 ## CONCAT chromosome GVCFs for each samaple
@@ -36,12 +42,15 @@ MOTHER="${CROSS}_fem_par"
 
 FATHER_MERGED_GVCF=$MERGED_GVCFs/$FATHER.g.vcf.gz
 MOTHER_MERGED_GVCF=$MERGED_GVCFs/$MOTHER.g.vcf.gz
+OFFSPRING_MERGED_GVCF=$MERGED_GVCFs/$OFFSPRING.g.vcf.gz
 
 bcftools concat -O z $GVCFs/$FATHER*chromosome*gz > $FATHER_MERGED_GVCF
 bcftools concat -O z $GVCFs/$MOTHER*chromosome*gz > $MOTHER_MERGED_GVCF
+bcftools concat -O z $GVCFs/$OFFSPRING*chromosome*gz > $OFFSPRING_MERGED_GVCF
 
 FATHERS_CONF_GVCF=$FILTERED_GVCF_DIR/$FATHER.conf.g.vcf.gz
 MOTHERS_CONF_GVCF=$FILTERED_GVCF_DIR/$MOTHER.conf.g.vcf.gz
+OFFSPRING_CONF_GVCF=$FILTERED_GVCF_DIR/$OFFSPRING.conf.g.vcf.gz
 
 #####################################################################################
 ## Filters to keep confident regions 

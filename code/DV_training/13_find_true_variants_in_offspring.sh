@@ -11,9 +11,7 @@
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
-### Previous version of this step IMPUTED genotypes, i.e. changed offspring genotypes 0/0 or 1/1 to 0/1 for loci where parents were 0/0, 1/1.
-### I did this simply with sed replacement, but this would cause conflicts between genotype and the rest of the info in the VCF (e.g. allele depths, post probs etc)
-### So in this version I just remove all loci where the offspring genotype does not agree with the parents. 
+## Here we want to identify true variants. We will do this by identifying loci which are fixed for different alleles in the parents (e.g. mother = 0/0, father = 1/1) and where the offspring's genotype matches the expectation (e.g. 0/1). 
 
 module load BCFtools/1.12-GCC-10.3.0
 module load VCFtools/0.1.16-GCC-10.3.0
