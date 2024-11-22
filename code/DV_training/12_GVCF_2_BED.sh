@@ -34,7 +34,7 @@ MOTHER_CONF_GVCF=$FILTERED_GVCF_DIR/${CROSS}_fem_par.conf.g.vcf.gz
 FATHER_BED=$CONF_BED_DIR/${CROSS}_male_par.conf.bed
 MOTHER_BED=$CONF_BED_DIR/${CROSS}_fem_par.conf.bed
 
-OFFSPRING_BED=$CONF_BED_DIR/${CROSS}_male.conf.bed
+OFFSPRING_BED=$CONF_BED_DIR/${CROSS}_male_1.conf.bed
 
 ##################################################
 ## converting VCF coordinates
@@ -77,9 +77,9 @@ awk '{print $1 "\t" ($2 - 1) "\t" $3}' | bedtools merge > $MOTHER_BED
 #### REMOVE THE REPEAT MASK AND 1N WINDOWS FROM THE CONF REGIONS ######
 #################################################################################
 
-GA_1N_WINDOW_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/Find_2n_X_windows/results/Ga_1n_windows.bed
-REPEAT_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/masks/Ga.repeats.bed
-COMBINED_MASK=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/masks/combined_mask.bed
+GA_1N_WINDOW_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/Finding_2n_windows/Ga_1n_windows.bed
+REPEAT_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/masks/repeats_renamed.bed
+COMBINED_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/masks/combined_mask.bed
 
 ## combine the repeats and 1n mask - these are regions we want to exclude. Need to remove these from the confident regions 
 

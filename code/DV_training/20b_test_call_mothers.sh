@@ -7,7 +7,7 @@
 ##SBATCH --gres=gpu:rtx4090:1
 #SBATCH --mem-per-cpu=10G
 #SBATCH --export=NONE
-#SBATCH --job-name=TRAIN_test_callOffspring_CPU
+#SBATCH --job-name=TRAIN_test_callmothers
 #SBATCH --array=1-5
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
@@ -18,6 +18,8 @@ REF=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/ref/GCF_016920845.1
 SAMPLES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/offspring.txt
 SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $SAMPLES)
 CROSS=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $SAMPLES | cut -f1 -d'_')
+MOTHER=${CROSS}_fem_par
+
 
 DV_PATH=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV/deepvariant_1.6.1-gpu.modified.sif
 OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread overflow error in numpy
@@ -54,9 +56,9 @@ $DV_PATH \
 --model_type WGS \
 --customized_model "/home/${MODEL_SUBDIR}" \
 --ref "/home/ref/GCF_016920845.1_GAculeatus_UGA_version5_genomic_formatted_shortnames.fna" \
---reads "/home/bams/${SAMPLE}.fixmate.coordsorted.bam" \
+--reads "/home/bams/${MOTHER}.fixmate.coordsorted.bam" \
 --regions "/home/training_regions/${CROSS}_test_partitions.bed" \
---output_vcf "/home/test/${SAMPLE}_test_set.vcf.gz" \
+--output_vcf "/home/test/${MOTHER}_test_set.vcf.gz" \
 --num_shards=20
 
 #--nv \

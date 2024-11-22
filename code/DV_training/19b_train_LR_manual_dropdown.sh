@@ -7,7 +7,7 @@
 #SBATCH --gres=gpu:rtx4090:1
 #SBATCH --mem-per-cpu=50G
 #SBATCH --export=NONE
-#SBATCH --job-name=TRAIN_lr_0_001_bs_1024_ep1
+#SBATCH --job-name=TRAIN_lr_dropdown_test_0_01_to_0_0001
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -25,11 +25,11 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 # make output dir
 
-LR=0.001
+LR=0.0001
 BS=1024
 TUNE_STEPS=350
 
-OUTDIR=training_outs/TRAIN_ROUND1/LR${LR}_BS${BS}
+OUTDIR=training_outs/param_tests/manual_LR_dropdown/LR_0_01_to_LR${LR}_BS${BS}
 
 if [ ! -d "$WD/${OUTDIR}" ]; then
    mkdir -p $WD/${OUTDIR}/
@@ -46,11 +46,11 @@ $DV_PATH \
 --config.num_epochs=1 \
 --config.learning_rate=$LR \
 --config.num_validation_examples=0 \
---config.tune_every_steps=350 \
+--config.tune_every_steps=$TUNE_STEPS \
 --experiment_dir=/home/${OUTDIR} \
 --strategy=mirrored \
 --config.batch_size=$BS \
---config.init_checkpoint="/home/model_wgs_v1.6.1/deepvariant.wgs.ckpt"
+--config.init_checkpoint="/home/training_outs/param_tests/test_0.01_1024/checkpoints/ckpt-500"
 
 
 
