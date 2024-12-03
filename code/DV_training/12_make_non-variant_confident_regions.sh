@@ -15,7 +15,9 @@
 module load BCFtools/1.12-GCC-10.3.0
 module load VCFtools/0.1.16-GCC-10.3.0
 
-## The purpose of this script is to identify confident regions in the offspring based on the evidence in the parents. The logic is as follows:
+bcftools=/storage/homefs/dj20y461/Software/bcftools-1.21/bcftools
+
+## The purpose of this script is to identify non-variant confident regions in the offspring based on the evidence in the parents. The logic is as follows:
 
 # In order to train the model to learn what a non-variant position looks like, the "confident regions" must contain loci which we are confident are non-variant in the offspring. However, we do not want to use
 # evidence in the offspring to identify these positions. For example, if we removed loci called as 0/1 in the offspring (despite parents both being 0/0) we would be removing false positive variant signal. We want DV to learn what false positives
@@ -32,7 +34,7 @@ module load VCFtools/0.1.16-GCC-10.3.0
 
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
 RESEARCH=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training
-GVCFs=$RESEARCH/GVCF
+GVCFs=$RESEARCH/4_GATK/GVCF
 MERGED_GVCFs=$WD/GVCFs_merged
 CONFIDENT_REGIONS=$WD/Confident_regions
 CROSSES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/crossIDs.txt
@@ -62,29 +64,28 @@ FATHER_MERGED_GVCF=$MERGED_GVCFs/$FATHER.g.vcf.gz
 MOTHER_MERGED_GVCF=$MERGED_GVCFs/$MOTHER.g.vcf.gz
 OFFSPRING_MERGED_GVCF=$MERGED_GVCFs/$OFFSPRING.g.vcf.gz
 
-bcftools concat -O z $GVCFs/$FATHER*chromosome*gz > $FATHER_MERGED_GVCF
-bcftools concat -O z $GVCFs/$MOTHER*chromosome*gz > $MOTHER_MERGED_GVCF
-bcftools concat -O z $GVCFs/$OFFSPRING*chromosome*gz > $OFFSPRING_MERGED_GVCF
+#bcftools concat -O z $GVCFs/$FATHER*chromosome*gz > $FATHER_MERGED_GVCF
+#bcftools concat -O z $GVCFs/$MOTHER*chromosome*gz > $MOTHER_MERGED_GVCF
+#bcftools concat -O z $GVCFs/$OFFSPRING*chromosome*gz > $OFFSPRING_MERGED_GVCF
 
-tabix $FATHER_MERGED_GVCF
-tabix $MOTHER_MERGED_GVCF
-tabix $OFFSPRING_MERGED_GVCF
+#tabix $FATHER_MERGED_GVCF
+#tabix $MOTHER_MERGED_GVCF
+#tabix $OFFSPRING_MERGED_GVCF
 
 
 ########################################
 ### >>> Filter parent GVCFs  <<< ####
 ########################################
 
-# So here I first combine the individual concatenated GVCFs of each parent into a single GVCF for each CROSS, allowing me to do some sample-wise filtering below. This will include ensuring that all genotypes are homozygous reference, minimum depth across the two parents is 15x, and the genotype quality for both parents is good GQ>=30.
+# So here I first combine the individual concatenated GVCFs of each parent into a single GVCF for each CROSS, allowing me to do some sample-wise filtering below. This will include ensuring that all genotypes are homozygous reference, minimum depth across the two parents is 20x, and the genotype quality for both parents is good GQ>=30.
 
 PARENTS_GVCF=$MERGED_GVCFs/${CROSS}_parents.g.vcf.gz
 
 bcftools merge $MERGED_GVCFs/${FATHER}.g.vcf.gz \
 	       $MERGED_GVCFs/${MOTHER}.g.vcf.gz \
-	       -O z | \
-bcftools view  -i 'COUNT(GT="RR")=2 & MIN(FMT/DP)>=15 & MIN(GQ)>=30 & N_MISSING = 0' \
-               -a \
-               -O z \
+	       -O u | \
+bcftools view  -i 'COUNT(GT="RR")=2 & MIN(FMT/DP)>=20 & MIN(GQ)>=30 & N_MISSING=0' \
+	       -O z  \
                > $PARENTS_GVCF
 
 tabix $PARENTS_GVCF
@@ -119,7 +120,7 @@ tabix $PARENTS_GVCF
 # >> In summary, to convert VCF coords -> BED coords, we -1 from the start point. << #
 #####################################################################################
 
-CONF_REGIONS_BED=$CONFIDENT_REGIONS/${CROSS}_parents_nonVar_conf_regions.bed
+CONF_REGIONS_BED=$CONFIDENT_REGIONS/${CROSS}_nonVar_conf_regions.bed
 
 echo "starting bed creation"
 zcat $PARENTS_GVCF | cut -f1,2,8  | grep 'END' | grep -v '#' | sed 's/END=//g' | cut -f1 -d';' | \
@@ -127,15 +128,45 @@ awk '{print $1 "\t" ($2 - 1) "\t" $3}' | grep -v 'BaseQRankSum' | grep -v 'Exces
 
 echo "bed created"
 
-OFFSPRING_CONF_REGIONS_GVCF=$CONFIDENT_REGIONS/${CROSS}_male_1_putative_nonVar_confident_regions.g.vcf.gz
-
-bcftools view $OFFSPRING_MERGED_GVCF \
-	      -R $CONF_REGIONS_BED \
-	      -a \
-	      -O z \
-	      > $OFFSPRING_CONF_REGIONS_GVCF
-
 ### do i need to add a missing values filter in? I think not, DV takes the bam file, so if there is no call in the offspring, it means that there were not enough reads for GATK, but there might be for DV. Eitherway, it is a real world representation of what homozygous regions can look like.  
+
+
+#################################################################################
+ #### FINALLY REMOVE THE REPEAT MASK AND 1N WINDOWS FROM THE CONF REGIONS ######
+#################################################################################
+
+GA_1N_WINDOW_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/5_masks/Finding_2n_windows/Ga_1n_windows.bed
+REPEAT_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/5_masks/repeats_renamed.bed
+COMBINED_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/5_masks/combined_mask.bed
+
+## combine the repeats and 1n mask - these are regions we want to exclude. Need to remove these from the confident regions
+
+CROSS_CONF_BED_FINAL=$CONFIDENT_REGIONS/${CROSS}_nonVar_conf_regions_masked.bed
+
+cat $GA_1N_WINDOW_MASK $REPEAT_MASK | bedtools sort | bedtools merge > $COMBINED_MASK  ## combine repeat and 1n window mask
+
+## REMOVE THESE REGIONS FROM THE CONFIDENT REGIONS IDENTIFIED FROM THE PARENTS ##
+
+bedtools subtract -a $CONF_REGIONS_BED -b $COMBINED_MASK > $CROSS_CONF_BED_FINAL  ## subtract combined repeat and 1n window mask from the confident regions
+
+#################################################################################
+################ CREATE OFFSPRING CONFIDENT_REGIONS GVCF  ### ###################
+#################################################################################
+
+# This will be useful for validation and summary plots
+
+CROSS_CONF_REGIONS_GVCF=$CONFIDENT_REGIONS/${CROSS}_male_1_putative_nonVar_confident_regions.g.vcf.gz
+
+$bcftools view $OFFSPRING_MERGED_GVCF \
+              -R $CROSS_CONF_BED_FINAL \
+	      -i "N_MISSING=0" \
+              -a \
+              -O z \
+              > $CROSS_CONF_REGIONS_GVCF
+
+tabix $CROSS_CONF_REGIONS_GVCF
+
+### do i need to add a missing values filter in? I think not, DV takes the bam file, so if there is no call in the offspring, it means that there were not enough reads for GATK, but there might be for DV. Eitherway, it is a real world representation of what homozygous regions can look like.
 
 
 
