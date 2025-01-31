@@ -28,29 +28,22 @@ OFFSPRING="${CROSS}_male_1"
 ## Combine the individual VCFs from DV, and then filter the same way as for GATK
 ################################################################################
 
-DV_VCF_FATHER=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_male_par_test_set.vcf.gz
-DV_VCF_MOTHER=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_fem_par_test_set.vcf.gz
-DV_VCF_OFFSRPING=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_male_1_test_set.vcf.gz
+DV_VCF_FATHER=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_male_par_LR0.0001_BS1024_test_set.vcf.gz
+DV_VCF_MOTHER=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_fem_par_LR0.0001_BS1024_test_set.vcf.gz
+DV_VCF_OFFSRPING=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_male_1_LR0.0001_BS1024_test_set.vcf.gz
 
-JOINT_DV_VCF=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_family.vcf.gz
-JOINT_DV_VCF_FILTERED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_family_filtered.vcf.gz
+PEDIGREE_DV_VCF=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_family.vcf.gz
+PEDIGREE_DV_VCF_NO_MISSING=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_family_NO_MISSING.vcf.gz
 
-PEDIGREE_VCF=$UNFILTERED_JOINT_DIR/${CROSS}_pedigree
 MEND_EVAL_REGIONS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/Training_genome_partitions/${CROSS}_test_partitions.bed
 
+bcftools merge $DV_VCF_FATHER $DV_VCF_MOTHER $DV_VCF_OFFSRPING \
+		-O z > $PEDIGREE_DV_VCF 
 
-bcftools merge $DV_VCF_FATHER $DV_VCF_MOTHER $DV_VCF_OFFSRPING -O z > $JOINT_DV_VCF
+tabix $PEDIGREE_DV_VCF
 
-bcftools index -t $JOINT_DV_VCF
-
-bcftools view   $JOINT_DV_VCF \
-		-s $FATHER,$MOTHER,$OFFSPRING \
+bcftools view      $PEDIGREE_DV_VCF \
 		-R $MEND_EVAL_REGIONS \
 		-e 'GT[*] = "mis"' \
-		-O z | \
-bcftools view   - \
-		-e 'COUNT(GT="AA")=N_SAMPLES || COUNT(GT="RR")=N_SAMPLES' \
 		-O z \
-		> $JOINT_DV_VCF_FILTERED
-
-
+		> $PEDIGREE_DV_VCF_NO_MISSING

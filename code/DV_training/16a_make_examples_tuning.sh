@@ -7,13 +7,13 @@
 #SBATCH --mem-per-cpu=40G
 #SBATCH --export=NONE
 #SBATCH --array=1-5
-#SBATCH --job-name=MAKE_EX_TUNE
+#SBATCH --job-name=MAKE_EXAMPLES_TUNE
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
 ####script to run make_examples
-WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/
-REF=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/ref/GCF_016920845.1_GAculeatus_UGA_version5_genomic_formatted_shortnames.fna
+WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
+REF=/ref/GCF_016920845.1_GAculeatus_UGA_version5_genomic_formatted_shortnames.fna
 SAMPLES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/offspring.txt
 SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $SAMPLES)
 
@@ -25,19 +25,27 @@ REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_tra
 
 # Make temp dirs to be used instead of in /tmp. (need to be in $HOME)
 
-export APPTAINER_TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/apptained_tmp" #Set Singularity temporary dir
-export TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/parralel_tmp" #Set global temporary dir for parallel
+export APPTAINER_TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/apptained_tmp/$SAMPLE" #Set Singularity temporary dir
+export TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/parralel_tmp/$SAMPLE" #Set global temporary dir for parallel
+
+if [ ! -d "$APPTAINER_TMPDIR" ]; then
+   mkdir -p $APPTAINER_TMPDIR
+fi
+
+if [ ! -d "$TMPDIR" ]; then
+   mkdir -p $TMPDIR
+fi
+
 
 DV_PATH=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV/deepvariant_1.6.1-gpu.modified.sif
 OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread overflow error in numpy
 
 # make output dir
+OUTDIR=examples/tune_SNPS_ONLY
 
-if [ ! -d "$WD/examples/tune/" ]; then
-   mkdir -p $WD/examples/tune/
+if [ ! -d "$WD/$OUTDIR" ]; then
+   mkdir -p $WD/$OUTDIR
 fi
-
-SAMPLE_BED_NAME=$(echo $SAMPLE | cut -f-2 -d'_')
 
 apptainer run \
 -B $WD:/wd \
@@ -45,14 +53,19 @@ $DV_PATH  \
 parallel -q --halt 2 --line-buffer \
 /opt/deepvariant/bin/make_examples \
 --mode training \
---ref $REF \
+--ref /wd/$REF \
 --reads /wd/bams/${SAMPLE}.fixmate.coordsorted.bam \
---truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS.vcf.gz \
---confident_regions /wd/Confident_regions/${SAMPLE_BED_NAME}_conf_regions_inc_vars.bed \
---examples /wd/examples/tune/${SAMPLE}_tune_examples_positional.tfrecord@20 \
+--truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS_CLEAN.SNPS_ONLY.vcf.gz \
+--confident_regions /wd/Confident_regions/${CROSS}_conf_regions_inc_vars.bed \
+--examples /wd/$OUTDIR/${SAMPLE}_tune_examples.SNPS_ONLY.tfrecord@20 \
 --regions /wd/training_regions/${CROSS}_tune_partitions.bed \
+--labeler_algorithm=positional_labeler \
 --channels "insert_size" \
 --task {} ::: `seq 0 19` #split the task into 20 jobs
 
-#--labeler_algorithm=positional_labeler \
+
+
+
+
+
 

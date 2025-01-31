@@ -64,35 +64,35 @@ FATHER_MERGED_GVCF=$MERGED_GVCFs/$FATHER.g.vcf.gz
 MOTHER_MERGED_GVCF=$MERGED_GVCFs/$MOTHER.g.vcf.gz
 OFFSPRING_MERGED_GVCF=$MERGED_GVCFs/$OFFSPRING.g.vcf.gz
 
-#bcftools concat -O z $GVCFs/$FATHER*chromosome*gz > $FATHER_MERGED_GVCF
-#bcftools concat -O z $GVCFs/$MOTHER*chromosome*gz > $MOTHER_MERGED_GVCF
-#bcftools concat -O z $GVCFs/$OFFSPRING*chromosome*gz > $OFFSPRING_MERGED_GVCF
+bcftools concat -O z $GVCFs/$FATHER*chromosome*gz > $FATHER_MERGED_GVCF
+bcftools concat -O z $GVCFs/$MOTHER*chromosome*gz > $MOTHER_MERGED_GVCF
+bcftools concat -O z $GVCFs/$OFFSPRING*chromosome*gz > $OFFSPRING_MERGED_GVCF
 
-#tabix $FATHER_MERGED_GVCF
-#tabix $MOTHER_MERGED_GVCF
-#tabix $OFFSPRING_MERGED_GVCF
+tabix $FATHER_MERGED_GVCF
+tabix $MOTHER_MERGED_GVCF
+tabix $OFFSPRING_MERGED_GVCF
 
-
-########################################
-### >>> Filter parent GVCFs  <<< ####
-########################################
+##############################################
+### >>> Merge and Filter parent GVCFs  <<< ####
+###############################################
 
 # So here I first combine the individual concatenated GVCFs of each parent into a single GVCF for each CROSS, allowing me to do some sample-wise filtering below. This will include ensuring that all genotypes are homozygous reference, minimum depth across the two parents is 20x, and the genotype quality for both parents is good GQ>=30.
 
 PARENTS_GVCF=$MERGED_GVCFs/${CROSS}_parents.g.vcf.gz
 
 bcftools merge $MERGED_GVCFs/${FATHER}.g.vcf.gz \
-	       $MERGED_GVCFs/${MOTHER}.g.vcf.gz \
-	       -O u | \
+               $MERGED_GVCFs/${MOTHER}.g.vcf.gz \
+               -O u | \
 bcftools view  -i 'COUNT(GT="RR")=2 & MIN(FMT/DP)>=20 & MIN(GQ)>=30 & N_MISSING=0' \
-	       -O z  \
-               > $PARENTS_GVCF
-
+               -O z \
+	       > $PARENTS_GVCF
 tabix $PARENTS_GVCF
 
 ########################################
-## >>> converting VCF coordinates <<< ##
+##### >>> Making mask <<< ######
 ########################################
+
+## Note - converting VCF to bed coordinates is a pain . . . see below:
 
 # Then I need to convert these regions to bed format to give to DV. I will also use this to creat the offspring conf regions VCF to check what these loci look like in the offspring. 
 
@@ -130,9 +130,8 @@ echo "bed created"
 
 ### do i need to add a missing values filter in? I think not, DV takes the bam file, so if there is no call in the offspring, it means that there were not enough reads for GATK, but there might be for DV. Eitherway, it is a real world representation of what homozygous regions can look like.  
 
-
 #################################################################################
- #### FINALLY REMOVE THE REPEAT MASK AND 1N WINDOWS FROM THE CONF REGIONS ######
+ #### REMOVE THE REPEAT MASK AND 1N WINDOWS FROM THE CONF REGIONS ######
 #################################################################################
 
 GA_1N_WINDOW_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/5_masks/Finding_2n_windows/Ga_1n_windows.bed
@@ -143,31 +142,55 @@ COMBINED_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV
 
 CROSS_CONF_BED_FINAL=$CONFIDENT_REGIONS/${CROSS}_nonVar_conf_regions_masked.bed
 
-cat $GA_1N_WINDOW_MASK $REPEAT_MASK | bedtools sort | bedtools merge > $COMBINED_MASK  ## combine repeat and 1n window mask
+#cat $GA_1N_WINDOW_MASK $REPEAT_MASK | bedtools sort | bedtools merge > $COMBINED_MASK  ## combine repeat and 1n window mask
 
 ## REMOVE THESE REGIONS FROM THE CONFIDENT REGIONS IDENTIFIED FROM THE PARENTS ##
 
-bedtools subtract -a $CONF_REGIONS_BED -b $COMBINED_MASK > $CROSS_CONF_BED_FINAL  ## subtract combined repeat and 1n window mask from the confident regions
 
-#################################################################################
-################ CREATE OFFSPRING CONFIDENT_REGIONS GVCF  ### ###################
-#################################################################################
+##############################################
+### >>> Merge and Filter parent GVCFs  <<< ####
+###############################################
 
-# This will be useful for validation and summary plots
+# So here I first combine the individual concatenated GVCFs of each parent into a single GVCF for each CROSS, allowing me to do some sample-wise filtering below. This will include ensuring that all genotypes are homozygous reference, minimum depth across the two parents is 20x, and the genotype quality for both parents is good GQ>=30.
 
-CROSS_CONF_REGIONS_GVCF=$CONFIDENT_REGIONS/${CROSS}_male_1_putative_nonVar_confident_regions.g.vcf.gz
+PARENTS_MASKED_GVCF=$MERGED_GVCFs/${CROSS}_parents_masked.g.vcf.gz
 
-$bcftools view $OFFSPRING_MERGED_GVCF \
-              -R $CROSS_CONF_BED_FINAL \
-	      -i "N_MISSING=0" \
-              -a \
-              -O z \
-              > $CROSS_CONF_REGIONS_GVCF
+bcftools view  $PARENTS_GVCF \
+               -T ^$COMBINED_MASK \
+	       -O z \
+               > $PARENTS_MASKED_GVCF
+
+tabix $PARENTS_MASKED_GVCF
+
+######################################################################
+###### Merge the parents & offspring, and keep only loci in all 3 ####
+######################################################################
+
+# This will ensure that only confident unmasked regions are kept
+
+CROSS_CONF_REGIONS_GVCF=$CONFIDENT_REGIONS/${CROSS}_putative_nonVar_confident_regions.g.vcf.gz
+
+bcftools merge $PARENTS_MASKED_GVCF \
+	       $OFFSPRING_MERGED_GVCF \
+	       -O u | \
+bcftools view  -i "N_MISSING=0" \
+               -O z \
+	       > $CROSS_CONF_REGIONS_GVCF
 
 tabix $CROSS_CONF_REGIONS_GVCF
 
-### do i need to add a missing values filter in? I think not, DV takes the bam file, so if there is no call in the offspring, it means that there were not enough reads for GATK, but there might be for DV. Eitherway, it is a real world representation of what homozygous regions can look like.
 
+#####################################################################################
+# >> make a bed from the GVCF
+#####################################################################################
+
+CONF_REGIONS_BED=$CONFIDENT_REGIONS/${CROSS}_nonVar_conf_regions_masked.bed
+
+echo "starting FINAL bed creation"
+zcat $CROSS_CONF_REGIONS_GVCF | cut -f1,2,8  | grep 'END' | grep -v '#' | sed 's/END=//g' | cut -f1 -d';' | \
+awk '{print $1 "\t" ($2 - 1) "\t" $3}' | grep -v 'BaseQRankSum' | grep -v 'ExcessHet' | bedtools merge > $CONF_REGIONS_BED
+
+echo "bed created"
 
 
 

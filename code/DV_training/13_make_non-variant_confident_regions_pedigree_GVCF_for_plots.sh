@@ -64,7 +64,7 @@ bcftools view  $PEDIGREE_nonVAR \
                -O z \
                > $PEDIGREE_CONF_REGIONS_GVCF
 
-#tabix $PEDIGREE_CONF_REGIONS_GVCF
+tabix $PEDIGREE_CONF_REGIONS_GVCF
 
 ### do i need to add a missing values filter in? I think not, DV takes the bam file, so if there is no call in the offspring, it means that there were not enough reads for GATK, but there might be for DV. Eitherway, it is a real world representation of what homozygous regions can look like.
 

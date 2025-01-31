@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=32G
 #SBATCH --export=NONE
-#SBATCH --job-name=Mendelian_eval
+#SBATCH --job-name=Mendelian_eval_GATK_GVCF
 #SBATCH --array=1-5
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
@@ -40,20 +40,18 @@ fi
 #### Mendelian evaluation ####
 ##############################
 
-MEND_OUTS=$WD/Mendelian_evals/DV
+MEND_OUTS=$WD/Mendelian_evals/GATK
 
 if [ ! -d "$MEND_OUTS" ]; then
    mkdir -p $MEND_OUTS
 fi
 
-PEDIGREE_VCF=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_family_filtered.vcf.gz
+PEDIGREE_VCF=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/4_GATK/GVCF/${CROSS}_mend_eval_chroms.NO_MISSING.g.vcf.gz
 PED_FILE=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/PED_files/${CROSS}.ped
-
-echo $PED_FILE
 
 $RTG mendelian  -i $PEDIGREE_VCF \
 		-t $SDF_OUT \
-		-o $MEND_OUTS/${CROSS}.mend_eval.vcf \
+		-o $MEND_OUTS/${CROSS}.mend_eval_chroms.NO_MISSING.mend_eval.vcf \
 		--pedigree $PED_FILE
 
 

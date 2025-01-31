@@ -7,7 +7,7 @@
 #SBATCH --mem=50G
 #SBATCH --export=NONE
 #SBATCH --array=1-5
-#SBATCH --job-name=CLAEN_TRUTH_VARIANTS
+#SBATCH --job-name=GET_SNPS_ONLY_FROM_TRUTH_VARIANTS
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -25,12 +25,13 @@ CROSS_TRUTH_VAR_VCF=$WD/Filtered_variants/${CROSS}.ALL_TRUTH_VARS.vcf.gz
 FAILS=$WD/Filtered_variants/${CROSS}_fails.tsv
 
 CROSS_TRUTH_VAR_VCF_CLEAN=$WD/Filtered_variants/${CROSS}.ALL_TRUTH_VARS_CLEAN.vcf.gz
+CROSS_TRUTH_VAR_VCF_CLEAN_SNPS_ONLY=$WD/Filtered_variants/${CROSS}.ALL_TRUTH_VARS_CLEAN.SNPS_ONLY.vcf.gz
 
-bcftools view $CROSS_TRUTH_VAR_VCF \
-              -T ^${FAILS} \
+bcftools view $CROSS_TRUTH_VAR_VCF_CLEAN \
+	      -v snps \
 	      -O z \
-              > $CROSS_TRUTH_VAR_VCF_CLEAN \
+              > $CROSS_TRUTH_VAR_VCF_CLEAN_SNPS_ONLY \
 
-tabix $CROSS_TRUTH_VAR_VCF_CLEAN
+tabix $CROSS_TRUTH_VAR_VCF_CLEAN_SNPS_ONLY
 
 

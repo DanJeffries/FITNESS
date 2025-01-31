@@ -40,18 +40,21 @@ fi
 #### Mendelian evaluation ####
 ##############################
 
-MEND_OUTS=$WD/Mendelian_evals/GATK
+MEND_OUTS=$WD/Mendelian_evals/DV
 
 if [ ! -d "$MEND_OUTS" ]; then
    mkdir -p $MEND_OUTS
 fi
 
-PEDIGREE_VCF=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training/Unfiltered_VCF/${CROSS}_pedigree_filtered_GQ20.vcf.gz
+PEDIGREE_VCF=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/test/${CROSS}_family_NO_MISSING.vcf.gz
 PED_FILE=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/PED_files/${CROSS}.ped
+
+echo $PED_FILE
 
 $RTG mendelian  -i $PEDIGREE_VCF \
 		-t $SDF_OUT \
-		-o $MEND_OUTS/${CROSS}.mend_eval_QUAL30.vcf \
+		-o $MEND_OUTS/${CROSS}_family.NO_MISSING.mend_eval.vcf \
 		--pedigree $PED_FILE
 
-
+bgzip $MEND_OUTS/${CROSS}_family.NO_MISSING.mend_eval.vcf
+tabix $MEND_OUTS/${CROSS}_family.NO_MISSING.mend_eval.vcf.gz

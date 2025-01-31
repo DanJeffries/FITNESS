@@ -8,7 +8,7 @@
 #SBATCH --mem=99G
 #SBATCH --export=NONE
 #SBATCH --array=426-9999  #52470
-#SBATCH --job-name=HapCall_un0
+#SBATCH --job-name=HapCall_chroms
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -19,7 +19,8 @@ module load UHTS/Analysis/picard-tools/2.9.0
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
 
 ## Note I split the chromosomes and the unplaced contigs, as they will take very different times to finish, thus hopefully I can make more efficient resource requests. 
-#ITERFILE=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/code/sample_interval_map_chroms.txt
+
+ITERFILE=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/code/sample_interval_map_chroms.txt
 ITERFILE=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/code/sample_interval_map_unplaced.txt
 
 ## Too many array jobs for the schedular and can't use numbers above 10k, so adding 10k to each array number past the first 10k to get the right file line. 

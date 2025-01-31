@@ -8,7 +8,7 @@
 ##SBATCH --mem=400G
 #SBATCH --export=NONE
 #SBATCH --array=1-5 
-#SBATCH --job-name=MAKE_EX_TRAIN_NEW
+#SBATCH --job-name=MAKE_TEST_EXAMPLES_for_VIS
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -43,8 +43,8 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 # make output dir
 
-if [ ! -d "$WD/examples/train" ]; then
-   mkdir -p $WD/examples/train
+if [ ! -d "$WD/examples/test_visualisation/" ]; then
+   mkdir -p $WD/examples/test_visualisation/
 fi
 
 apptainer run \
@@ -57,8 +57,8 @@ parallel -q --halt 2 --line-buffer \
 --reads /wd/bams/${SAMPLE}.fixmate.coordsorted.bam \
 --truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS_CLEAN.vcf.gz \
 --confident_regions /wd/Confident_regions/${CROSS}_conf_regions_inc_vars.bed \
---examples /wd/examples/train/${SAMPLE}_training_examples_positional.tfrecord@20 \
---regions /wd/training_regions/${CROSS}_train_partitions.bed \
+--examples /wd/examples/test_visualisation/${SAMPLE}_training_examples_positional.tfrecord@20 \
+--regions /wd/training_regions/${CROSS}_test_partitions.bed \
 --labeler_algorithm=positional_labeler \
 --channels "insert_size" \
 --task {} ::: `seq 0 19` #split the task into 20 jobs

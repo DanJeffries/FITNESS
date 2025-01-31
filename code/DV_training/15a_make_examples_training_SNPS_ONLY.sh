@@ -43,8 +43,8 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 # make output dir
 
-if [ ! -d "$WD/examples/train" ]; then
-   mkdir -p $WD/examples/train
+if [ ! -d "$WD/examples/train_SNPS_ONLY" ]; then
+   mkdir -p $WD/examples/train_SNPS_ONLY
 fi
 
 apptainer run \
@@ -55,9 +55,9 @@ parallel -q --halt 2 --line-buffer \
 --mode training \
 --ref /wd/$REF \
 --reads /wd/bams/${SAMPLE}.fixmate.coordsorted.bam \
---truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS_CLEAN.vcf.gz \
---confident_regions /wd/Confident_regions/${CROSS}_conf_regions_inc_vars.bed \
---examples /wd/examples/train/${SAMPLE}_training_examples_positional.tfrecord@20 \
+--truth_variants /wd/Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS_CLEAN.SNPS_ONLY.vcf.gz \
+--confident_regions /wd/Confident_regions/${CROSS}_conf_regions_inc_vars.SNPS_ONLY.bed \
+--examples /wd/examples/train_SNPS_ONLY/${SAMPLE}_training_examples_positional.SNPS_ONLY.tfrecord@20 \
 --regions /wd/training_regions/${CROSS}_train_partitions.bed \
 --labeler_algorithm=positional_labeler \
 --channels "insert_size" \
