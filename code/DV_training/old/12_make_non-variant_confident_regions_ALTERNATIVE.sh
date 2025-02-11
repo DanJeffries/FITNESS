@@ -1,19 +1,23 @@
 #!/bin/bash
 
 #SBATCH --partition=bdw
-#SBATCH --time=01:00:00
+#SBATCH --time=05:00:00
 #SBATCH --nodes=1
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=99G
 #SBATCH --export=NONE
-#SBATCH --array=1-5
-#SBATCH --job-name=Make_NonVar_confident_bedfiles
+#SBATCH --array=2-5
+#SBATCH --job-name=Make_CONF_HOM_REF_ALT
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
 module load BCFtools/1.12-GCC-10.3.0
 module load VCFtools/0.1.16-GCC-10.3.0
+module load Anaconda3
+
+eval "$(conda shell.bash hook)"
+conda activate gvcf2bed ## for converting GVCFs to bed after filtering 
 
 bcftools=/storage/homefs/dj20y461/Software/bcftools-1.21/bcftools
 
@@ -53,6 +57,9 @@ bcftools=/storage/homefs/dj20y461/Software/bcftools-1.21/bcftools
 
 # So we need to -1 from both start and end point, and +1 to the end point. The latter cancels out so we do nothing to the end point.
 
+# There are extra considerations for INDELS. I.e. where the allele length is greater than 1. The question being do we add the allele length to the end position of the bed
+
+## In the end I found a tool (gvcf2bed) that will do the conversion. It takes care of the INDEL length thing. 
 
 ###############################
 ## >>> Set paths & vars  <<< ##
@@ -61,7 +68,7 @@ bcftools=/storage/homefs/dj20y461/Software/bcftools-1.21/bcftools
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
 RESEARCH=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_training
 GVCFs=$RESEARCH/4_GATK/GVCF
-CONFIDENT_REGIONS=$WD/Confident_regions
+CONFIDENT_REGIONS=$WD/Confident_regions_ALT
 CROSSES=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/crossIDs.txt
 
 if [ ! -d "$CONFIDENT_REGIONS" ]; then
@@ -78,42 +85,94 @@ OFFSPRING="${CROSS}_male_1"
 ## Step 1. find 0/0 confident sites in each parent
 ######################################################
 
+## New filtering strategy. 
+
+### CONF HOM_REF
+
+#1. For offspring ONLY 
+#
+#    - GT = DONT FILTER BY GATK GENOTYPE!??! We don't care what GATK thinks and it is super keen to call variants. E.g. 17,3 will be called 0/1 in GATK.
+#    - Min DP = 15
+#    - Min ref reads = 13 
+#    - Min REF alleles fraction = 0.8
+#
+
+MIN_DP=15
+MIN_REF_READS=13
+MIN_REF_FRACTION=0.86
+
+
+## FATHER ---------------------------------------------------------------
+
 FATHER_GVCF=$GVCFs/${FATHER}.all_chroms.g.vcf.gz
-FATHER_CONF_GVCF=$GVCFs/${FATHER}.all_chroms.CONF.g.vcf.gz
-FATHER_CONF_BED=$CONFIDENT_REGIONS/${FATHER}_conf.bed
+FATHER_CONF_GVCF=$GVCFs/${FATHER}.all_chroms.CONF_ALT.g.vcf.gz
+FATHER_CONF_BED=$CONFIDENT_REGIONS/${FATHER}_conf_ALT.bed
+
+bcftools view   $FATHER_GVCF \
+                -e "FMT/DP[0] < ${MIN_DP}" \
+                -a \
+                -O u | \
+bcftools view   -e "FMT/AD[0:0] < ${MIN_REF_READS}" \
+                -O u | \
+bcftools view   -e "(FMT/AD[0:0] / FMT/DP[0]) < ${MIN_REF_FRACTION}" \
+                -O z \
+                > $FATHER_CONF_GVCF
+
+tabix $FATHER_CONF_GVCF
+
+gvcf2bed -I $FATHER_CONF_GVCF -O $FATHER_CONF_BED -q 0 -nq 0
+
+## MOTHER ---------------------------------------------------------------
 
 MOTHER_GVCF=$GVCFs/${MOTHER}.all_chroms.g.vcf.gz
-MOTHER_CONF_GVCF=$GVCFs/${MOTHER}.all_chroms.CONF.g.vcf.gz
-MOTHER_CONF_BED=$CONFIDENT_REGIONS/${MOTHER}_conf.bed
+MOTHER_CONF_GVCF=$GVCFs/${MOTHER}.all_chroms.CONF_ALT.g.vcf.gz
+MOTHER_CONF_BED=$CONFIDENT_REGIONS/${MOTHER}_conf_ALT.bed
 
-## FATHER
-bcftools view   $FATHER_GVCF \
-		-i 'GT="RR" & MIN(FMT/DP)>=20 & MIN(GQ)>=30' \
-		-a \
-		-O z \
- 		> $FATHER_CONF_GVCF
-
-zcat $FATHER_CONF_GVCF | cut -f1,2,8  | grep 'END' | grep -v '#' | sed 's/END=//g' | cut -f1 -d';' | \
-awk '{print $1 "\t" ($2 - 1) "\t" $3}' | grep -v 'BaseQRankSum' | grep -v 'ExcessHet' | bedtools merge > $FATHER_CONF_BED
-
-## MOTHER
 bcftools view   $MOTHER_GVCF \
-               -i 'GT="RR" & MIN(FMT/DP)>=20 & MIN(GQ)>=30' \
-               -a \
-               -O z \
-               > $MOTHER_CONF_GVCF
+                -e "FMT/DP[0] < ${MIN_DP}" \
+                -a \
+                -O u | \
+bcftools view   -e "FMT/AD[0:0] < ${MIN_REF_READS}" \
+                -O u | \
+bcftools view   -e "(FMT/AD[0:0] / FMT/DP[0]) < ${MIN_REF_FRACTION}" \
+                -O z \
+                > $MOTHER_CONF_GVCF
 
-zcat $MOTHER_CONF_GVCF | cut -f1,2,8  | grep 'END' | grep -v '#' | sed 's/END=//g' | cut -f1 -d';' | \
-awk '{print $1 "\t" ($2 - 1) "\t" $3}' | grep -v 'BaseQRankSum' | grep -v 'ExcessHet' | bedtools merge > $MOTHER_CONF_BED
+tabix $MOTHER_CONF_GVCF
+
+gvcf2bed -I $MOTHER_CONF_GVCF -O $MOTHER_CONF_BED -q 0 -nq 0
 
 
-######################################################
-## Step 2. find parent intersection 
-######################################################
+## OFFSPRING ---------------------------------------------------------------
 
-PARENTS_CONF=$CONFIDENT_REGIONS/${CROSS}_parents_conf.bed
+OFFSPRING_GVCF=$GVCFs/${OFFSPRING}.all_chroms.g.vcf.gz
+OFFSPRING_CONF_GVCF=$GVCFs/${OFFSPRING}.all_chroms.CONF_ALT.g.vcf.gz
+OFFSPRING_CONF_BED=$CONFIDENT_REGIONS/${OFFSPRING}_conf_ALT.bed
 
-bedtools intersect -a $FATHER_CONF_BED -b $MOTHER_CONF_BED > $PARENTS_CONF
+bcftools view   $OFFSPRING_GVCF \
+                -e "FMT/DP[0] < ${MIN_DP}" \
+                -a \
+                -O u | \
+bcftools view	-e "FMT/AD[0:0] < ${MIN_REF_READS}" \
+		-O u | \
+bcftools view	-e "(FMT/AD[0:0] / FMT/DP[0]) < ${MIN_REF_FRACTION}" \
+		-O z \
+                > $OFFSPRING_CONF_GVCF
+
+tabix $OFFSPRING_CONF_GVCF
+
+gvcf2bed -I $OFFSPRING_CONF_GVCF -O $OFFSPRING_CONF_BED -q 0 -nq 0
+
+
+########################################################################
+## Step 2. filter for positions kept in all samples I.e. the intersection 
+#######################################################################
+
+PARENTS_CONF_BED=$CONFIDENT_REGIONS/${CROSS}_parents_conf.bed
+OFFSPRING_CONF_BED_SHARED=$CONFIDENT_REGIONS/${OFFSPRING}_conf_ALT_SHARED.bed
+
+bedtools intersect -a $FATHER_CONF_BED -b $MOTHER_CONF_BED  > $PARENTS_CONF_BED
+bedtools intersect -a $OFFSPRING_CONF_BED -b $PARENTS_CONF_BED > $OFFSPRING_CONF_BED_SHARED
 
 ######################################################
 ## Step 3. make the mask
@@ -125,14 +184,16 @@ COMBINED_MASK=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV
 
 ## combine the repeats and 1n mask
 
-cat $GA_1N_WINDOW_MASK $REPEAT_MASK | bedtools sort | bedtools merge > $COMBINED_MASK  ## combine repeat and 1n window mask
+#cat $GA_1N_WINDOW_MASK $REPEAT_MASK | bedtools sort | bedtools merge > $COMBINED_MASK  ## combine repeat and 1n window mask
 
 ###################################################################
 ## Step 4. Remove the masked regions from the confident bed file
 ###################################################################
 
-CONF_REGIONS_MASKED_BED=$CONFIDENT_REGIONS/${CROSS}_nonVar_conf_regions_masked.bed
+CONF_REGIONS_MASKED_BED=$CONFIDENT_REGIONS/${CROSS}_CONF_HOM_REF_ALT_masked.bed
 
-bedtools subtract -a $PARENTS_CONF -b $COMBINED_MASK > $CONF_REGIONS_MASKED_BED
+bedtools subtract -a $OFFSPRING_CONF_BED_SHARED -b $COMBINED_MASK | \
+bedtools sort | \
+bedtools merge 	> $CONF_REGIONS_MASKED_BED
 
 

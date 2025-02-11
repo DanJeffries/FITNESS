@@ -8,8 +8,8 @@
 ##SBATCH --gres=gpu:rtx4090:1
 #SBATCH --mem-per-cpu=50G
 #SBATCH --export=NONE
-#SBATCH --array=4  # start from 2 because of the header in the params file. 
-#SBATCH --job-name=TRAIN_Step2
+#SBATCH --array=5
+#SBATCH --job-name=TRAIN_DV_180
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -19,14 +19,14 @@ WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/
 export APPTAINER_TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/apptained_tmp" #Set Singularity temporary dir
 export TMPDIR="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/parralel_tmp" #Set global temporary dir for parallel
 
-DV_PATH=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV/deepvariant_1.6.1-gpu.modified.sif
+DV_PATH=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV/deepvariant_GPU.1.8.0
 OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread overflow error in numpy
 
 # get step instructions
 
-STEP_PARAMS="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/19_training_scripts/Step_2/step_parameters.txt"
+STEP_PARAMS="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/19_training_scripts/DV_1.8.0/step_parameters.txt"
 
-STEP=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f1)
+STEP="DV1.8.0"
 RUN=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f2)
 BS=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f3)
 LR=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f4)
