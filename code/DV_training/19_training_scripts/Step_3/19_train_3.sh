@@ -8,8 +8,8 @@
 #SBATCH --gres=gpu:rtx4090:1
 #SBATCH --mem-per-cpu=50G
 #SBATCH --export=NONE
-#SBATCH --array=5  # start from 2 because of the header in the params file. 
-#SBATCH --job-name=TRAIN_GRIDSEARCH_STEP_2
+#SBATCH --array=2  # start from 2 because of the header in the params file. 
+#SBATCH --job-name=TRAIN_GRIDSEARCH_STEP_3
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -24,7 +24,7 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 # get step instructions
 
-STEP_PARAMS="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/19_training_scripts/Step_2/step_parameters.txt"
+STEP_PARAMS="/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/19_training_scripts/Step_3/step_parameters.txt"
 
 STEP=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f1)
 RUN=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f2)
@@ -35,7 +35,7 @@ TUNE_EVERY=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f6)
 
 # make outdir 
 
-OUTDIR=systematic_training_run/STEP_${STEP}/RUN_${RUN}
+OUTDIR=GRIDSEARCH/STEP_${STEP}/RUN_${RUN}
 
 if [ ! -d "$WD/${OUTDIR}" ]; then
    mkdir -p $WD/${OUTDIR}/
@@ -47,8 +47,8 @@ apptainer run \
 $DV_PATH \
 /opt/deepvariant/bin/train \
 --config=/home/dv_config.py:base \
---config.train_dataset_pbtxt="/home/examples_shuffled_NEW/train/GRIDSEARCH_training_subset/examples_shuf2_gridsearch_config.pbtxt" \
---config.tune_dataset_pbtxt="/home/examples_shuffled_NEW/tune/tune_examples.config.pbtxt" \
+--config.train_dataset_pbtxt="/home/examples_shuffled_NEW/train/GRIDSEARCH_training_subset_with_downsampled_shuffled/examples_gridsearch_with_downsampled_shuffled.pbtxt" \
+--config.tune_dataset_pbtxt="/home/examples_shuffled_NEW/tune/GRIDSEARCH_tuning_subset_with_downsampling_shuffled/tune_examples_subset_with_downsampled.config.pbtxt" \
 --config.num_epochs=2 \
 --config.learning_rate=$LR \
 --config.learning_rate_decay_rate=$LRD \

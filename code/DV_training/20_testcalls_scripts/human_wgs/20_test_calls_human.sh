@@ -24,9 +24,8 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 ## Model to test
 ### this text file gives path to best checkpoint for each of the training runs being evaluated. Paths start from the path mounted as home in apptainer. 
-BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/Step_1/best_checkpoints.txt
 
-MODEL_DIR="systematic_training_run/human_wgs/"
+MODEL_DIR="/human_wgs/"
 CHECKPOINT="HUMAN"
 
 ## make outdir

@@ -35,8 +35,8 @@ CROSS=FG
 ### this text file gives path to best checkpoint for each of the training runs being evaluated. Paths start from the path mounted as home in apptainer.
 BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/Step_1/best_checkpoints.txt
 
-MODEL_DIR=systematic_training_run/gatk_baseline
-CHECKPOINT=HUMAN
+MODEL_DIR=GRIDSEARCH/gatk_baseline
+CHECKPOINT=GATK
 
 TEST_CALLSET=${MODEL_DIR}/FG_male_1.GATK.filtered_baseline.vcf.gz
 
@@ -50,8 +50,9 @@ fi
 
 ## all paths relative to $WD, which is the mount point in the container
 
-TRUTH_SET=Filtered_variants/${SAMPLE}.ALL_TRUTH_VARS_CLEAN.vcf.gz
-CONF_REGIONS=Confident_regions/${CROSS}_conf_regions_inc_vars.bed
+TRUTH_SET=TRAINING_DATA/${SAMPLE}.CONF_VARS_ALL.vcf.gz
+CONF_REGIONS=TRAINING_DATA/${SAMPLE}.CONF_REGIONS_MASKED.bed
+
 TEST_PARTITIONS=$(awk '{print $1}' ${WD}/training_regions/${CROSS}_test_partitions.bed | paste -s -d , -)
 echo $TEST_PARTITIONS
 REF=ref/GCF_016920845.1_GAculeatus_UGA_version5_genomic_formatted_shortnames.fna
