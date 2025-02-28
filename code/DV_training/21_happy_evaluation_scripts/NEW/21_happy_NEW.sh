@@ -6,8 +6,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=50G
 #SBATCH --export=NONE
-#SBATCH --array=2-6
-#SBATCH --job-name=HAPPY_EVAL_1A
+#SBATCH --job-name=HAPPY_EVAL_ALT
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -35,12 +34,13 @@ CROSS="FG"
 
 ## Model to test
 ### this text file gives path to best checkpoint for each of the training runs being evaluated. Paths start from the path mounted as home in apptainer.
-BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/Step_1/best_checkpoints.txt
+BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/NEW/best_checkpoints.txt
 
-MODEL_DIR=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $BEST_MODELS | cut -f1)
-CHECKPOINT=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $BEST_MODELS | cut -f2)
+MODEL_DIR="training_NEW_ep34/checkpoints"
+CHECKPOINT="ckpt-1500"
 
 TEST_CALLSET=${MODEL_DIR}/test_calls/${SAMPLE}_${CHECKPOINT}_test_calls.vcf.gz
+
 
 ## make outdir
 
@@ -63,11 +63,12 @@ apptainer run \
 -B $WD:/home \
 $HAPPY_PATH \
 /opt/hap.py/bin/hap.py \
-        /home/$TRUTH_SET \
-        /home/$TEST_CALLSET \
-        -f /home/$CONF_REGIONS \
-        -r /home/$REF \
-        -o /home/$HAPPY_OUTDIR/${SAMPLE}_${CHECKPOINT}_happy_eval.output \
-        --engine=vcfeval \
-        --pass-only \
-        -l $TEST_PARTITIONS
+	/home/$TRUTH_SET \
+	/home/$TEST_CALLSET \
+	-f /home/$CONF_REGIONS \
+	-r /home/$REF \
+	-o /home/$HAPPY_OUTDIR/${SAMPLE}_${CHECKPOINT}_happy_eval.output \
+	--engine=vcfeval \
+	--pass-only \
+	-l $TEST_PARTITIONS
+

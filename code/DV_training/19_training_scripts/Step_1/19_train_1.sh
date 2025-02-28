@@ -4,12 +4,12 @@
 #SBATCH --time=24:00:00
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --gres=gpu:h100:1
-##SBATCH --gres=gpu:rtx4090:1
+##SBATCH --gres=gpu:h100:1
+#SBATCH --gres=gpu:rtx4090:1
 #SBATCH --mem-per-cpu=50G
 #SBATCH --export=NONE
-#SBATCH --array=6,7
-#SBATCH --job-name=TRAIN_Step1A
+#SBATCH --array=7
+#SBATCH --job-name=TRAIN_GRIDSEARCH_Step1
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -35,7 +35,7 @@ TUNE_EVERY=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $STEP_PARAMS | cut -f6)
 
 # make outdir 
 
-OUTDIR=systematic_training_run/STEP_${STEP}/RUN_${RUN}
+OUTDIR=GRIDSEARCH/STEP_${STEP}/RUN_${RUN}
 
 if [ ! -d "$WD/${OUTDIR}" ]; then
    mkdir -p $WD/${OUTDIR}/
@@ -49,8 +49,8 @@ apptainer run \
 $DV_PATH \
 /opt/deepvariant/bin/train \
 --config=/home/dv_config.py:base \
---config.train_dataset_pbtxt="/home/examples_shuffled/train/shuf_3/examples_shuf3_config.pbtxt" \
---config.tune_dataset_pbtxt="/home/examples_shuffled/tune/shuf_2/tune_examples_subset.config.pbtxt" \
+--config.train_dataset_pbtxt="/home/examples_shuffled_NEW/train/GRIDSEARCH_training_subset/examples_shuf2_gridsearch_config.pbtxt" \
+--config.tune_dataset_pbtxt="/home/examples_shuffled_NEW/tune/tune_examples.config.pbtxt" \
 --config.num_epochs=1 \
 --config.learning_rate=$LR \
 --config.learning_rate_decay_rate=$LRD \

@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #SBATCH --partition=epyc2
-#SBATCH --time=06:00:00
+#SBATCH --time=12:00:00
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --mem=500G
+#SBATCH --mem=900G
 #SBATCH --export=NONE
-#SBATCH --job-name=SHUFFLE_train_3
+#SBATCH --job-name=SHUFFLE_full_train_2_subset
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -18,27 +18,23 @@ module load Anaconda3
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
 SHUFFLE_SCRIPT_DIR=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/UTILS
 
-EXAMPLES_DIR=${WD}/examples_shuffled_NEW/train/shuf_1 ## starting from outputs from shuffle 1 this time, no shuffle 2 for this test.
-OUTPUT_DIR=${WD}/examples_shuffled_NEW/train/shuf_3
+EXAMPLES_DIR=${WD}/examples_shuffled_NEW/train/GRIDSEARCH_training_subset_with_downsampled ## starting from outputs from shuffle 1 this time, no shuffle 2 for this test.
+OUTPUT_DIR=${WD}/examples_shuffled_NEW/train/GRIDSEARCH_training_subset_with_downsampled_shuffled
 
 if [ ! -d "$OUTPUT_DIR" ]; then
    mkdir -p $OUTPUT_DIR
 fi
 
-## Make the subset files and directories
-
 ## activate python venv
 cd /storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/UTILS
 . beam/bin/activate
 
-## making a subset using shuffle subsets 1 and 10 (just for ease of use with the wildcard below)
-
 python3 ${SHUFFLE_SCRIPT_DIR}/shuffle_tfrecords_beam.py \
   --project="FITNESS_TRAIN" \
-  --input_pattern_list="${EXAMPLES_DIR}/examples_shuffle1_*-0000*-of-00020.tfrecord.gz" \
-  --output_pattern_prefix="${OUTPUT_DIR}/examples_shuf3" \
+  --input_pattern_list="${EXAMPLES_DIR}/examples*tfrecord.gz" \
+  --output_pattern_prefix="${OUTPUT_DIR}/examples_gridsearch_with_downsampled_shuffled" \
   --output_dataset_name="Shuffle_global" \
-  --output_dataset_config_pbtxt="${OUTPUT_DIR}/examples_shuf3_config.pbtxt" \
+  --output_dataset_config_pbtxt="${OUTPUT_DIR}/examples_gridsearch_with_downsampled_shuffled.pbtxt" \
   --job_name=shuffle-tfrecords \
   --runner=DirectRunner \
   --direct_num_workers=20

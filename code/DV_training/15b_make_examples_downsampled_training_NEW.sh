@@ -1,13 +1,14 @@
 #!/bin/bash
 
 #SBATCH --partition=epyc2
-#SBATCH --time=04:00:00
+#SBATCH --time=06:00:00
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=40G
+##SBATCH --mem=400G
 #SBATCH --export=NONE
 #SBATCH --array=1-5
-#SBATCH --job-name=MAKE_EXAMPLES_TUNE_ALT
+#SBATCH --job-name=MAKE_EX_TRAIN_NEW
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -21,7 +22,7 @@ CROSS=$(echo $SAMPLE | cut -f1 -d'_') ## get cross ID so I can get the regions f
 
 ## I created the training regions files manually - note I cant use this bash var in the docker, this is just to show where it is. 
 
-REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/${CROSS}_tune_partitions.bed
+REGIONS_BED=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training/training_regions/${CROSS}_train_partitions.bed
 
 # Make temp dirs to be used instead of in /tmp. (need to be in $HOME)
 
@@ -41,10 +42,11 @@ DV_PATH=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV/deepvar
 OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread overflow error in numpy
 
 # make output dir
-OUTDIR=examples_NEW/tune
 
-if [ ! -d "$WD/$OUTDIR" ]; then
-   mkdir -p $WD/$OUTDIR
+DOWNSAMPLE_FRACTION=0.5
+
+if [ ! -d "$WD/examples_NEW/train_down_${DOWNSAMPLE_FRACTION}" ]; then
+   mkdir -p $WD/examples_NEW/train_${DOWNSAMPLE_FRACTION}
 fi
 
 apptainer run \
@@ -57,12 +59,12 @@ parallel -q --halt 2 --line-buffer \
 --reads /wd/bams/${SAMPLE}.fixmate.coordsorted.bam \
 --truth_variants /wd/TRAINING_DATA/${SAMPLE}.CONF_VARS_ALL.vcf.gz \
 --confident_regions /wd/TRAINING_DATA/${SAMPLE}.CONF_REGIONS_MASKED.bed \
---examples /wd/$OUTDIR/${SAMPLE}_tune_examples.ALT.tfrecord@20 \
---regions /wd/training_regions/${CROSS}_tune_partitions.bed \
+--examples /wd/examples_NEW/train_${DOWNSAMPLE_FRACTION}/${SAMPLE}_training_examples_positional_down_${DOWNSAMPLE_FRACTION}.tfrecord@20 \
+--regions /wd/training_regions/${CROSS}_train_partitions.bed \
 --labeler_algorithm=positional_labeler \
 --channels "insert_size" \
+--downsample_fraction=0.5 \
 --task {} ::: `seq 0 19` #split the task into 20 jobs
-
 
 
 

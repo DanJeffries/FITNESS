@@ -4,12 +4,12 @@
 #SBATCH --time=24:00:00
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --gres=gpu:h100:1
-##SBATCH --gres=gpu:rtx4090:1
+##SBATCH --gres=gpu:h100:1
+#SBATCH --gres=gpu:rtx4090:1
 #SBATCH --mem-per-cpu=50G
 #SBATCH --export=NONE
-#SBATCH --array=4  # start from 2 because of the header in the params file. 
-#SBATCH --job-name=TRAIN_Step2
+#SBATCH --array=5  # start from 2 because of the header in the params file. 
+#SBATCH --job-name=TRAIN_GRIDSEARCH_STEP_2
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -41,24 +41,19 @@ if [ ! -d "$WD/${OUTDIR}" ]; then
    mkdir -p $WD/${OUTDIR}/
 fi
 
-## Initial model to start training from
-
 apptainer run \
 --nv \
 -B $WD:/home \
 $DV_PATH \
 /opt/deepvariant/bin/train \
 --config=/home/dv_config.py:base \
---config.train_dataset_pbtxt="/home/examples_shuffled/train/shuf_3/examples_shuf3_config.pbtxt" \
---config.tune_dataset_pbtxt="/home/examples_shuffled/tune/shuf_2/tune_examples_subset.config.pbtxt" \
---config.num_epochs=1 \
+--config.train_dataset_pbtxt="/home/examples_shuffled_NEW/train/GRIDSEARCH_training_subset/examples_shuf2_gridsearch_config.pbtxt" \
+--config.tune_dataset_pbtxt="/home/examples_shuffled_NEW/tune/tune_examples.config.pbtxt" \
+--config.num_epochs=2 \
 --config.learning_rate=$LR \
 --config.learning_rate_decay_rate=$LRD \
 --config.num_validation_examples=0 \
 --config.tune_every_steps=$TUNE_EVERY \
---experiment_dir=/home/${OUTDIR} \
+--experiment_dir=/home/$OUTDIR \
 --strategy=mirrored \
---config.batch_size=$BS
-
-#--config.init_checkpoint="/home/${MODEL_SUBDIR}"
-
+--config.batch_size=${BS}

@@ -8,7 +8,7 @@
 #SBATCH --mem-per-cpu=10G
 #SBATCH --export=NONE
 #SBATCH --job-name=GRIDSEARCH_calls_STEP_1
-#SBATCH --array=1-6
+#SBATCH --array=4
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -25,7 +25,7 @@ OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread
 
 ## Model to test
 ### this text file gives path to best checkpoint for each of the training runs being evaluated. Paths start from the path mounted as home in apptainer. 
-BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/Step_1/best_checkpoints.txt
+BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/Step_2/best_checkpoints.txt
 
 MODEL_DIR=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $BEST_MODELS | cut -f1)
 CHECKPOINT=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $BEST_MODELS | cut -f2)

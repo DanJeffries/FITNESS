@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=50G
 #SBATCH --export=NONE
-#SBATCH --array=2-6
-#SBATCH --job-name=HAPPY_EVAL_1A
+#SBATCH --array=1-5
+#SBATCH --job-name=HAPPY_EVAL_STEP_2
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -33,9 +33,11 @@ HAPPY_PATH=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV/happ
 SAMPLE="FG_male_1"
 CROSS="FG"
 
+STEP=2
+
 ## Model to test
 ### this text file gives path to best checkpoint for each of the training runs being evaluated. Paths start from the path mounted as home in apptainer.
-BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/Step_1/best_checkpoints.txt
+BEST_MODELS=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV_training/20_testcalls_scripts/Step_${STEP}/best_checkpoints.txt
 
 MODEL_DIR=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $BEST_MODELS | cut -f1)
 CHECKPOINT=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $BEST_MODELS | cut -f2)

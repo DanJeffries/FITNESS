@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #SBATCH --partition=epyc2
-#SBATCH --time=02:00:00
+#SBATCH --time=06:00:00
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=40G
 ##SBATCH --mem=400G
 #SBATCH --export=NONE
-#SBATCH --array=1
+#SBATCH --array=1-5
 #SBATCH --job-name=MAKE_EX_TRAIN_NEW
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err

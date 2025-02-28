@@ -40,8 +40,10 @@ fi
 DV_PATH=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/DV/deepvariant_1.6.1-gpu.modified.sif
 OPENBLAS_NUM_THREADS=1 #Set number of threads that OPENBLAS uses to avoid thread overflow error in numpy
 
+DOWNSAMPLE_FRACTION=0.5
+
 # make output dir
-OUTDIR=examples_NEW/tune
+OUTDIR=examples_NEW/tune_${DOWNSAMPLE_FRACTION}
 
 if [ ! -d "$WD/$OUTDIR" ]; then
    mkdir -p $WD/$OUTDIR
@@ -61,6 +63,7 @@ parallel -q --halt 2 --line-buffer \
 --regions /wd/training_regions/${CROSS}_tune_partitions.bed \
 --labeler_algorithm=positional_labeler \
 --channels "insert_size" \
+--downsample_fraction=0.5 \
 --task {} ::: `seq 0 19` #split the task into 20 jobs
 
 

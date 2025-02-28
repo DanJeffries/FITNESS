@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=999G
 #SBATCH --export=NONE
-#SBATCH --array=1-10
+#SBATCH --array=2-10
 #SBATCH --job-name=SHUFFLE_train_1_NEW
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
@@ -20,8 +20,8 @@ module load Anaconda3
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_training
 SHUFFLE_SCRIPT_DIR=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/UTILS
 
-EXAMPLES_DIR=${WD}/examples_NEW/train
-OUTPUT_DIR=${WD}/examples_shuffled_NEW/train/shuf_1
+EXAMPLES_DIR=${WD}/examples_NEW/train_0.5
+OUTPUT_DIR=${WD}/examples_shuffled_NEW/train_0.5/shuf_1
 
 if [ ! -d "$OUTPUT_DIR" ]; then
    mkdir -p $OUTPUT_DIR
@@ -49,7 +49,7 @@ for i in $(cat $SHUFFLED_EXAMPLES_FILE | awk "NR % 10 == $SUBSET_NUMBER"); do mv
 
 ## Make the subset files and directories
 
-EXAMPLE_SUBSET_DIR=${WD}/examples_NEW/train/subset_${SLURM_ARRAY_TASK_ID}
+EXAMPLE_SUBSET_DIR=${WD}/examples_NEW/train_0.5/subset_${SLURM_ARRAY_TASK_ID}
 
 ## activate python venv
 cd /storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/UTILS
@@ -58,9 +58,9 @@ cd /storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/UTILS
 python3 ${SHUFFLE_SCRIPT_DIR}/shuffle_tfrecords_beam.py \
   --project="FITNESS_TRAIN" \
   --input_pattern_list="${EXAMPLE_SUBSET_DIR}/*tfrecord*00020" \
-  --output_pattern_prefix="${OUTPUT_DIR}/examples_shuffle1_${SLURM_ARRAY_TASK_ID}" \
+  --output_pattern_prefix="${OUTPUT_DIR}/examples_down_0.5_shuffle1_${SLURM_ARRAY_TASK_ID}" \
   --output_dataset_name="Shuffle_global" \
-  --output_dataset_config_pbtxt="${OUTPUT_DIR}/examples_shuffle1_${SLURM_ARRAY_TASK_ID}_config.pbtxt" \
+  --output_dataset_config_pbtxt="${OUTPUT_DIR}/examples_down_0.5_shuffle1_${SLURM_ARRAY_TASK_ID}_config.pbtxt" \
   --job_name=shuffle-tfrecords \
   --runner=DirectRunner \
   --direct_num_workers=20
