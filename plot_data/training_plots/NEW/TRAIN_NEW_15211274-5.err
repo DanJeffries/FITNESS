@@ -1,0 +1,474 @@
+/usr/local/lib/python3.8/dist-packages/tensorflow_addons/utils/tfa_eol_msg.py:23: UserWarning: 
+
+TensorFlow Addons (TFA) has ended development and introduction of new features.
+TFA has entered a minimal maintenance and release mode until a planned end of life in May 2024.
+Please modify downstream libraries to take dependencies from other repositories in our TensorFlow community (e.g. Keras, Keras-CV, and Keras-NLP). 
+
+For more information see: https://github.com/tensorflow/addons/issues/2807 
+
+  warnings.warn(
+2025-02-11 17:11:33.815391: E tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:267] failed call to cuInit: CUDA_ERROR_SYSTEM_DRIVER_MISMATCH: system has unsupported display driver / cuda driver combination
+I0211 17:11:33.815530 140221114042176 train.py:92] Running with debug=False
+I0211 17:11:33.815775 140221114042176 train.py:100] Use TPU at local
+I0211 17:11:33.815851 140221114042176 train.py:103] experiment_dir: /home/training_NEW
+WARNING:tensorflow:There are non-GPU devices in `tf.distribute.Strategy`, not using nccl allreduce.
+W0211 17:11:33.822792 140221114042176 cross_device_ops.py:1387] There are non-GPU devices in `tf.distribute.Strategy`, not using nccl allreduce.
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:CPU:0',)
+I0211 17:11:33.881260 140221114042176 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:CPU:0',)
+/usr/local/lib/python3.8/dist-packages/keras/applications/inception_v3.py:138: UserWarning: This model usually expects 1 or 3 input channels. However, it was passed an input_shape with 7 input channels.
+  input_shape = imagenet_utils.obtain_input_shape(
+I0211 17:11:39.096677 140221114042176 keras_modeling.py:325] Number of l2 regularizers: 95.
+I0211 17:11:39.096819 140221114042176 keras_modeling.py:337] inceptionv3: No initial checkpoint specified.
+I0211 17:11:39.097013 140221114042176 train.py:191] Exponential Decay: initial_learning_rate=0.001
+ decay_steps=2220
+ learning_rate_decay_rate=0.999
+I0211 17:11:39.097061 140221114042176 train.py:203] Use LinearWarmup: 
+ warmup_steps=10000
+ warmup_learning_rate=0.0001
+I0211 17:11:39.211639 140221114042176 keras_modeling.py:480] Initialized Checkpoint
+WARNING:tensorflow:From /usr/local/lib/python3.8/dist-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+W0211 17:11:39.463776 140221114042176 deprecation.py:350] From /usr/local/lib/python3.8/dist-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-02-11 17:11:39.782615: W tensorflow/core/framework/dataset.cc:769] Input of GeneratorDatasetOp::Dataset will not be optimized because the dataset does not implement the AsGraphDefInternal() method needed to apply optimizations.
+I0211 17:11:39.830910 140221114042176 train.py:316] 
+
+Training Examples: 284334
+Batch Size: 256
+Epochs: 2
+Steps per epoch: 1110
+Steps per tune: 232
+Num train steps: 2220
+
+
+I0211 17:11:39.896780 140221114042176 train.py:384] Starting epoch 0
+I0211 17:12:09.167293 140221114042176 train.py:413] Finished training step 0.
+I0211 17:12:09.327814 140205980636928 logging_writer.py:48] [0] epoch=0, train/categorical_accuracy=0.27734375, train/categorical_crossentropy=1.129908561706543, train/f1_het=0.3794466555118561, train/f1_homalt=0.11612902581691742, train/f1_homref=0.26923078298568726, train/f1_macro=0.25493550300598145, train/f1_micro=0.27734375, train/f1_weighted=0.21722015738487244, train/false_negatives=256.0, train/false_positives=3.0, train/learning_rate=9.999999747378752e-05, train/loss=1.129908561706543, train/precision=0.0, train/precision_het=0.0, train/precision_homalt=0.0, train/precision_homref=0.0, train/recall=0.0, train/recall_het=0.0, train/recall_homalt=0.0, train/recall_homref=0.0, train/true_negatives=509.0, train/true_positives=0.0
+I0211 17:12:23.347999 140221114042176 train.py:413] Finished training step 1.
+I0211 17:12:37.438090 140221114042176 train.py:413] Finished training step 2.
+I0211 17:12:51.551393 140221114042176 train.py:413] Finished training step 3.
+I0211 17:13:05.631339 140221114042176 train.py:413] Finished training step 4.
+I0211 17:17:19.377381 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 1.0% (22/2220), ETA: 8h36m
+I0211 17:17:19.379286 140205980636928 logging_writer.py:48] [22] steps_per_sec=0.0709198
+I0211 17:17:19.379377 140205980636928 logging_writer.py:48] [22] uptime=339.542
+I0211 17:22:28.571030 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 2.0% (44/2220), ETA: 8h29m
+I0211 17:22:28.572815 140205980636928 logging_writer.py:48] [44] steps_per_sec=0.0711528
+I0211 17:22:28.572893 140205980636928 logging_writer.py:48] [44] uptime=648.736
+I0211 17:27:37.111374 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 3.0% (66/2220), ETA: 8h23m
+I0211 17:27:37.113311 140205980636928 logging_writer.py:48] [66] steps_per_sec=0.0713035
+I0211 17:27:37.113392 140205980636928 logging_writer.py:48] [66] uptime=957.276
+I0211 17:32:45.779083 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 4.0% (88/2220), ETA: 8h18m
+I0211 17:32:45.782542 140205980636928 logging_writer.py:48] [88] steps_per_sec=0.0712741
+I0211 17:32:45.782639 140205980636928 logging_writer.py:48] [88] uptime=1265.95
+I0211 17:35:34.284053 140205980636928 logging_writer.py:48] [100] epoch=0, train/categorical_accuracy=0.4310937523841858, train/categorical_crossentropy=1.0660061836242676, train/f1_het=0.30059269070625305, train/f1_homalt=0.5490022301673889, train/f1_homref=0.29758012294769287, train/f1_macro=0.38239169120788574, train/f1_micro=0.4310937523841858, train/f1_weighted=0.42881089448928833, train/false_negatives=25114.0, train/false_positives=97.0, train/learning_rate=0.00010896005551330745, train/loss=1.0660061836242676, train/precision=0.833619236946106, train/precision_het=0.0, train/precision_homalt=0.5591397881507874, train/precision_homref=0.9414316415786743, train/recall=0.018984375521540642, train/recall_het=0.0, train/recall_homalt=0.003912716172635555, train/recall_homref=0.06889982521533966, train/true_negatives=51103.0, train/true_positives=486.0
+I0211 17:37:54.708947 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 5.0% (110/2220), ETA: 8h13m
+I0211 17:37:54.712203 140205980636928 logging_writer.py:48] [110] steps_per_sec=0.0712136
+I0211 17:37:54.712286 140205980636928 logging_writer.py:48] [110] uptime=1574.87
+I0211 17:43:03.676378 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 5.9% (132/2220), ETA: 8h8m
+I0211 17:43:03.679667 140205980636928 logging_writer.py:48] [132] steps_per_sec=0.0712049
+I0211 17:43:03.679754 140205980636928 logging_writer.py:48] [132] uptime=1883.84
+I0211 17:48:12.492287 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 6.9% (154/2220), ETA: 8h3m
+I0211 17:48:12.494351 140205980636928 logging_writer.py:48] [154] steps_per_sec=0.0712399
+I0211 17:48:12.494432 140205980636928 logging_writer.py:48] [154] uptime=2192.66
+I0211 17:53:21.445476 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 7.9% (176/2220), ETA: 7h58m
+I0211 17:53:21.458756 140205980636928 logging_writer.py:48] [176] steps_per_sec=0.0712082
+I0211 17:53:21.458868 140205980636928 logging_writer.py:48] [176] uptime=2501.62
+I0211 17:58:30.274891 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 8.9% (198/2220), ETA: 7h53m
+I0211 17:58:30.276756 140205980636928 logging_writer.py:48] [198] steps_per_sec=0.0712367
+I0211 17:58:30.299218 140205980636928 logging_writer.py:48] [198] uptime=2810.44
+I0211 17:58:58.403032 140205980636928 logging_writer.py:48] [200] epoch=0, train/categorical_accuracy=0.5452343821525574, train/categorical_crossentropy=1.0015077590942383, train/f1_het=0.009172809310257435, train/f1_homalt=0.6904813051223755, train/f1_homref=0.2736869156360626, train/f1_macro=0.32444700598716736, train/f1_micro=0.5452343821525574, train/f1_weighted=0.42577069997787476, train/false_negatives=22620.0, train/false_positives=1222.0, train/learning_rate=0.000117920120828785, train/loss=1.0015078783035278, train/precision=0.7091860771179199, train/precision_het=0.0, train/precision_homalt=0.6671432852745056, train/precision_homref=0.9177305102348328, train/recall=0.11640624701976776, train/recall_het=0.0, train/recall_homalt=0.17742794752120972, train/recall_homref=0.10029453039169312, train/true_negatives=49978.0, train/true_positives=2980.0
+I0211 18:03:39.078425 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 9.9% (220/2220), ETA: 7h47m
+I0211 18:03:39.081134 140205980636928 logging_writer.py:48] [220] steps_per_sec=0.0712427
+I0211 18:03:39.081219 140205980636928 logging_writer.py:48] [220] uptime=3119.24
+I0211 18:08:47.862891 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 10.9% (242/2220), ETA: 7h42m
+I0211 18:08:47.865824 140205980636928 logging_writer.py:48] [242] steps_per_sec=0.0712471
+I0211 18:08:47.865910 140205980636928 logging_writer.py:48] [242] uptime=3428.03
+I0211 18:10:40.207408 140221114042176 train.py:361] Running tune at step=250 epoch=0
+I0211 18:10:40.207624 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0211 18:18:15.228384 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0211 18:25:41.292120 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0211 18:28:06.012320 140205980636928 logging_writer.py:48] [250] tune/categorical_accuracy=0.623046875, tune/categorical_crossentropy=0.9889609813690186, tune/f1_het=0.0, tune/f1_homalt=0.7677497267723083, tune/f1_homref=0.0, tune/f1_macro=0.255916565656662, tune/f1_micro=0.623046875, tune/f1_weighted=0.4783440828323364, tune/false_negatives_1=59392.0, tune/false_positives_1=0.0, tune/loss=0.9889633655548096, tune/precision_1=0.0, tune/precision_het=0.0, tune/precision_homalt=0.0, tune/precision_homref=0.0, tune/recall_1=0.0, tune/recall_het=0.0, tune/recall_homalt=0.0, tune/recall_homref=0.0, tune/true_negatives_1=118784.0, tune/true_positives_1=0.0
+I0211 18:28:07.168104 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.47834408 step=250 epoch=0 path=/home/training_NEW/checkpoints/ckpt-250
+I0211 18:28:07.168580 140205980636928 logging_writer.py:48] [250] tune/early_stopping=0
+I0211 18:28:21.098717 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 11.3% (251/2220), ETA: 2d23h17m
+I0211 18:28:21.101804 140205980636928 logging_writer.py:48] [251] steps_per_sec=0.00767109
+I0211 18:28:21.101886 140205980636928 logging_writer.py:48] [251] uptime=4601.26
+I0211 18:33:30.334685 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 12.3% (273/2220), ETA: 7h36m
+I0211 18:33:30.336575 140205980636928 logging_writer.py:48] [273] steps_per_sec=0.0711431
+I0211 18:33:30.336666 140205980636928 logging_writer.py:48] [273] uptime=4910.5
+I0211 18:38:39.556217 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 13.3% (295/2220), ETA: 7h30m
+I0211 18:38:39.558941 140205980636928 logging_writer.py:48] [295] steps_per_sec=0.0711464
+I0211 18:38:39.559031 140205980636928 logging_writer.py:48] [295] uptime=5219.72
+I0211 18:39:50.007166 140205980636928 logging_writer.py:48] [300] epoch=0, train/categorical_accuracy=0.5669531226158142, train/categorical_crossentropy=0.9724121689796448, train/f1_het=0.001348617603071034, train/f1_homalt=0.7055525779724121, train/f1_homref=0.3317110538482666, train/f1_macro=0.34620407223701477, train/f1_micro=0.5669531226158142, train/f1_weighted=0.450374573469162, train/false_negatives=18433.0, train/false_positives=2552.0, train/learning_rate=0.00012688018614426255, train/loss=0.9724124073982239, train/precision=0.7374215722084045, train/precision_het=0.0, train/precision_homalt=0.7174158692359924, train/precision_homref=0.9421965479850769, train/recall=0.2799609303474426, train/recall_het=0.0, train/recall_homalt=0.4754491150379181, train/recall_homref=0.1290169358253479, train/true_negatives=48648.0, train/true_positives=7167.0
+I0211 18:43:48.989428 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 14.3% (317/2220), ETA: 7h26m
+I0211 18:43:48.994564 140205980636928 logging_writer.py:48] [317] steps_per_sec=0.0710977
+I0211 18:43:48.994663 140205980636928 logging_writer.py:48] [317] uptime=5529.16
+I0211 18:48:58.411360 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 15.3% (339/2220), ETA: 7h20m
+I0211 18:48:58.414860 140205980636928 logging_writer.py:48] [339] steps_per_sec=0.0711003
+I0211 18:48:58.414954 140205980636928 logging_writer.py:48] [339] uptime=5838.58
+I0211 18:54:07.886623 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 16.3% (361/2220), ETA: 7h15m
+I0211 18:54:07.888415 140205980636928 logging_writer.py:48] [361] steps_per_sec=0.0710881
+I0211 18:54:07.888496 140205980636928 logging_writer.py:48] [361] uptime=6148.05
+I0211 18:59:17.363065 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 17.3% (383/2220), ETA: 7h10m
+I0211 18:59:17.367033 140205980636928 logging_writer.py:48] [383] steps_per_sec=0.0710878
+I0211 18:59:17.367126 140205980636928 logging_writer.py:48] [383] uptime=6457.53
+I0211 19:03:16.575996 140205980636928 logging_writer.py:48] [400] epoch=0, train/categorical_accuracy=0.5920703411102295, train/categorical_crossentropy=0.9424114227294922, train/f1_het=0.0013201319379732013, train/f1_homalt=0.7200044393539429, train/f1_homref=0.4653051793575287, train/f1_macro=0.39554324746131897, train/f1_micro=0.5920703411102295, train/f1_weighted=0.4881671667098999, train/false_negatives=16274.0, train/false_positives=2454.0, train/learning_rate=0.00013584023690782487, train/loss=0.9424116611480713, train/precision=0.7916808128356934, train/precision_het=0.0, train/precision_homalt=0.7748938202857971, train/precision_homref=0.9417721629142761, train/recall=0.36429688334465027, train/recall_het=0.0, train/recall_homalt=0.6177577376365662, train/recall_homref=0.17782026529312134, train/true_negatives=48746.0, train/true_positives=9326.0
+I0211 19:04:26.917219 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 18.2% (405/2220), ETA: 7h5m
+I0211 19:04:26.918992 140205980636928 logging_writer.py:48] [405] steps_per_sec=0.07107
+I0211 19:04:26.919078 140205980636928 logging_writer.py:48] [405] uptime=6767.08
+I0211 19:09:36.363396 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 19.2% (427/2220), ETA: 7h0m
+I0211 19:09:36.367763 140205980636928 logging_writer.py:48] [427] steps_per_sec=0.0710948
+I0211 19:09:36.367855 140205980636928 logging_writer.py:48] [427] uptime=7076.53
+I0211 19:14:45.810668 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 20.2% (449/2220), ETA: 6h55m
+I0211 19:14:45.813962 140205980636928 logging_writer.py:48] [449] steps_per_sec=0.0710945
+I0211 19:14:45.814053 140205980636928 logging_writer.py:48] [449] uptime=7385.98
+I0211 19:19:55.103836 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 21.2% (471/2220), ETA: 6h49m
+I0211 19:19:55.106622 140205980636928 logging_writer.py:48] [471] steps_per_sec=0.0711299
+I0211 19:19:55.106703 140205980636928 logging_writer.py:48] [471] uptime=7695.27
+I0211 19:25:04.466159 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 22.2% (493/2220), ETA: 6h44m
+I0211 19:25:04.469054 140205980636928 logging_writer.py:48] [493] steps_per_sec=0.071114
+I0211 19:25:04.469145 140205980636928 logging_writer.py:48] [493] uptime=8004.63
+I0211 19:26:43.004458 140205980636928 logging_writer.py:48] [500] epoch=0, train/categorical_accuracy=0.6743749976158142, train/categorical_crossentropy=0.8745570182800293, train/f1_het=0.00980712566524744, train/f1_homalt=0.785587728023529, train/f1_homref=0.7011228203773499, train/f1_macro=0.49883922934532166, train/f1_micro=0.6743749976158142, train/f1_weighted=0.5818594694137573, train/false_negatives=13213.0, train/false_positives=1667.0, train/learning_rate=0.00014480030222330242, train/loss=0.8745577335357666, train/precision=0.8813861012458801, train/precision_het=0.0, train/precision_homalt=0.8739452958106995, train/precision_homref=0.9190004467964172, train/recall=0.48386719822883606, train/recall_het=0.0, train/recall_homalt=0.7650526165962219, train/recall_homref=0.34722447395324707, train/true_negatives=49533.0, train/true_positives=12387.0
+I0211 19:26:43.040860 140221114042176 train.py:361] Running tune at step=500 epoch=0
+I0211 19:26:43.040970 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0211 19:34:11.061352 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0211 19:41:37.846030 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0211 19:44:02.809475 140205980636928 logging_writer.py:48] [500] tune/categorical_accuracy=0.6902444958686829, tune/categorical_crossentropy=0.8575848937034607, tune/f1_het=0.002722477540373802, tune/f1_homalt=0.8040517568588257, tune/f1_homref=0.5328747034072876, tune/f1_macro=0.446549654006958, tune/f1_micro=0.6902444958686829, tune/f1_weighted=0.5974248647689819, tune/false_negatives_1=28596.0, tune/false_positives_1=3386.0, tune/loss=0.8575858473777771, tune/precision_1=0.9009420275688171, tune/precision_het=0.0, tune/precision_homalt=0.8980752229690552, tune/precision_homref=0.9737451672554016, tune/recall_1=0.5185210108757019, tune/recall_het=0.0, tune/recall_homalt=0.7979629039764404, tune/recall_homref=0.11809327453374863, tune/true_negatives_1=115398.0, tune/true_positives_1=30796.0
+I0211 19:44:03.785772 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.59742486 step=500 epoch=0 path=/home/training_NEW/checkpoints/ckpt-500
+I0211 19:44:03.786200 140205980636928 logging_writer.py:48] [500] tune/early_stopping=0
+I0211 19:44:17.671135 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 22.6% (501/2220), ETA: 2d20h49m
+I0211 19:44:17.672919 140205980636928 logging_writer.py:48] [501] steps_per_sec=0.00693719
+I0211 19:44:17.672996 140205980636928 logging_writer.py:48] [501] uptime=9157.84
+I0211 19:49:27.245924 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 23.6% (523/2220), ETA: 6h37m
+I0211 19:49:27.249429 140205980636928 logging_writer.py:48] [523] steps_per_sec=0.0710652
+I0211 19:49:27.249520 140205980636928 logging_writer.py:48] [523] uptime=9467.41
+I0211 19:54:36.833272 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 24.5% (545/2220), ETA: 6h32m
+I0211 19:54:36.836632 140205980636928 logging_writer.py:48] [545] steps_per_sec=0.0710623
+I0211 19:54:36.836720 140205980636928 logging_writer.py:48] [545] uptime=9777
+I0211 19:59:46.295388 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 25.5% (567/2220), ETA: 6h27m
+I0211 19:59:46.297367 140205980636928 logging_writer.py:48] [567] steps_per_sec=0.0710911
+I0211 19:59:46.297451 140205980636928 logging_writer.py:48] [567] uptime=10086.5
+I0211 20:04:55.845076 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 26.5% (589/2220), ETA: 6h22m
+I0211 20:04:55.847046 140205980636928 logging_writer.py:48] [589] steps_per_sec=0.071071
+I0211 20:04:55.847133 140205980636928 logging_writer.py:48] [589] uptime=10396
+I0211 20:07:30.645066 140205980636928 logging_writer.py:48] [600] epoch=0, train/categorical_accuracy=0.7295703291893005, train/categorical_crossentropy=0.8166031837463379, train/f1_het=0.07904762029647827, train/f1_homalt=0.8522160053253174, train/f1_homref=0.7507026195526123, train/f1_macro=0.560655415058136, train/f1_micro=0.7295703291893005, train/f1_weighted=0.6475784778594971, train/false_negatives=10621.0, train/false_positives=1405.0, train/learning_rate=0.00015376036753877997, train/loss=0.816603422164917, train/precision=0.91424560546875, train/precision_het=0.0, train/precision_homalt=0.9203174710273743, train/precision_homref=0.8940274715423584, train/recall=0.5851171612739563, train/recall_het=0.0, train/recall_homalt=0.8695912957191467, train/recall_homref=0.5353695154190063, train/true_negatives=49795.0, train/true_positives=14979.0
+I0211 20:10:05.356748 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 27.5% (611/2220), ETA: 6h17m
+I0211 20:10:05.365705 140205980636928 logging_writer.py:48] [611] steps_per_sec=0.0710797
+I0211 20:10:05.365809 140205980636928 logging_writer.py:48] [611] uptime=10705.5
+I0211 20:15:14.935811 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 28.5% (633/2220), ETA: 6h12m
+I0211 20:15:14.937632 140205980636928 logging_writer.py:48] [633] steps_per_sec=0.0710642
+I0211 20:15:14.937716 140205980636928 logging_writer.py:48] [633] uptime=11015.1
+I0211 20:20:24.463879 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 29.5% (655/2220), ETA: 6h6m
+I0211 20:20:24.466734 140205980636928 logging_writer.py:48] [655] steps_per_sec=0.071076
+I0211 20:20:24.466821 140205980636928 logging_writer.py:48] [655] uptime=11324.6
+I0211 20:25:34.062712 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 30.5% (677/2220), ETA: 6h1m
+I0211 20:25:34.064486 140205980636928 logging_writer.py:48] [677] steps_per_sec=0.0710597
+I0211 20:25:34.064571 140205980636928 logging_writer.py:48] [677] uptime=11634.2
+I0211 20:30:43.754548 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 31.5% (699/2220), ETA: 5h56m
+I0211 20:30:43.757320 140205980636928 logging_writer.py:48] [699] steps_per_sec=0.0710384
+I0211 20:30:43.757408 140205980636928 logging_writer.py:48] [699] uptime=11943.9
+I0211 20:30:57.920677 140205980636928 logging_writer.py:48] [700] epoch=0, train/categorical_accuracy=0.7967968583106995, train/categorical_crossentropy=0.768667459487915, train/f1_het=0.4956018328666687, train/f1_homalt=0.9055382013320923, train/f1_homref=0.7559625506401062, train/f1_macro=0.7190341949462891, train/f1_micro=0.7967968583106995, train/f1_weighted=0.7734473943710327, train/false_negatives=9828.0, train/false_positives=1208.0, train/learning_rate=0.0001627204183023423, train/loss=0.7686677575111389, train/precision=0.9288575053215027, train/precision_het=0.8611111044883728, train/precision_homalt=0.9437070488929749, train/precision_homref=0.8834623098373413, train/recall=0.6160937547683716, train/recall_het=0.005235602147877216, train/recall_homalt=0.9088653326034546, train/recall_homref=0.5727272629737854, train/true_negatives=49992.0, train/true_positives=15772.0
+I0211 20:35:53.494563 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 32.5% (721/2220), ETA: 5h51m
+I0211 20:35:53.496371 140205980636928 logging_writer.py:48] [721] steps_per_sec=0.0710273
+I0211 20:35:53.496453 140205980636928 logging_writer.py:48] [721] uptime=12253.7
+I0211 20:41:03.017669 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 33.5% (743/2220), ETA: 5h46m
+I0211 20:41:03.019476 140205980636928 logging_writer.py:48] [743] steps_per_sec=0.0710771
+I0211 20:41:03.019561 140205980636928 logging_writer.py:48] [743] uptime=12563.2
+I0211 20:42:41.409232 140221114042176 train.py:361] Running tune at step=750 epoch=0
+I0211 20:42:41.409409 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0211 20:50:09.161738 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0211 20:57:35.634327 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0211 21:00:00.526308 140205980636928 logging_writer.py:48] [750] tune/categorical_accuracy=0.8117591738700867, tune/categorical_crossentropy=0.763555109500885, tune/f1_het=0.47309163212776184, tune/f1_homalt=0.9114331007003784, tune/f1_homref=0.7086135149002075, tune/f1_macro=0.6977127194404602, tune/f1_micro=0.8117591738700867, tune/f1_weighted=0.7885844707489014, tune/false_negatives_1=22125.0, tune/false_positives_1=2376.0, tune/loss=0.7635577917098999, tune/precision_1=0.9400650858879089, tune/precision_het=0.5, tune/precision_homalt=0.9471705555915833, tune/precision_homref=0.8885875344276428, tune/recall_1=0.6274750828742981, tune/recall_het=8.544817683286965e-05, tune/recall_homalt=0.8918882608413696, tune/recall_homref=0.39874544739723206, tune/true_negatives_1=116408.0, tune/true_positives_1=37267.0
+I0211 21:00:01.230224 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.7885845 step=750 epoch=0 path=/home/training_NEW/checkpoints/ckpt-750
+I0211 21:00:01.231519 140205980636928 logging_writer.py:48] [750] tune/early_stopping=0
+I0211 21:00:15.112109 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 33.8% (751/2220), ETA: 2d10h45m
+I0211 21:00:15.116940 140205980636928 logging_writer.py:48] [751] steps_per_sec=0.00694388
+I0211 21:00:15.156960 140205980636928 logging_writer.py:48] [751] uptime=13715.3
+I0211 21:05:24.096593 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 34.8% (773/2220), ETA: 5h38m
+I0211 21:05:24.102508 140205980636928 logging_writer.py:48] [773] steps_per_sec=0.071201
+I0211 21:05:24.171339 140205980636928 logging_writer.py:48] [773] uptime=14024.3
+I0211 21:10:33.172244 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 35.8% (795/2220), ETA: 5h33m
+I0211 21:10:33.176682 140205980636928 logging_writer.py:48] [795] steps_per_sec=0.07118
+I0211 21:10:33.283759 140205980636928 logging_writer.py:48] [795] uptime=14333.3
+I0211 21:11:43.521339 140205980636928 logging_writer.py:48] [800] epoch=0, train/categorical_accuracy=0.8592968583106995, train/categorical_crossentropy=0.7261241674423218, train/f1_het=0.747846782207489, train/f1_homalt=0.9417518377304077, train/f1_homref=0.7776185870170593, train/f1_macro=0.8224057555198669, train/f1_micro=0.8592968583106995, train/f1_weighted=0.8553298711776733, train/false_negatives=8846.0, train/false_positives=993.0, train/learning_rate=0.00017168048361781985, train/loss=0.7261245846748352, train/precision=0.9440468549728394, train/precision_het=0.9000780582427979, train/precision_homalt=0.9555119872093201, train/precision_homref=0.9199140071868896, train/recall=0.6544530987739563, train/recall_het=0.19042113423347473, train/recall_homalt=0.9212496876716614, train/recall_homref=0.5411002039909363, train/true_negatives=50207.0, train/true_positives=16754.0
+I0211 21:15:42.551318 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 36.8% (817/2220), ETA: 5h28m
+I0211 21:15:42.556228 140205980636928 logging_writer.py:48] [817] steps_per_sec=0.0711102
+I0211 21:15:42.595186 140205980636928 logging_writer.py:48] [817] uptime=14642.7
+I0211 21:20:51.956459 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 37.8% (839/2220), ETA: 5h23m
+I0211 21:20:51.960844 140205980636928 logging_writer.py:48] [839] steps_per_sec=0.0711042
+I0211 21:20:52.029484 140205980636928 logging_writer.py:48] [839] uptime=14952.1
+I0211 21:26:01.279280 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 38.8% (861/2220), ETA: 5h18m
+I0211 21:26:01.284644 140205980636928 logging_writer.py:48] [861] steps_per_sec=0.0711231
+I0211 21:26:01.322057 140205980636928 logging_writer.py:48] [861] uptime=15261.4
+I0211 21:31:10.629823 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 39.8% (883/2220), ETA: 5h13m
+I0211 21:31:10.635906 140205980636928 logging_writer.py:48] [883] steps_per_sec=0.0711167
+I0211 21:31:10.672235 140205980636928 logging_writer.py:48] [883] uptime=15570.8
+I0211 21:35:09.781080 140205980636928 logging_writer.py:48] [900] epoch=0, train/categorical_accuracy=0.8823046684265137, train/categorical_crossentropy=0.6947838068008423, train/f1_het=0.8002304434776306, train/f1_homalt=0.9537135362625122, train/f1_homref=0.800308346748352, train/f1_macro=0.8514173626899719, train/f1_micro=0.8823046684265137, train/f1_weighted=0.8800549507141113, train/false_negatives=6526.0, train/false_positives=1201.0, train/learning_rate=0.0001806405489332974, train/loss=0.6947842240333557, train/precision=0.9407644867897034, train/precision_het=0.8753523230552673, train/precision_homalt=0.9576401710510254, train/precision_homref=0.9382625818252563, train/recall=0.7450781464576721, train/recall_het=0.46998485922813416, train/recall_homalt=0.9341146349906921, train/recall_homref=0.6062756180763245, train/true_negatives=49999.0, train/true_positives=19074.0
+I0211 21:36:20.064617 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 40.8% (905/2220), ETA: 5h8m
+I0211 21:36:20.069409 140205980636928 logging_writer.py:48] [905] steps_per_sec=0.0710974
+I0211 21:36:20.069494 140205980636928 logging_writer.py:48] [905] uptime=15880.2
+I0211 21:41:29.103242 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 41.8% (927/2220), ETA: 5h2m
+I0211 21:41:29.107541 140205980636928 logging_writer.py:48] [927] steps_per_sec=0.0711885
+I0211 21:41:29.202032 140205980636928 logging_writer.py:48] [927] uptime=16189.3
+I0211 21:46:38.400629 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 42.7% (949/2220), ETA: 4h57m
+I0211 21:46:38.405203 140205980636928 logging_writer.py:48] [949] steps_per_sec=0.071129
+I0211 21:46:38.452579 140205980636928 logging_writer.py:48] [949] uptime=16498.6
+I0211 21:51:47.453340 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 43.7% (971/2220), ETA: 4h52m
+I0211 21:51:47.459001 140205980636928 logging_writer.py:48] [971] steps_per_sec=0.0711852
+I0211 21:51:47.529946 140205980636928 logging_writer.py:48] [971] uptime=16807.6
+I0211 21:56:56.752799 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 44.7% (993/2220), ETA: 4h47m
+I0211 21:56:56.760208 140205980636928 logging_writer.py:48] [993] steps_per_sec=0.0711285
+I0211 21:56:56.818804 140205980636928 logging_writer.py:48] [993] uptime=17116.9
+I0211 21:58:35.260799 140205980636928 logging_writer.py:48] [1000] epoch=0, train/categorical_accuracy=0.8944140672683716, train/categorical_crossentropy=0.6742185950279236, train/f1_het=0.8282257914543152, train/f1_homalt=0.9593755602836609, train/f1_homref=0.8164774179458618, train/f1_macro=0.8680262565612793, train/f1_micro=0.8944140672683716, train/f1_weighted=0.8925665616989136, train/false_negatives=4930.0, train/false_positives=1371.0, train/learning_rate=0.00018960059969685972, train/loss=0.6742190718650818, train/precision=0.9377977252006531, train/precision_het=0.8727028369903564, train/precision_homalt=0.9596866965293884, train/precision_homref=0.9389815330505371, train/recall=0.807421863079071, train/recall_het=0.6451292037963867, train/recall_homalt=0.9515036344528198, train/recall_homref=0.6654223203659058, train/true_negatives=49829.0, train/true_positives=20670.0
+I0211 21:58:35.307006 140221114042176 train.py:361] Running tune at step=1000 epoch=0
+I0211 21:58:35.495084 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0211 22:06:03.211225 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0211 22:13:29.886871 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0211 22:15:54.781284 140205980636928 logging_writer.py:48] [1000] tune/categorical_accuracy=0.8982691168785095, tune/categorical_crossentropy=0.6673630475997925, tune/f1_het=0.7946222424507141, tune/f1_homalt=0.9609897136688232, tune/f1_homref=0.7842090129852295, tune/f1_macro=0.846606969833374, tune/f1_micro=0.8982691168785095, tune/f1_weighted=0.8964042663574219, tune/false_negatives_1=10905.0, tune/false_positives_1=3098.0, tune/loss=0.6673635840415955, tune/precision_1=0.939943790435791, tune/precision_het=0.9131979942321777, tune/precision_homalt=0.9625030755996704, tune/precision_homref=0.8667690753936768, tune/recall_1=0.8163894414901733, tune/recall_het=0.461006224155426, tune/recall_homalt=0.9510323405265808, tune/recall_homref=0.7394438982009888, tune/true_negatives_1=115686.0, tune/true_positives_1=48487.0
+I0211 22:15:55.418199 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.89640427 step=1000 epoch=0 path=/home/training_NEW/checkpoints/ckpt-1000
+I0211 22:15:55.419360 140205980636928 logging_writer.py:48] [1000] tune/early_stopping=0
+I0211 22:16:09.390058 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 45.1% (1001/2220), ETA: 2d47m
+I0211 22:16:09.396027 140205980636928 logging_writer.py:48] [1001] steps_per_sec=0.0069406
+I0211 22:16:09.396118 140205980636928 logging_writer.py:48] [1001] uptime=18269.6
+I0211 22:21:23.641198 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 46.1% (1023/2220), ETA: 4h44m
+I0211 22:21:23.646744 140205980636928 logging_writer.py:48] [1023] steps_per_sec=0.0700077
+I0211 22:21:23.646838 140205980636928 logging_writer.py:48] [1023] uptime=18583.8
+I0211 22:26:23.791558 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 47.0% (1044/2220), ETA: 4h40m
+I0211 22:26:23.793355 140205980636928 logging_writer.py:48] [1044] steps_per_sec=0.0699649
+I0211 22:26:23.793441 140205980636928 logging_writer.py:48] [1044] uptime=18884
+I0211 22:31:37.819934 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 48.0% (1066/2220), ETA: 4h34m
+I0211 22:31:37.821738 140205980636928 logging_writer.py:48] [1066] steps_per_sec=0.0700574
+I0211 22:31:37.821816 140205980636928 logging_writer.py:48] [1066] uptime=19198
+I0211 22:36:38.308315 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 49.0% (1087/2220), ETA: 4h30m
+I0211 22:36:38.311238 140205980636928 logging_writer.py:48] [1087] steps_per_sec=0.0698862
+I0211 22:36:38.311325 140205980636928 logging_writer.py:48] [1087] uptime=19498.5
+I0211 22:39:44.290897 140205980636928 logging_writer.py:48] [1100] epoch=0, train/categorical_accuracy=0.9037109613418579, train/categorical_crossentropy=0.6594607830047607, train/f1_het=0.8372934460639954, train/f1_homalt=0.9660487771034241, train/f1_homref=0.8281885981559753, train/f1_macro=0.8771769404411316, train/f1_micro=0.9037109613418579, train/f1_weighted=0.9024304151535034, train/false_negatives=4044.0, train/false_positives=1420.0, train/learning_rate=0.00019856066501233727, train/loss=0.659461259841919, train/precision=0.9381963610649109, train/precision_het=0.8690018057823181, train/precision_homalt=0.9646236896514893, train/precision_homref=0.9360575675964355, train/recall=0.8420312404632568, train/recall_het=0.7317988276481628, train/recall_homalt=0.9585043787956238, train/recall_homref=0.6977588534355164, train/true_negatives=49780.0, train/true_positives=21556.0
+I0211 22:41:38.612498 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 49.9% (1108/2220), ETA: 4h25m
+I0211 22:41:38.615073 140205980636928 logging_writer.py:48] [1108] steps_per_sec=0.0699291
+I0211 22:41:38.615156 140205980636928 logging_writer.py:48] [1108] uptime=19798.8
+I0211 22:41:52.941638 140221114042176 train.py:384] Starting epoch 1
+I0211 22:42:07.207172 140221114042176 train.py:361] Running tune at step=1110 epoch=1
+I0211 22:42:07.207364 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0211 22:49:38.392396 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0211 22:57:06.576209 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0211 22:59:32.026378 140205980636928 logging_writer.py:48] [1110] tune/categorical_accuracy=0.9141298532485962, tune/categorical_crossentropy=0.6531378030776978, tune/f1_het=0.8459048867225647, tune/f1_homalt=0.9650416970252991, tune/f1_homref=0.8067167401313782, tune/f1_macro=0.8725544810295105, tune/f1_micro=0.9141298532485962, tune/f1_weighted=0.913070559501648, tune/false_negatives_1=8744.0, tune/false_positives_1=2859.0, tune/loss=0.6531378626823425, tune/precision_1=0.946567714214325, tune/precision_het=0.8851670026779175, tune/precision_homalt=0.9693474769592285, tune/precision_homref=0.9198454022407532, tune/recall_1=0.8527747988700867, tune/recall_het=0.7384839057922363, tune/recall_homalt=0.93589186668396, tune/recall_homref=0.6902067065238953, tune/true_negatives_1=115925.0, tune/true_positives_1=50648.0
+I0211 22:59:32.619359 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.91307056 step=1110 epoch=1 path=/home/training_NEW/checkpoints/ckpt-1110
+I0211 22:59:32.619973 140205980636928 logging_writer.py:48] [1110] tune/early_stopping=0
+I0211 22:59:46.545250 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 50.0% (1111/2220), ETA: 4d15h42m
+I0211 22:59:46.547867 140205980636928 logging_writer.py:48] [1111] steps_per_sec=0.00275752
+I0211 22:59:46.548916 140205980636928 logging_writer.py:48] [1111] uptime=20886.7
+I0211 23:04:57.953358 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 51.0% (1133/2220), ETA: 4h16m
+I0211 23:04:57.956151 140205980636928 logging_writer.py:48] [1133] steps_per_sec=0.0706468
+I0211 23:04:57.956237 140205980636928 logging_writer.py:48] [1133] uptime=21198.1
+I0211 23:10:09.409327 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 52.0% (1155/2220), ETA: 4h11m
+I0211 23:10:09.411162 140205980636928 logging_writer.py:48] [1155] steps_per_sec=0.070636
+I0211 23:10:09.411244 140205980636928 logging_writer.py:48] [1155] uptime=21509.6
+I0211 23:15:20.957339 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 53.0% (1177/2220), ETA: 4h6m
+I0211 23:15:20.959174 140205980636928 logging_writer.py:48] [1177] steps_per_sec=0.0706151
+I0211 23:15:20.959262 140205980636928 logging_writer.py:48] [1177] uptime=21821.1
+I0211 23:20:32.063309 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 54.0% (1199/2220), ETA: 4h0m
+I0211 23:20:32.066544 140205980636928 logging_writer.py:48] [1199] steps_per_sec=0.0707155
+I0211 23:20:32.066643 140205980636928 logging_writer.py:48] [1199] uptime=22132.2
+I0211 23:20:46.209851 140205980636928 logging_writer.py:48] [1200] epoch=1, train/categorical_accuracy=0.9084765911102295, train/categorical_crossentropy=0.6510387659072876, train/f1_het=0.8538984656333923, train/f1_homalt=0.9670794010162354, train/f1_homref=0.8318402767181396, train/f1_macro=0.8842727541923523, train/f1_micro=0.9084765911102295, train/f1_weighted=0.907240629196167, train/false_negatives=3519.0, train/false_positives=1501.0, train/learning_rate=0.00020752073032781482, train/loss=0.6510393619537354, train/precision=0.9363497495651245, train/precision_het=0.8632478713989258, train/precision_homalt=0.9663649797439575, train/precision_homref=0.9371760487556458, train/recall=0.8625390529632568, train/recall_het=0.7934146523475647, train/recall_homalt=0.9636760354042053, train/recall_homref=0.7151898741722107, train/true_negatives=49699.0, train/true_positives=22081.0
+I0211 23:25:43.484024 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 55.0% (1221/2220), ETA: 3h55m
+I0211 23:25:43.486807 140205980636928 logging_writer.py:48] [1221] steps_per_sec=0.070644
+I0211 23:25:43.486891 140205980636928 logging_writer.py:48] [1221] uptime=22443.6
+I0211 23:30:54.614001 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 56.0% (1243/2220), ETA: 3h50m
+I0211 23:30:54.615929 140205980636928 logging_writer.py:48] [1243] steps_per_sec=0.07071
+I0211 23:30:54.616017 140205980636928 logging_writer.py:48] [1243] uptime=22754.8
+I0211 23:32:33.631292 140221114042176 train.py:361] Running tune at step=1250 epoch=1
+I0211 23:32:33.631583 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0211 23:40:03.602846 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0211 23:47:32.331439 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0211 23:49:57.973021 140205980636928 logging_writer.py:48] [1250] tune/categorical_accuracy=0.8967874646186829, tune/categorical_crossentropy=0.6585176587104797, tune/f1_het=0.8144663572311401, tune/f1_homalt=0.9574565887451172, tune/f1_homref=0.7501549124717712, tune/f1_macro=0.8406925797462463, tune/f1_micro=0.8967874646186829, tune/f1_weighted=0.8920118808746338, tune/false_negatives_1=9068.0, tune/false_positives_1=3820.0, tune/loss=0.6585214734077454, tune/precision_1=0.9294474124908447, tune/precision_het=0.8459435701370239, tune/precision_homalt=0.9471005797386169, tune/precision_homref=0.9614902138710022, tune/recall_1=0.847319483757019, tune/recall_het=0.7407249212265015, tune/recall_homalt=0.9804933667182922, tune/recall_homref=0.5025746822357178, tune/true_negatives_1=114964.0, tune/true_positives_1=50324.0
+I0211 23:49:57.995641 140221114042176 train.py:471] Skipping checkpoint with tune/f1_weighted=0.8920119 < previous best tune/f1_weighted=0.91307056
+I0211 23:49:57.997808 140205980636928 logging_writer.py:48] [1250] tune/early_stopping=1
+I0211 23:50:12.032363 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 56.4% (1251/2220), ETA: 1d14h56m
+I0211 23:50:12.034203 140205980636928 logging_writer.py:48] [1251] steps_per_sec=0.00691193
+I0211 23:50:12.034280 140205980636928 logging_writer.py:48] [1251] uptime=23912.2
+I0211 23:55:23.561039 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 57.3% (1273/2220), ETA: 3h43m
+I0211 23:55:23.563026 140205980636928 logging_writer.py:48] [1273] steps_per_sec=0.0706195
+I0211 23:55:23.563112 140205980636928 logging_writer.py:48] [1273] uptime=24223.7
+I0212 00:00:35.036965 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 58.3% (1295/2220), ETA: 3h38m
+I0212 00:00:35.040301 140205980636928 logging_writer.py:48] [1295] steps_per_sec=0.0706315
+I0212 00:00:35.040391 140205980636928 logging_writer.py:48] [1295] uptime=24535.2
+I0212 00:01:45.855665 140205980636928 logging_writer.py:48] [1300] epoch=1, train/categorical_accuracy=0.907031238079071, train/categorical_crossentropy=0.6496798992156982, train/f1_het=0.8527489900588989, train/f1_homalt=0.965545654296875, train/f1_homref=0.833597719669342, train/f1_macro=0.8839641213417053, train/f1_micro=0.907031238079071, train/f1_weighted=0.9057116508483887, train/false_negatives=3427.0, train/false_positives=1565.0, train/learning_rate=0.00021648078109137714, train/loss=0.6496803164482117, train/precision=0.934071958065033, train/precision_het=0.8627765774726868, train/precision_homalt=0.9616901874542236, train/precision_homref=0.9412358403205872, train/recall=0.8661327958106995, train/recall_het=0.8073133826255798, train/recall_homalt=0.9660874605178833, train/recall_homref=0.7182924747467041, train/true_negatives=49635.0, train/true_positives=22173.0
+I0212 00:05:46.657074 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 59.3% (1317/2220), ETA: 3h33m
+I0212 00:05:46.660014 140205980636928 logging_writer.py:48] [1317] steps_per_sec=0.0705988
+I0212 00:05:46.660102 140205980636928 logging_writer.py:48] [1317] uptime=24846.8
+I0212 00:10:58.254312 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 60.3% (1339/2220), ETA: 3h27m
+I0212 00:10:58.256972 140205980636928 logging_writer.py:48] [1339] steps_per_sec=0.070604
+I0212 00:10:58.257057 140205980636928 logging_writer.py:48] [1339] uptime=25158.4
+I0212 00:16:09.808300 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 61.3% (1361/2220), ETA: 3h22m
+I0212 00:16:09.810115 140205980636928 logging_writer.py:48] [1361] steps_per_sec=0.0706138
+I0212 00:16:09.810198 140205980636928 logging_writer.py:48] [1361] uptime=25470
+I0212 00:21:21.417242 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 62.3% (1383/2220), ETA: 3h17m
+I0212 00:21:21.419884 140205980636928 logging_writer.py:48] [1383] steps_per_sec=0.0706013
+I0212 00:21:21.419967 140205980636928 logging_writer.py:48] [1383] uptime=25781.6
+I0212 00:25:22.125506 140205980636928 logging_writer.py:48] [1400] epoch=1, train/categorical_accuracy=0.9129297137260437, train/categorical_crossentropy=0.6425860524177551, train/f1_het=0.8630092144012451, train/f1_homalt=0.967962384223938, train/f1_homref=0.8372212648391724, train/f1_macro=0.8893976211547852, train/f1_micro=0.9129297137260437, train/f1_weighted=0.9115597605705261, train/false_negatives=3110.0, train/false_positives=1519.0, train/learning_rate=0.00022544086095876992, train/loss=0.6425864696502686, train/precision=0.9367320537567139, train/precision_het=0.8736993074417114, train/precision_homalt=0.9627927541732788, train/precision_homref=0.9366781115531921, train/recall=0.8785156011581421, train/recall_het=0.8175256252288818, train/recall_homalt=0.9707794785499573, train/recall_homref=0.739380419254303, train/true_negatives=49681.0, train/true_positives=22490.0
+I0212 00:26:32.793237 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 63.3% (1405/2220), ETA: 3h12m
+I0212 00:26:32.794992 140205980636928 logging_writer.py:48] [1405] steps_per_sec=0.0706541
+I0212 00:26:32.795068 140205980636928 logging_writer.py:48] [1405] uptime=26093
+I0212 00:31:44.046528 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 64.3% (1427/2220), ETA: 3h6m
+I0212 00:31:44.049317 140205980636928 logging_writer.py:48] [1427] steps_per_sec=0.070682
+I0212 00:31:44.049406 140205980636928 logging_writer.py:48] [1427] uptime=26404.2
+I0212 00:36:55.718868 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 65.3% (1449/2220), ETA: 3h2m
+I0212 00:36:55.721053 140205980636928 logging_writer.py:48] [1449] steps_per_sec=0.0705869
+I0212 00:36:55.721148 140205980636928 logging_writer.py:48] [1449] uptime=26715.9
+I0212 00:42:06.898414 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 66.3% (1471/2220), ETA: 2h56m
+I0212 00:42:06.900393 140205980636928 logging_writer.py:48] [1471] steps_per_sec=0.0706987
+I0212 00:42:06.900474 140205980636928 logging_writer.py:48] [1471] uptime=27027.1
+I0212 00:47:18.234261 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 67.3% (1493/2220), ETA: 2h51m
+I0212 00:47:18.237652 140205980636928 logging_writer.py:48] [1493] steps_per_sec=0.0706632
+I0212 00:47:18.237746 140205980636928 logging_writer.py:48] [1493] uptime=27338.4
+I0212 00:48:57.476815 140205980636928 logging_writer.py:48] [1500] epoch=1, train/categorical_accuracy=0.9184374809265137, train/categorical_crossentropy=0.6370816230773926, train/f1_het=0.8778050541877747, train/f1_homalt=0.9680799841880798, train/f1_homref=0.8459530472755432, train/f1_macro=0.8972793221473694, train/f1_micro=0.9184374213218689, train/f1_weighted=0.9169971942901611, train/false_negatives=2902.0, train/false_positives=1443.0, train/learning_rate=0.00023440091172233224, train/loss=0.6370821595191956, train/precision=0.9402261972427368, train/precision_het=0.8759211897850037, train/precision_homalt=0.9628830552101135, train/precision_homref=0.9547511339187622, train/recall=0.8866406083106995, train/recall_het=0.8484395742416382, train/recall_homalt=0.9717738628387451, train/recall_homref=0.7421262860298157, train/true_negatives=49757.0, train/true_positives=22698.0
+I0212 00:48:57.515022 140221114042176 train.py:361] Running tune at step=1500 epoch=1
+I0212 00:48:57.515138 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0212 00:56:27.516042 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0212 01:03:56.251046 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0212 01:06:21.900466 140205980636928 logging_writer.py:48] [1500] tune/categorical_accuracy=0.9223464727401733, tune/categorical_crossentropy=0.6322670578956604, tune/f1_het=0.8674930930137634, tune/f1_homalt=0.9664216637611389, tune/f1_homref=0.8212950825691223, tune/f1_macro=0.8850699067115784, tune/f1_micro=0.9223464727401733, tune/f1_weighted=0.9208360314369202, tune/false_negatives_1=6267.0, tune/false_positives_1=3200.0, tune/loss=0.6322686076164246, tune/precision_1=0.94318687915802, tune/precision_het=0.8933421969413757, tune/precision_homalt=0.9620884656906128, tune/precision_homref=0.922111451625824, tune/recall_1=0.8944807648658752, tune/recall_het=0.80372554063797, tune/recall_homalt=0.9688470959663391, tune/recall_homref=0.7361865639686584, tune/true_negatives_1=115584.0, tune/true_positives_1=53125.0
+I0212 01:06:22.546772 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.92083603 step=1500 epoch=1 path=/home/training_NEW/checkpoints/ckpt-1500
+I0212 01:06:22.547378 140205980636928 logging_writer.py:48] [1500] tune/early_stopping=0
+I0212 01:06:36.531873 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 67.6% (1501/2220), ETA: 1d4h55m
+I0212 01:06:36.534404 140205980636928 logging_writer.py:48] [1501] steps_per_sec=0.00690669
+I0212 01:06:36.534486 140205980636928 logging_writer.py:48] [1501] uptime=28496.7
+I0212 01:11:47.849058 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 68.6% (1523/2220), ETA: 2h44m
+I0212 01:11:47.851024 140205980636928 logging_writer.py:48] [1523] steps_per_sec=0.0706675
+I0212 01:11:47.851110 140205980636928 logging_writer.py:48] [1523] uptime=28808
+I0212 01:16:59.349376 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 69.6% (1545/2220), ETA: 2h39m
+I0212 01:16:59.353220 140205980636928 logging_writer.py:48] [1545] steps_per_sec=0.0706259
+I0212 01:16:59.353312 140205980636928 logging_writer.py:48] [1545] uptime=29119.5
+I0212 01:22:10.890041 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 70.6% (1567/2220), ETA: 2h34m
+I0212 01:22:10.892587 140205980636928 logging_writer.py:48] [1567] steps_per_sec=0.0706168
+I0212 01:22:10.892680 140205980636928 logging_writer.py:48] [1567] uptime=29431.1
+I0212 01:27:22.536641 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 71.6% (1589/2220), ETA: 2h28m
+I0212 01:27:22.539437 140205980636928 logging_writer.py:48] [1589] steps_per_sec=0.0705928
+I0212 01:27:22.539520 140205980636928 logging_writer.py:48] [1589] uptime=29742.7
+I0212 01:29:58.431391 140205980636928 logging_writer.py:48] [1600] epoch=1, train/categorical_accuracy=0.9221484661102295, train/categorical_crossentropy=0.6332151293754578, train/f1_het=0.881682813167572, train/f1_homalt=0.9719550609588623, train/f1_homref=0.8477250933647156, train/f1_macro=0.9004543423652649, train/f1_micro=0.9221484661102295, train/f1_weighted=0.9207097291946411, train/false_negatives=2735.0, train/false_positives=1454.0, train/learning_rate=0.00024336096248589456, train/loss=0.6332157850265503, train/precision=0.9402113556861877, train/precision_het=0.8754454255104065, train/precision_homalt=0.9638811349868774, train/precision_homref=0.9526076316833496, train/recall=0.8931640386581421, train/recall_het=0.8594036102294922, train/recall_homalt=0.9779087901115417, train/recall_homref=0.7426589131355286, train/true_negatives=49746.0, train/true_positives=22865.0
+I0212 01:32:34.177979 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 72.6% (1611/2220), ETA: 2h23m
+I0212 01:32:34.179814 140205980636928 logging_writer.py:48] [1611] steps_per_sec=0.070594
+I0212 01:32:34.179901 140205980636928 logging_writer.py:48] [1611] uptime=30054.3
+I0212 01:37:45.457066 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 73.6% (1633/2220), ETA: 2h18m
+I0212 01:37:45.459066 140205980636928 logging_writer.py:48] [1633] steps_per_sec=0.0706761
+I0212 01:37:45.459152 140205980636928 logging_writer.py:48] [1633] uptime=30365.6
+I0212 01:42:56.964090 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 74.5% (1655/2220), ETA: 2h13m
+I0212 01:42:56.966046 140205980636928 logging_writer.py:48] [1655] steps_per_sec=0.0706244
+I0212 01:42:56.966131 140205980636928 logging_writer.py:48] [1655] uptime=30677.1
+I0212 01:48:08.367654 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 75.5% (1677/2220), ETA: 2h8m
+I0212 01:48:08.369873 140205980636928 logging_writer.py:48] [1677] steps_per_sec=0.0706479
+I0212 01:48:08.369959 140205980636928 logging_writer.py:48] [1677] uptime=30988.5
+I0212 01:53:19.830829 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 76.5% (1699/2220), ETA: 2h2m
+I0212 01:53:19.832733 140205980636928 logging_writer.py:48] [1699] steps_per_sec=0.0706343
+I0212 01:53:19.832823 140205980636928 logging_writer.py:48] [1699] uptime=31300
+I0212 01:53:34.006691 140205980636928 logging_writer.py:48] [1700] epoch=1, train/categorical_accuracy=0.9238671660423279, train/categorical_crossentropy=0.630730390548706, train/f1_het=0.8887308239936829, train/f1_homalt=0.9696317911148071, train/f1_homref=0.8556621074676514, train/f1_macro=0.9046748280525208, train/f1_micro=0.9238671660423279, train/f1_weighted=0.9225426912307739, train/false_negatives=2640.0, train/false_positives=1410.0, train/learning_rate=0.00025232104235328734, train/loss=0.6307309865951538, train/precision=0.9421419501304626, train/precision_het=0.8864094018936157, train/precision_homalt=0.9619274139404297, train/precision_homref=0.9554615020751953, train/recall=0.8968750238418579, train/recall_het=0.8710634708404541, train/recall_homalt=0.9753449559211731, train/recall_homref=0.7558992505073547, train/true_negatives=49790.0, train/true_positives=22960.0
+I0212 01:58:31.399688 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 77.5% (1721/2220), ETA: 1h57m
+I0212 01:58:31.401623 140205980636928 logging_writer.py:48] [1721] steps_per_sec=0.0706104
+I0212 01:58:31.401712 140205980636928 logging_writer.py:48] [1721] uptime=31611.6
+I0212 02:03:42.589189 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 78.5% (1743/2220), ETA: 1h52m
+I0212 02:03:42.592520 140205980636928 logging_writer.py:48] [1743] steps_per_sec=0.0706965
+I0212 02:03:42.592627 140205980636928 logging_writer.py:48] [1743] uptime=31922.8
+I0212 02:05:21.936810 140221114042176 train.py:361] Running tune at step=1750 epoch=1
+I0212 02:05:21.937005 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0212 02:12:51.687538 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0212 02:20:20.115581 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0212 02:22:45.440418 140205980636928 logging_writer.py:48] [1750] tune/categorical_accuracy=0.8556708097457886, tune/categorical_crossentropy=0.706504225730896, tune/f1_het=0.7208152413368225, tune/f1_homalt=0.924916684627533, tune/f1_homref=0.797009289264679, tune/f1_macro=0.8142470717430115, tune/f1_micro=0.8556708097457886, tune/f1_weighted=0.861671507358551, tune/false_negatives_1=13645.0, tune/false_positives_1=5027.0, tune/loss=0.7065054774284363, tune/precision_1=0.9009926319122314, tune/precision_het=0.7511315941810608, tune/precision_homalt=0.9779824018478394, tune/precision_homref=0.8457635641098022, tune/recall_1=0.7702552676200867, tune/recall_het=0.7369544506072998, tune/recall_homalt=0.7779189348220825, tune/recall_homref=0.7802115678787231, tune/true_negatives_1=113757.0, tune/true_positives_1=45747.0
+I0212 02:22:45.445448 140221114042176 train.py:471] Skipping checkpoint with tune/f1_weighted=0.8616715 < previous best tune/f1_weighted=0.92083603
+I0212 02:22:45.452620 140205980636928 logging_writer.py:48] [1750] tune/early_stopping=1
+I0212 02:22:59.644311 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 78.9% (1751/2220), ETA: 18h50m
+I0212 02:22:59.646608 140205980636928 logging_writer.py:48] [1751] steps_per_sec=0.0069141
+I0212 02:22:59.646693 140205980636928 logging_writer.py:48] [1751] uptime=33079.8
+I0212 02:28:11.156803 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 79.9% (1773/2220), ETA: 1h45m
+I0212 02:28:11.158716 140205980636928 logging_writer.py:48] [1773] steps_per_sec=0.0706232
+I0212 02:28:11.158808 140205980636928 logging_writer.py:48] [1773] uptime=33391.3
+I0212 02:33:22.808962 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 80.9% (1795/2220), ETA: 1h40m
+I0212 02:33:22.811731 140205980636928 logging_writer.py:48] [1795] steps_per_sec=0.0705915
+I0212 02:33:22.811819 140205980636928 logging_writer.py:48] [1795] uptime=33703
+I0212 02:34:33.692327 140205980636928 logging_writer.py:48] [1800] epoch=1, train/categorical_accuracy=0.9223046898841858, train/categorical_crossentropy=0.6307786703109741, train/f1_het=0.8813065886497498, train/f1_homalt=0.9704735279083252, train/f1_homref=0.8536418676376343, train/f1_macro=0.9018073081970215, train/f1_micro=0.9223046898841858, train/f1_weighted=0.9210915565490723, train/false_negatives=2580.0, train/false_positives=1425.0, train/learning_rate=0.00026128109311684966, train/loss=0.6307794451713562, train/precision=0.9417058825492859, train/precision_het=0.8821117281913757, train/precision_homalt=0.9638456702232361, train/precision_homref=0.9513792395591736, train/recall=0.899218738079071, train/recall_het=0.8741957545280457, train/recall_homalt=0.9762349724769592, train/recall_homref=0.7593854069709778, train/true_negatives=49775.0, train/true_positives=23020.0
+I0212 02:38:34.586396 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 81.8% (1817/2220), ETA: 1h35m
+I0212 02:38:34.589090 140205980636928 logging_writer.py:48] [1817] steps_per_sec=0.0705631
+I0212 02:38:34.589181 140205980636928 logging_writer.py:48] [1817] uptime=34014.8
+I0212 02:43:46.360245 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 82.8% (1839/2220), ETA: 1h29m
+I0212 02:43:46.364804 140205980636928 logging_writer.py:48] [1839] steps_per_sec=0.070564
+I0212 02:43:46.364896 140205980636928 logging_writer.py:48] [1839] uptime=34326.5
+I0212 02:48:57.746776 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 83.8% (1861/2220), ETA: 1h24m
+I0212 02:48:57.751567 140205980636928 logging_writer.py:48] [1861] steps_per_sec=0.0706518
+I0212 02:48:57.751670 140205980636928 logging_writer.py:48] [1861] uptime=34637.9
+I0212 02:54:09.377141 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 84.8% (1883/2220), ETA: 1h19m
+I0212 02:54:09.380034 140205980636928 logging_writer.py:48] [1883] steps_per_sec=0.0705965
+I0212 02:54:09.380123 140205980636928 logging_writer.py:48] [1883] uptime=34949.5
+I0212 02:58:10.074821 140205980636928 logging_writer.py:48] [1900] epoch=1, train/categorical_accuracy=0.9266015887260437, train/categorical_crossentropy=0.6280673742294312, train/f1_het=0.8961591720581055, train/f1_homalt=0.9695281982421875, train/f1_homref=0.8606821894645691, train/f1_macro=0.908789873123169, train/f1_micro=0.9266015887260437, train/f1_weighted=0.9252676963806152, train/false_negatives=2517.0, train/false_positives=1425.0, train/learning_rate=0.000270241143880412, train/loss=0.6280680298805237, train/precision=0.9418557286262512, train/precision_het=0.890070915222168, train/precision_homalt=0.9594524502754211, train/precision_homref=0.9554328322410583, train/recall=0.9016796946525574, train/recall_het=0.8827667236328125, train/recall_homalt=0.979084849357605, train/recall_homref=0.7588096857070923, train/true_negatives=49775.0, train/true_positives=23083.0
+I0212 02:59:20.898977 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 85.8% (1905/2220), ETA: 1h14m
+I0212 02:59:20.901391 140205980636928 logging_writer.py:48] [1905] steps_per_sec=0.070621
+I0212 02:59:20.901478 140205980636928 logging_writer.py:48] [1905] uptime=35261.1
+I0212 03:04:32.704284 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 86.8% (1927/2220), ETA: 1h9m
+I0212 03:04:32.707284 140205980636928 logging_writer.py:48] [1927] steps_per_sec=0.0705569
+I0212 03:04:32.707373 140205980636928 logging_writer.py:48] [1927] uptime=35572.9
+I0212 03:09:44.542095 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 87.8% (1949/2220), ETA: 1h4m
+I0212 03:09:44.544981 140205980636928 logging_writer.py:48] [1949] steps_per_sec=0.0705495
+I0212 03:09:44.545064 140205980636928 logging_writer.py:48] [1949] uptime=35884.7
+I0212 03:14:56.426980 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 88.8% (1971/2220), ETA: 58m
+I0212 03:14:56.429062 140205980636928 logging_writer.py:48] [1971] steps_per_sec=0.0705388
+I0212 03:14:56.429145 140205980636928 logging_writer.py:48] [1971] uptime=36196.6
+I0212 03:20:08.079039 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 89.8% (1993/2220), ETA: 53m
+I0212 03:20:08.080868 140205980636928 logging_writer.py:48] [1993] steps_per_sec=0.0705915
+I0212 03:20:08.080953 140205980636928 logging_writer.py:48] [1993] uptime=36508.2
+I0212 03:21:47.076028 140205980636928 logging_writer.py:48] [2000] epoch=1, train/categorical_accuracy=0.9232422113418579, train/categorical_crossentropy=0.6299778819084167, train/f1_het=0.8886744976043701, train/f1_homalt=0.9698384404182434, train/f1_homref=0.8529436588287354, train/f1_macro=0.9038188457489014, train/f1_micro=0.9232422113418579, train/f1_weighted=0.9217499494552612, train/false_negatives=2550.0, train/false_positives=1472.0, train/learning_rate=0.0002792011946439743, train/loss=0.6299784183502197, train/precision=0.9399722814559937, train/precision_het=0.8827980756759644, train/precision_homalt=0.9588504433631897, train/precision_homref=0.9567374587059021, train/recall=0.900390625, train/recall_het=0.879986584186554, train/recall_homalt=0.9799169301986694, train/recall_homref=0.754578173160553, train/true_negatives=49728.0, train/true_positives=23050.0
+I0212 03:21:47.112311 140221114042176 train.py:361] Running tune at step=2000 epoch=1
+I0212 03:21:47.130006 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0212 03:29:17.211709 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0212 03:36:46.086843 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0212 03:39:11.800769 140205980636928 logging_writer.py:48] [2000] tune/categorical_accuracy=0.925175130367279, tune/categorical_crossentropy=0.6281310319900513, tune/f1_het=0.8750429153442383, tune/f1_homalt=0.9709786772727966, tune/f1_homref=0.8149948716163635, tune/f1_macro=0.8870055079460144, tune/f1_micro=0.925175130367279, tune/f1_weighted=0.9240410923957825, tune/false_negatives_1=5723.0, tune/false_positives_1=3359.0, tune/loss=0.6281335353851318, tune/precision_1=0.9410991072654724, tune/precision_het=0.9104923605918884, tune/precision_homalt=0.9641748070716858, tune/precision_homref=0.8825932741165161, tune/recall_1=0.9036402106285095, tune/recall_het=0.8071404099464417, tune/recall_homalt=0.9729014039039612, tune/recall_homref=0.7692812085151672, tune/true_negatives_1=115425.0, tune/true_positives_1=53669.0
+I0212 03:39:12.586243 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.9240411 step=2000 epoch=1 path=/home/training_NEW/checkpoints/ckpt-2000
+I0212 03:39:12.591660 140205980636928 logging_writer.py:48] [2000] tune/early_stopping=0
+I0212 03:39:26.656149 140221114042176 local.py:41] Setting work unit notes: 0.0 steps/s, 90.1% (2001/2220), ETA: 8h48m
+I0212 03:39:26.658756 140205980636928 logging_writer.py:48] [2001] steps_per_sec=0.00690502
+I0212 03:39:26.658838 140205980636928 logging_writer.py:48] [2001] uptime=37666.8
+I0212 03:44:38.092014 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 91.1% (2023/2220), ETA: 46m
+I0212 03:44:38.097399 140205980636928 logging_writer.py:48] [2023] steps_per_sec=0.0706406
+I0212 03:44:38.097492 140205980636928 logging_writer.py:48] [2023] uptime=37978.3
+I0212 03:49:50.249005 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 92.1% (2045/2220), ETA: 41m
+I0212 03:49:50.251936 140205980636928 logging_writer.py:48] [2045] steps_per_sec=0.0704773
+I0212 03:49:50.252022 140205980636928 logging_writer.py:48] [2045] uptime=38290.4
+I0212 03:55:02.108431 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 93.1% (2067/2220), ETA: 36m
+I0212 03:55:02.110301 140205980636928 logging_writer.py:48] [2067] steps_per_sec=0.0705446
+I0212 03:55:02.110390 140205980636928 logging_writer.py:48] [2067] uptime=38602.3
+I0212 04:00:13.643297 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 94.1% (2089/2220), ETA: 30m
+I0212 04:00:13.649630 140205980636928 logging_writer.py:48] [2089] steps_per_sec=0.0706181
+I0212 04:00:13.649728 140205980636928 logging_writer.py:48] [2089] uptime=38913.8
+I0212 04:02:49.694034 140205980636928 logging_writer.py:48] [2100] epoch=1, train/categorical_accuracy=0.9267187714576721, train/categorical_crossentropy=0.6266539096832275, train/f1_het=0.8947835564613342, train/f1_homalt=0.9709768295288086, train/f1_homref=0.8595291972160339, train/f1_macro=0.9084298610687256, train/f1_micro=0.9267187714576721, train/f1_weighted=0.9253723621368408, train/false_negatives=2458.0, train/false_positives=1435.0, train/learning_rate=0.0002881612745113671, train/loss=0.6266545057296753, train/precision=0.9416120648384094, train/precision_het=0.8889825940132141, train/precision_homalt=0.9603139162063599, train/precision_homref=0.9531493186950684, train/recall=0.9039843678474426, train/recall_het=0.8821362853050232, train/recall_homalt=0.9799773097038269, train/recall_homref=0.7670525908470154, train/true_negatives=49765.0, train/true_positives=23142.0
+I0212 04:05:25.368624 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 95.1% (2111/2220), ETA: 25m
+I0212 04:05:25.370403 140205980636928 logging_writer.py:48] [2111] steps_per_sec=0.0705749
+I0212 04:05:25.370512 140205980636928 logging_writer.py:48] [2111] uptime=39225.5
+I0212 04:10:36.990020 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 96.1% (2133/2220), ETA: 20m
+I0212 04:10:36.997045 140205980636928 logging_writer.py:48] [2133] steps_per_sec=0.0705985
+I0212 04:10:36.997142 140205980636928 logging_writer.py:48] [2133] uptime=39537.2
+I0212 04:15:48.924342 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 97.1% (2155/2220), ETA: 15m
+I0212 04:15:48.928620 140205980636928 logging_writer.py:48] [2155] steps_per_sec=0.0705277
+I0212 04:15:48.928710 140205980636928 logging_writer.py:48] [2155] uptime=39849.1
+I0212 04:21:00.936450 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 98.1% (2177/2220), ETA: 10m
+I0212 04:21:00.939092 140205980636928 logging_writer.py:48] [2177] steps_per_sec=0.0705101
+I0212 04:21:00.939176 140205980636928 logging_writer.py:48] [2177] uptime=40161.1
+I0212 04:26:10.528589 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 99.1% (2199/2220), ETA: 4m
+I0212 04:26:10.531203 140205980636928 logging_writer.py:48] [2199] steps_per_sec=0.0710612
+I0212 04:26:10.531288 140205980636928 logging_writer.py:48] [2199] uptime=40470.7
+I0212 04:26:24.739466 140205980636928 logging_writer.py:48] [2200] epoch=1, train/categorical_accuracy=0.9284374713897705, train/categorical_crossentropy=0.6245431900024414, train/f1_het=0.8966359496116638, train/f1_homalt=0.9716617465019226, train/f1_homref=0.8613861203193665, train/f1_macro=0.9098946452140808, train/f1_micro=0.9284374713897705, train/f1_weighted=0.9271782636642456, train/false_negatives=2360.0, train/false_positives=1382.0, train/learning_rate=0.0002971213252749294, train/loss=0.6245436668395996, train/precision=0.9438713192939758, train/precision_het=0.889245867729187, train/precision_homalt=0.9633358120918274, train/precision_homref=0.955276608467102, train/recall=0.9078124761581421, train/recall_het=0.8921119570732117, train/recall_homalt=0.9792366623878479, train/recall_homref=0.7710576057434082, train/true_negatives=49818.0, train/true_positives=23240.0
+I0212 04:30:57.010763 140221114042176 local.py:41] Setting work unit notes: 0.1 steps/s, 100.0% (2219/2220), ETA: 0m
+I0212 04:30:57.027422 140205980636928 logging_writer.py:48] [2219] steps_per_sec=0.0698124
+I0212 04:30:57.027537 140205980636928 logging_writer.py:48] [2219] uptime=40757.2
+I0212 04:30:57.074205 140205980636928 logging_writer.py:48] [2219] epoch=1, train/categorical_accuracy=0.9251644611358643, train/categorical_crossentropy=0.6276679635047913, train/f1_het=0.8982630968093872, train/f1_homalt=0.9697209596633911, train/f1_homref=0.8542312383651733, train/f1_macro=0.9074050784111023, train/f1_micro=0.9251644611358643, train/f1_weighted=0.9234393239021301, train/false_negatives=457.0, train/false_positives=294.0, train/learning_rate=0.00029882375383749604, train/loss=0.6276686787605286, train/precision=0.9374601244926453, train/precision_het=0.8830508589744568, train/precision_homalt=0.955329179763794, train/precision_homref=0.9566563367843628, train/recall=0.9060444235801697, train/recall_het=0.8951889872550964, train/recall_homalt=0.9866451025009155, train/recall_homref=0.7542717456817627, train/true_negatives=9434.0, train/true_positives=4407.0
+I0212 04:30:57.118465 140221114042176 train.py:361] Running tune at step=2219 epoch=1
+I0212 04:30:57.118609 140221114042176 train.py:366] Tune step 0 / 232 (0.0%)
+I0212 04:38:27.139782 140221114042176 train.py:366] Tune step 100 / 232 (40.0%)
+I0212 04:45:55.931851 140221114042176 train.py:366] Tune step 200 / 232 (90.0%)
+I0212 04:48:21.620225 140205980636928 logging_writer.py:48] [2219] tune/categorical_accuracy=0.9304451942443848, tune/categorical_crossentropy=0.6239708662033081, tune/f1_het=0.8919105529785156, tune/f1_homalt=0.9698048233985901, tune/f1_homref=0.8279758095741272, tune/f1_macro=0.896563708782196, tune/f1_micro=0.9304451942443848, tune/f1_weighted=0.9289232492446899, tune/false_negatives_1=5422.0, tune/false_positives_1=3008.0, tune/loss=0.6239680051803589, tune/precision_1=0.9472076892852783, tune/precision_het=0.8924353718757629, tune/precision_homalt=0.9657236933708191, tune/precision_homref=0.941541850566864, tune/recall_1=0.9087082147598267, tune/recall_het=0.8903021812438965, tune/recall_homalt=0.9680471420288086, tune/recall_homref=0.7234699726104736, tune/true_negatives_1=115776.0, tune/true_positives_1=53970.0
+I0212 04:48:22.249063 140221114042176 train.py:456] Saved checkpoint tune/f1_weighted=0.92892325 step=2219 epoch=1 path=/home/training_NEW/checkpoints/ckpt-2219
+I0212 04:48:22.253638 140205980636928 logging_writer.py:48] [2219] tune/early_stopping=0
+I0212 04:48:22.263881 140221114042176 train.py:497] Loading best checkpoint: /home/training_NEW/checkpoints/ckpt-2219
+I0212 04:48:23.335957 140221114042176 train.py:500] Saving model using saved_model format.
+WARNING:tensorflow:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+W0212 04:48:23.336169 140221114042176 saving_utils.py:359] Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+W0212 04:48:38.242118 140221114042176 save.py:271] Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 94). These functions will not be directly callable after loading.
+INFO:tensorflow:Assets written to: /home/training_NEW/checkpoints/ckpt-2219/assets
+I0212 04:48:41.681977 140221114042176 builder_impl.py:797] Assets written to: /home/training_NEW/checkpoints/ckpt-2219/assets

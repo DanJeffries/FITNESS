@@ -1,0 +1,55 @@
+PLINK v1.9.0-b.7.7 64-bit (22 Oct 2024)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --make-bed
+  --mind
+  --out /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled
+  --pca
+  --set-missing-var-ids @:#
+  --vcf /storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/mixed_cohort_1.subsample_0.01_filtered.recode.vcf.gz
+  --vcf-half-call m
+
+Hostname: bnode040
+Working directory: /storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/analyses/logs
+Start time: Fri Apr 25 14:08:04 2025
+
+Random number seed: 1745582884
+1031393 MB RAM detected; reserving 515696 MB for main workspace.
+--vcf:
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled-temporary.bed
++
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled-temporary.bim
++
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled-temporary.fam
+written.
+15610 variants loaded from .bim file.
+160 people (0 males, 0 females, 160 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled.nosex
+.
+25 people removed due to missing genotype data (--mind).
+IDs written to
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled.irem
+.
+Using up to 9 threads (change this with --threads).
+Before main variant filters, 135 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate in remaining samples is 0.980728.
+15610 variants and 135 people pass filters and QC.
+Note: No phenotypes present.
+Relationship matrix calculation complete.
+--pca: Results saved to
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled.eigenval
+and
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled.eigenvec
+.
+--make-bed to
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled.bed
++
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled.bim
++
+/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/analyses/cohort_1_tests/stats/cohort_1_downsampled.fam
+... done.
+
+End time: Fri Apr 25 14:08:04 2025

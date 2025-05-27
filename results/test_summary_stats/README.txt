@@ -1,0 +1,1 @@
+the summary stats herein are from the best (highest average sample coverage) 400 samples from cohort 1 of the genotype calls. I am using them to create plotting scripts and explore the best stats to calculate  
