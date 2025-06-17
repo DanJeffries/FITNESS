@@ -7,8 +7,8 @@
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=99G
 #SBATCH --export=NONE
-#SBATCH --array=1001-2000
-#SBATCH --job-name=Trim_and_align_cohort_1
+#SBATCH --array=2001-3000
+#SBATCH --job-name=Trim_and_align_cohort_2
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 

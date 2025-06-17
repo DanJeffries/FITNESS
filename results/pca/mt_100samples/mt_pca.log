@@ -1,0 +1,42 @@
+PLINK v1.9.0-b.7.7 64-bit (22 Oct 2024)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --make-bed
+  --mind
+  --out /storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca
+  --pca
+  --set-missing-var-ids @:#
+  --vcf /storage/research/iee_temp_dj20y461/DV_calling/GLnexus/cohort_1/cohort_1_chr_NC_041244.1_mitochondion_genome.vcf.gz
+  --vcf-half-call m
+
+Hostname: anode161
+Working directory: /storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/code/analyses/logs
+Start time: Mon Jun 16 22:44:30 2025
+
+Random number seed: 1750106670
+128301 MB RAM detected; reserving 64150 MB for main workspace.
+--vcf: /storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca-temporary.bed
++ /storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca-temporary.bim +
+/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca-temporary.fam
+written.
+541 variants loaded from .bim file.
+100 people (0 males, 0 females, 100 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca.nosex .
+0 people removed due to missing genotype data (--mind).
+Using up to 9 threads (change this with --threads).
+Before main variant filters, 100 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.99475.
+541 variants and 100 people pass filters and QC.
+Note: No phenotypes present.
+Relationship matrix calculation complete.
+--pca: Results saved to
+/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca.eigenval and
+/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca.eigenvec .
+--make-bed to /storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca.bed +
+/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca.bim +
+/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca.fam ... done.
+
+End time: Mon Jun 16 22:44:31 2025

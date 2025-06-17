@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#SBATCH --partition=epyc2
-#SBATCH --time=02:00:00
+#SBATCH --partition=bdw
+#SBATCH --time=01:00:00
 #SBATCH --nodes=1
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=10
@@ -16,10 +16,10 @@ PLINK=~/Software/plink/plink
 
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS
 
-MIXED_GZVCF=$WD/analyses/cohort_1_tests/mixed_cohort_1.subsample_0.01_filtered.recode.vcf.gz
-OUT_PREFIX=$WD/analyses/cohort_1_tests/stats/cohort_1_downsampled
+MT_GZVCF=/storage/research/iee_temp_dj20y461/DV_calling/GLnexus/cohort_1/cohort_1_chr_NC_041244.1_mitochondion_genome.vcf.gz
+OUT_PREFIX=/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca
 
-$PLINK --vcf $MIXED_GZVCF \
+$PLINK --vcf $MT_GZVCF \
        --double-id \
        --allow-extra-chr \
        --set-missing-var-ids @:# \

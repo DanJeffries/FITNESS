@@ -30,7 +30,7 @@ COHORT=FG
 
 ## Set directories
 
-POSTPROCESS_DIR=$WD/postprocess_variants/${COHORT}* ## input dir 
+POSTPROCESS_DIR=$WD/postprocess_variants/families/${COHORT}* ## input dir 
 JOINT_CALLING_OUTDIR=$WD/GLnexus ## output dir
 
 ## splitting the joint calling into cohorts and by chromosome
