@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#SBATCH --partition=bdw
-#SBATCH --time=01:00:00
+#SBATCH --partition=epyc2
+#SBATCH --time=03:00:00
 #SBATCH --nodes=1
 #SBATCH --tasks=1
 #SBATCH --cpus-per-task=10
@@ -16,10 +16,16 @@ PLINK=~/Software/plink/plink
 
 WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS
 
-MT_GZVCF=/storage/research/iee_temp_dj20y461/DV_calling/GLnexus/cohort_1/cohort_1_chr_NC_041244.1_mitochondion_genome.vcf.gz
-OUT_PREFIX=/storage/research/iee_temp_dj20y461/analyses/mt/pca/mt_pca
+GZVCF=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/DV_calling/chr19_sepsexes/male/all_samples_chr_19_males.recode.vcf.gz
+OUT_DIR=/storage/research/iee_temp_dj20y461/analyses/chr19/pca/
+OUT_PREFIX=$OUT_DIR/chr19_pca_male
 
-$PLINK --vcf $MT_GZVCF \
+if [ ! -d "$OUT_PREFIX" ]
+then
+    mkdir -p $OUT_PREFIX
+fi
+
+$PLINK --vcf $GZVCF \
        --double-id \
        --allow-extra-chr \
        --set-missing-var-ids @:# \

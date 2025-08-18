@@ -7,8 +7,8 @@
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=99G
 #SBATCH --export=NONE
-#SBATCH --array=4591-6000
-#SBATCH --job-name=Trim_and_align_all
+#SBATCH --array=1-1010
+#SBATCH --job-name=Trim_and_align_all_virus
 #SBATCH --output=%x_%A-%a.out
 #SBATCH --error=%x_%A-%a.err
 
@@ -23,10 +23,10 @@ date
 
 #WD=/storage/scratch/iee/dj20y461/Stickleback/G_aculeatus/FITNESS/DV_calling
 
-WD=/storage/research/iee_temp_dj20y461/DV_calling
+WD=/storage/research/iee_temp_dj20y461/DV_calling/virus_screening
 
 ID=$SLURM_ARRAY_TASK_ID
-ITER_FILE=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/sample_metadata/sample_paths_to_realign.txt
+ITER_FILE=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/sample_metadata/random_125perpop_paths.txt
 
 SAMPLE_FASTQ_PATH=$(sed -n "${SLURM_ARRAY_TASK_ID}p" < $ITER_FILE)
 SAMPLE_NAME=$(echo $SAMPLE_FASTQ_PATH | rev | cut -f1 -d'/' | rev)
@@ -39,7 +39,7 @@ TRIMMED_OUTDIR=$WD/trimmed
 
 if [ ! -d "$TRIMMED_OUTDIR" ]
 then
-    mkdir $TRIMMED_OUTDIR
+    mkdir -p $TRIMMED_OUTDIR
 fi
 
 ## OUT FILES
@@ -61,7 +61,7 @@ java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE \
 
 DATA_DIR=$WD/trimmed
 
-GENOME_IDX=/storage/homefs/dj20y461/Stickleback/G_aculeatus/FITNESS/ref/BWA/GCF_016920845.1_GAculeatus_UGA_version5_genomic_shortnames_noY
+GENOME_IDX=/storage/research/iee_evol/DanJ/Stickleback/G_aculeatus/FITNESS/ref/Gacu_Herpes_Irido_ref/bwa/Gacu_AXYMtUn_Herpes_Irido.fa
 
 ## Get the read group info to add to bams from the first read of every file
 
@@ -80,7 +80,7 @@ echo $READGROUP_STRING
 BAMDIR=$WD/bams/
 
 if [ ! -d "$BAMDIR" ]; then
-   mkdir $BAMDIR
+   mkdir -p $BAMDIR
 fi
 
 BAM_FIX_COORDSORT=${BAMDIR}/${SAMPLE_NAME}.fixmate.coordsorted.bam
