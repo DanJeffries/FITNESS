@@ -75,7 +75,6 @@ suffix = sys.argv[2]
 identifier = sys.argv[3] ## eg chromosome, population name etc
 groups = sys.argv[4] ## The file identifier to be used to group files for comparison. E.g. population. Comma separated list with no spaces.
 segregation_maf_threshold = float(sys.argv[5]) ## The minimum MAF threshold required for a SNP to PASS in a given population
-pop_specific_threshold = float(sys.argv[6]) ## The minimum allele frequency required for a SNP to be considered present in a population to which it is specific 
 
 print(groups)
 print("searching for files with suffix '%s' and identifier '%s' in directory: '%s'" %(suffix, identifier, data_dir))
@@ -101,6 +100,7 @@ group_freqs_dict = {group: {} for group in groups}
 
 for group in groups:
     print("Reading frequencies for group '%s'" % group)
+
     for file_path in group_file_paths_dict[group]:
         print("  Reading file: %s" % file_path)
         freqs = read_freqs(file_path)
@@ -130,75 +130,30 @@ cross_group_dict = {}
 for group in groups:
     
     with open("%s/%s_SNPs_MAF_PASSFAIL_summary.txt" % (data_dir, group), "w") as out_file:
+        
         for locus in group_freqs_dict[group]:
+
+            #print(group, locus)
+
             ## write summary file
-            print(group, locus)
-            print(group_freqs_dict[group][locus])
+
             if all([len(group_freqs_dict[group][locus]["alleles"][0]) == 1,
                     len(group_freqs_dict[group][locus]["alleles"][1]) == 1]):
-                out_file.write("%s\t%s\t%s\t%s\t%s\n" % (
-                    group, 
-                    "\t".join([str(i) for i in locus]),
-                    "\t".join([str(i) for i in group_freqs_dict[group][locus]["frequencies"]]),
-                    "\t".join([str(i) for i in group_freqs_dict[group][locus]["alleles"]]),
-                    group_freqs_dict[group][locus]["MAF_status"]))
+                out_file.write("%s\t%s\t%s\t%s\t%s\n" % (group, 
+                                                         "\t".join([str(i) for i in locus]),
+                                                         "\t".join([str(i) for i in group_freqs_dict[group][locus]["frequencies"]]),
+                                                         "\t".join([str(i) for i in group_freqs_dict[group][locus]["alleles"]]),
+                                                         group_freqs_dict[group][locus]["MAF_status"]))
 
             if not locus in cross_group_dict:
                 cross_group_dict[locus] = {}
-            cross_group_dict[locus][group] = group_freqs_dict[group][locus]
+            if locus not in group_freqs_dict[group]:
+                cross_group_dict[locus][group] = {}
+                cross_group_dict[locus][group]["frequencies"] = (0,0)
+                cross_group_dict[locus][group]["alleles"] = ("NA","NA")
+                cross_group_dict[locus][group]["MAF_status"] = "FAIL"
+            else:
+                cross_group_dict[locus][group] = group_freqs_dict[group][locus].copy()
 
-            for group in groups:
-                if group not in cross_group_dict[locus]:
-                    cross_group_dict[locus][group] = {}
-                    cross_group_dict[locus][group]["frequencies"] = (0,0)
-                    cross_group_dict[locus][group]["alleles"] = ("NA","NA")
-                    cross_group_dict[locus][group]["MAF_status"] = "FAIL"
 
     print("%s summary written to %s/%s_SNPs_MAF_PASSFAIL_summary.txt" % (group, data_dir, group))
-
-print("Finding loci with population specific alleles...")
-
-pop_specific_allele_loci = []
-
-for locus in cross_group_dict:
-    for group in groups:
-        
-        found_in_others = False
-
-        if cross_group_dict[locus][group]["frequencies"][1] >= pop_specific_threshold:
-
-            others = [i for i in groups if i != group]
-        
-            for other in others:
-                if other not in cross_group_dict[locus]:
-                    print("Locus %s not found in group %s" % (locus, other))
-                if cross_group_dict[locus][other]["frequencies"][1] > 0: 
-                    found_in_others = True   
-
-            if found_in_others == False:
-                pop_specific_allele_loci.append(locus)
-
-print("Number of loci with population specific alleles: %s" % len(pop_specific_allele_loci))
-
-if len(pop_specific_allele_loci) > 0:
-    
-    print("Writing them to file")
-
-    with open("%s/Population_specific_allele_loci.txt" % data_dir, "w") as out_file:
-
-        out_file.write("#CHROM\tPOS\t%s\n" % "\t".join(groups))
-
-        for locus in pop_specific_allele_loci:
-            output_line = [locus[0], locus[1]]
-            for group in groups:
-                #print(group, cross_group_dict[locus])
-                if group in cross_group_dict[locus]:
-                    output_line.append(cross_group_dict[locus][group]["frequencies"][1])
-                else:
-                    output_line.append("NA")
-            out_file.write("\t".join([str(i) for i in output_line]) + "\n")   
-
-    print("Population specific allele loci written to %s/Population_specific_allele_loci.txt" % data_dir)
-
-else:
-    print("No population specific allele loci to output.")
