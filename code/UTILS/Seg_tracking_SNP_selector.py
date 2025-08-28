@@ -71,13 +71,12 @@ def read_HWE(HWE_path):
 
 ## Get the input arguments
 data_dir = sys.argv[1]
-suffix = sys.argv[2]
-identifier = sys.argv[3] ## eg chromosome, population name etc
-groups = sys.argv[4] ## The file identifier to be used to group files for comparison. E.g. population. Comma separated list with no spaces.
-segregation_maf_threshold = float(sys.argv[5]) ## The minimum MAF threshold required for a SNP to PASS in a given population
+identifier = sys.argv[2] ## eg chromosome, population name etc
+groups = sys.argv[3] ## The file identifier to be used to group files for comparison. E.g. population. Comma separated list with no spaces.
+segregation_maf_threshold = float(sys.argv[4]) ## The minimum MAF threshold required for a SNP to PASS in a given population
 
 print(groups)
-print("searching for files with suffix '%s' and identifier '%s' in directory: '%s'" %(suffix, identifier, data_dir))
+print("searching for files with identifier '%s' in directory: '%s'" %(identifier, data_dir))
 print("Grouping files by groups: %s" % groups)
 
 groups = groups.split(",")
@@ -129,7 +128,7 @@ cross_group_dict = {}
 
 for group in groups:
     
-    with open("%s/%s_SNPs_MAF_PASSFAIL_summary.txt" % (data_dir, group), "w") as out_file:
+    with open("%s/%s_%s_SNPs_MAF_PASSFAIL_summary.txt" % (data_dir, group, identifier), "w") as out_file:
         
         for locus in group_freqs_dict[group]:
 
@@ -156,4 +155,4 @@ for group in groups:
                 cross_group_dict[locus][group] = group_freqs_dict[group][locus].copy()
 
 
-    print("%s summary written to %s/%s_SNPs_MAF_PASSFAIL_summary.txt" % (group, data_dir, group))
+    print("%s summary written to %s/%s_%s_SNPs_MAF_PASSFAIL_summary.txt" % (data_dir, group, identifier))
