@@ -115,7 +115,7 @@ if len(pop_specific_allele_loci) > 0:
     
     print("Writing them to file")
 
-    with open("%s/%s_population_specific_allele_loci.txt" % (identifier, data_dir), "w") as out_file:
+    with open("%s/%s_population_specific_allele_loci.txt" % (data_dir, identifier), "w") as out_file:
 
         out_file.write("#CHROM\tPOS\t%s\n" % "\t".join(groups))
 
@@ -129,7 +129,7 @@ if len(pop_specific_allele_loci) > 0:
                     output_line.append("NA")
             out_file.write("\t".join([str(i) for i in output_line]) + "\n")   
 
-    print("%s/%s_population_specific_allele_loci.txt" % (identifier, data_dir))
+    print("%s/%s_population_specific_allele_loci.txt" % (data_dir, identifier))
 
 else:
     print("No population specific allele loci to output.")
