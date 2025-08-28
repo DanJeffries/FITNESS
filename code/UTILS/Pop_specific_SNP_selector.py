@@ -13,10 +13,9 @@ import sys
 
 ## Get the input arguments
 data_dir = sys.argv[1]
-suffix = sys.argv[2]
-identifier = sys.argv[3] ## eg chromosome, population name etc
-groups = sys.argv[4] ## The file identifier to be used to group files for comparison. E.g. population. Comma separated list with no spaces.
-pop_specific_threshold = float(sys.argv[6]) ## The minimum allele frequency required for a SNP to be considered present in a population to which it is specific 
+identifier = sys.argv[2] ## eg chromosome, population name etc
+groups = sys.argv[3] ## The file identifier to be used to group files for comparison. E.g. population. Comma separated list with no spaces.
+pop_specific_threshold = float(sys.argv[4]) ## The minimum allele frequency required for a SNP to be considered present in a population to which it is specific 
 
 
 ## define a function to read in the frequencies for each population
@@ -42,7 +41,7 @@ def read_freqs(freq_path):
 
 
 print(groups)
-print("searching for files with suffix '%s' and identifier '%s' in directory: '%s'" %(suffix, identifier, data_dir))
+print("searching for files with identifier '%s' in directory: '%s'" %(identifier, data_dir))
 print("Grouping files by groups: %s" % groups)
 
 groups = groups.split(",")
@@ -52,8 +51,7 @@ group_file_paths_dict = {group: [] for group in groups}
 
 ## get the files in the data directory
 for file in os.listdir(data_dir):
-    if file.endswith(suffix) and identifier in file:
-        #print(file)
+    if identifier in file:
         for group in groups:
             if group in file:
                 group_file_paths_dict[group].append(os.path.join(data_dir, file))
