@@ -86,7 +86,7 @@ group_file_paths_dict = {group: [] for group in groups}
 
 ## get the files in the data directory
 for file in os.listdir(data_dir):
-    if file.endswith(suffix) and identifier in file:
+    if identifier in file:
         #print(file)
         for group in groups:
             if group in file:
