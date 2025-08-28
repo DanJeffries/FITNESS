@@ -109,7 +109,7 @@ print("Finished reading in frequencies for all groups.")
 
 ## Assign PASS or FAIL for minimum MAF threshold for all loci, across all groups.
 
-print("Finding SNPs with MAF > %s in all groups" % suffix)
+print("Finding SNPs with MAF > %s in all groups" % segregation_maf_threshold)
 
 for group in group_freqs_dict:
     for locus in group_freqs_dict[group]:
