@@ -159,4 +159,4 @@ with open(os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % segre
                 
         out_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (chrom, pos, n_groups_total, total_groups, n_groups_passed, groups_passed, all_freqs))
 
-print("Wrote MAF PASS/FAIL results to file: %s" % os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % segregation_maf_threshold))
+print("Wrote MAF PASS/FAIL results to file: %s" % os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL_%s.txt" % (segregation_maf_threshold, identifier)))
