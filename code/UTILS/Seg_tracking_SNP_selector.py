@@ -122,37 +122,42 @@ for group in group_freqs_dict:
 
 print("Finished assigning PASS/FAIL for MAF threshold for all loci in all groups.")
 
-## Output a per-population summary, and also collect info for the population-specific allele check
+## Make a locus-wise dictionary to hold info on how many groups a locus passes the MAF threshold in
 
-cross_group_dict = {}
+locus_group_MAF_status = {}
 
-for group in groups:
-    
-    with open("%s/%s_%s_SNPs_MAF_PASSFAIL_summary.txt" % (data_dir, group, identifier), "w") as out_file:
+for group in group_freqs_dict:
+    for locus in group_freqs_dict[group]:
+        if locus not in locus_group_MAF_status:
+            locus_group_MAF_status[locus] = {"groups_passed": [], "total_groups": [], "frequencies": []}
         
-        for locus in group_freqs_dict[group]:
+        locus_group_MAF_status[locus]["total_groups"].append(group)
+        locus_group_MAF_status[locus]["frequencies"].append(group_freqs_dict[group][locus]["frequencies"])
+        
+        if group_freqs_dict[group][locus]["MAF_status"] == "PASS":
+            locus_group_MAF_status[locus]["groups_passed"].append(group)
 
-            #print(group, locus)
+with open(os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % segregation_maf_threshold), "w") as out_file:
+    out_file.write("CHROM\tPOS\tN_GROUPS_TOTAL\tALL_GROUPS\tN_GROUPS_PASSED\tGROUPS_PASSED\tALL_FREQUENCIES\n")
+    
+    for locus in locus_group_MAF_status:
+        print()
+        chrom, pos = locus
+        n_groups_total = len(locus_group_MAF_status[locus]["total_groups"])
+        n_groups_passed = len(locus_group_MAF_status[locus]["groups_passed"])
+        groups_passed = ",".join(locus_group_MAF_status[locus]["groups_passed"])
+        total_groups = ",".join(locus_group_MAF_status[locus]["total_groups"])
 
-            ## write summary file
+        #if len(locus_group_MAF_status[locus]["frequencies"]) < 2:
+        #print(locus, locus_group_MAF_status[locus]["frequencies"])
 
-            if all([len(group_freqs_dict[group][locus]["alleles"][0]) == 1,
-                    len(group_freqs_dict[group][locus]["alleles"][1]) == 1]):
-                out_file.write("%s\t%s\t%s\t%s\t%s\n" % (group, 
-                                                         "\t".join([str(i) for i in locus]),
-                                                         "\t".join([str(i) for i in group_freqs_dict[group][locus]["frequencies"]]),
-                                                         "\t".join([str(i) for i in group_freqs_dict[group][locus]["alleles"]]),
-                                                         group_freqs_dict[group][locus]["MAF_status"]))
+        freq_strings = []
+        for i in locus_group_MAF_status[locus]["frequencies"]:
+            freq_str = "%s,%s" % (i[0], i[1])
+            freq_strings.append(freq_str)
 
-            if not locus in cross_group_dict:
-                cross_group_dict[locus] = {}
-            if locus not in group_freqs_dict[group]:
-                cross_group_dict[locus][group] = {}
-                cross_group_dict[locus][group]["frequencies"] = (0,0)
-                cross_group_dict[locus][group]["alleles"] = ("NA","NA")
-                cross_group_dict[locus][group]["MAF_status"] = "FAIL"
-            else:
-                cross_group_dict[locus][group] = group_freqs_dict[group][locus].copy()
+        all_freqs = ";".join(freq_strings)
+                
+        out_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (chrom, pos, n_groups_total, total_groups, n_groups_passed, groups_passed, all_freqs))
 
-
-    print("%s summary written to %s/%s_%s_SNPs_MAF_PASSFAIL_summary.txt" % (data_dir, group, identifier))
+print("Wrote MAF PASS/FAIL results to file: %s" % os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % segregation_maf_threshold))
