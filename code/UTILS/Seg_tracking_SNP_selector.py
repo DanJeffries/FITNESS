@@ -86,8 +86,9 @@ group_file_paths_dict = {group: [] for group in groups}
 
 ## get the files in the data directory
 for file in os.listdir(data_dir):
-    if identifier in file:
-        #print(file)
+    if all([identifier in file,
+            file.endswith(".frq")]):
+        
         for group in groups:
             if group in file:
                 group_file_paths_dict[group].append(os.path.join(data_dir, file))
@@ -159,4 +160,4 @@ with open(os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL_%s.txt" % (s
                 
         out_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (chrom, pos, n_groups_total, total_groups, n_groups_passed, groups_passed, all_freqs))
 
-print("Wrote MAF PASS/FAIL results to file: %s" % os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL_%s.txt" % (segregation_maf_threshold, identifier)))
+print("Wrote MAF PASS/FAIL results to file: %s" % os.path.join(data_dir, "%s_Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % (identifier, segregation_maf_threshold)))
