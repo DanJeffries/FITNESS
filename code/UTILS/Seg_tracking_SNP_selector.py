@@ -141,7 +141,6 @@ with open(os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % segre
     out_file.write("CHROM\tPOS\tN_GROUPS_TOTAL\tALL_GROUPS\tN_GROUPS_PASSED\tGROUPS_PASSED\tALL_FREQUENCIES\n")
     
     for locus in locus_group_MAF_status:
-        print()
         chrom, pos = locus
         n_groups_total = len(locus_group_MAF_status[locus]["total_groups"])
         n_groups_passed = len(locus_group_MAF_status[locus]["groups_passed"])
