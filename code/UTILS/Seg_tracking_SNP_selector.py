@@ -137,7 +137,7 @@ for group in group_freqs_dict:
         if group_freqs_dict[group][locus]["MAF_status"] == "PASS":
             locus_group_MAF_status[locus]["groups_passed"].append(group)
 
-with open(os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % segregation_maf_threshold), "w") as out_file:
+with open(os.path.join(data_dir, "Segregation_SNPs_MAF_%s_PASS_FAIL_%s.txt" % (segregation_maf_threshold, identifier)), "w") as out_file:
     out_file.write("CHROM\tPOS\tN_GROUPS_TOTAL\tALL_GROUPS\tN_GROUPS_PASSED\tGROUPS_PASSED\tALL_FREQUENCIES\n")
     
     for locus in locus_group_MAF_status:
