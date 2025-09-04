@@ -134,20 +134,22 @@ for group in group_freqs_dict:
         
         locus_group_MAF_status[locus]["total_groups"].append(group)
         locus_group_MAF_status[locus]["frequencies"].append(group_freqs_dict[group][locus]["frequencies"])
+        locus_group_MAF_status[locus]["alleles"] = group_freqs_dict[group][locus]["alleles"]
         
         if group_freqs_dict[group][locus]["MAF_status"] == "PASS":
             locus_group_MAF_status[locus]["groups_passed"].append(group)
 
 with open(os.path.join(data_dir, "%s_Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % (identifier, segregation_maf_threshold)), "w") as out_file:
-    out_file.write("CHROM\tPOS\tN_GROUPS_TOTAL\tALL_GROUPS\tN_GROUPS_PASSED\tGROUPS_PASSED\tALL_FREQUENCIES\n")
+    out_file.write("CHROM\tPOS\tALLELES\tN_GROUPS_TOTAL\tALL_GROUPS\tN_GROUPS_PASSED\tGROUPS_PASSED\tALL_FREQUENCIES\n")
     
     for locus in locus_group_MAF_status:
         chrom, pos = locus
+        alleles = ",".join(locus_group_MAF_status[locus]["alleles"])
         n_groups_total = len(locus_group_MAF_status[locus]["total_groups"])
         n_groups_passed = len(locus_group_MAF_status[locus]["groups_passed"])
         groups_passed = ",".join(locus_group_MAF_status[locus]["groups_passed"])
         total_groups = ",".join(locus_group_MAF_status[locus]["total_groups"])
-
+        
         #if len(locus_group_MAF_status[locus]["frequencies"]) < 2:
         #print(locus, locus_group_MAF_status[locus]["frequencies"])
 
@@ -158,6 +160,6 @@ with open(os.path.join(data_dir, "%s_Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % (i
 
         all_freqs = ";".join(freq_strings)
                 
-        out_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (chrom, pos, n_groups_total, total_groups, n_groups_passed, groups_passed, all_freqs))
+        out_file.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (chrom, pos, alleles, n_groups_total, total_groups, n_groups_passed, groups_passed, all_freqs))
 
 print("Wrote MAF PASS/FAIL results to file: %s" % os.path.join(data_dir, "%s_Segregation_SNPs_MAF_%s_PASS_FAIL.txt" % (identifier, segregation_maf_threshold)))
