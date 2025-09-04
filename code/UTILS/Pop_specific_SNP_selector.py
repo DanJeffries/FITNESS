@@ -51,7 +51,8 @@ group_file_paths_dict = {group: [] for group in groups}
 
 ## get the files in the data directory
 for file in os.listdir(data_dir):
-    if identifier in file:
+    if all([identifier in file,
+            file.endswith(".frq")]):
         for group in groups:
             if group in file:
                 group_file_paths_dict[group].append(os.path.join(data_dir, file))
