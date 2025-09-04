@@ -117,18 +117,21 @@ if len(pop_specific_allele_loci) > 0:
 
     with open("%s/%s_population_specific_allele_loci.txt" % (data_dir, identifier), "w") as out_file:
 
-        out_file.write("#CHROM\tPOS\tALLELES\t%s\n" % "\t".join(groups))
+        out_file.write("#CHROM\tPOS\t%s\tALLELES\n" % "\t".join(groups))
 
         for locus in pop_specific_allele_loci:
             output_line = [locus[0], locus[1]]
-            output_line.append(",".join(cross_group_dict[locus][group]["alleles"])) ## hacky, but doesn't matter what group. 
             
             for group in groups:
                 #print(group, cross_group_dict[locus])
                 if group in cross_group_dict[locus]:
+                    alleles = ",".join(cross_group_dict[locus][group]["alleles"]) ## hacky, but doesn't matter what group - its the same for all of them
                     output_line.append(cross_group_dict[locus][group]["frequencies"][1])
                 else:
                     output_line.append("NA")
+
+            output_line.append(alleles)
+
             out_file.write("\t".join([str(i) for i in output_line]) + "\n")   
 
     print("%s/%s_population_specific_allele_loci.txt" % (data_dir, identifier))
