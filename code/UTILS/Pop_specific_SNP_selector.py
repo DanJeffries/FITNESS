@@ -121,7 +121,7 @@ if len(pop_specific_allele_loci) > 0:
 
         for locus in pop_specific_allele_loci:
             output_line = [locus[0], locus[1]]
-            output_line.append(",".join(group_freqs_dict[group][locus]["alleles"])) ## hacky, but doesn't matter what group. 
+            output_line.append(",".join(cross_group_dict[locus][group]["alleles"])) ## hacky, but doesn't matter what group. 
             
             for group in groups:
                 #print(group, cross_group_dict[locus])
