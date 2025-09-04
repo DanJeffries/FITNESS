@@ -117,7 +117,7 @@ if len(pop_specific_allele_loci) > 0:
 
     with open("%s/%s_population_specific_allele_loci.txt" % (data_dir, identifier), "w") as out_file:
 
-        out_file.write("#CHROM\tPOS\t%s\n" % "\t".join(groups))
+        out_file.write("#CHROM\tPOS\tALLELES\t%s\n" % "\t".join(groups))
 
         for locus in pop_specific_allele_loci:
             output_line = [locus[0], locus[1]]
