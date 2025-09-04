@@ -1,0 +1,1486 @@
+/usr/local/lib/python3.8/dist-packages/tensorflow_addons/utils/tfa_eol_msg.py:23: UserWarning: 
+
+TensorFlow Addons (TFA) has ended development and introduction of new features.
+TFA has entered a minimal maintenance and release mode until a planned end of life in May 2024.
+Please modify downstream libraries to take dependencies from other repositories in our TensorFlow community (e.g. Keras, Keras-CV, and Keras-NLP). 
+
+For more information see: https://github.com/tensorflow/addons/issues/2807 
+
+  warnings.warn(
+2024-12-11 16:55:43.369627: E tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:267] failed call to cuInit: CUDA_ERROR_SYSTEM_DRIVER_MISMATCH: system has unsupported display driver / cuda driver combination
+2024-12-11 16:55:43.369770: E tensorflow/compiler/xla/stream_executor/cuda/cuda_diagnostics.cc:313] kernel version 550.127.5 does not match DSO version 465.19.1 -- cannot find working devices in this configuration
+I1211 16:55:43.369888 139953929926464 train.py:92] Running with debug=False
+I1211 16:55:43.370121 139953929926464 train.py:100] Use TPU at local
+I1211 16:55:43.370195 139953929926464 train.py:103] experiment_dir: /home/final_training_run/LR0.001_BS1024
+WARNING:tensorflow:There are non-GPU devices in `tf.distribute.Strategy`, not using nccl allreduce.
+W1211 16:55:43.377184 139953929926464 cross_device_ops.py:1387] There are non-GPU devices in `tf.distribute.Strategy`, not using nccl allreduce.
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:CPU:0',)
+I1211 16:55:43.435118 139953929926464 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:CPU:0',)
+/usr/local/lib/python3.8/dist-packages/keras/applications/inception_v3.py:138: UserWarning: This model usually expects 1 or 3 input channels. However, it was passed an input_shape with 7 input channels.
+  input_shape = imagenet_utils.obtain_input_shape(
+I1211 16:55:48.321949 139953929926464 keras_modeling.py:325] Number of l2 regularizers: 95.
+I1211 16:55:48.411797 139953929926464 keras_modeling.py:362] inceptionv3: load_weights from checkpoint: /home/final_training_run/LR0.01_BS1024/checkpoints/ckpt-700
+I1211 16:55:49.643186 139953929926464 train.py:191] Exponential Decay: initial_learning_rate=0.001
+ decay_steps=1632
+ learning_rate_decay_rate=0.947
+I1211 16:55:49.643337 139953929926464 train.py:203] Use LinearWarmup: 
+ warmup_steps=10000
+ warmup_learning_rate=0.0001
+I1211 16:55:49.752564 139953929926464 keras_modeling.py:480] Initialized Checkpoint
+WARNING:tensorflow:From /usr/local/lib/python3.8/dist-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+W1211 16:55:49.846022 139953929926464 deprecation.py:350] From /usr/local/lib/python3.8/dist-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2024-12-11 16:55:50.195731: W tensorflow/core/framework/dataset.cc:769] Input of GeneratorDatasetOp::Dataset will not be optimized because the dataset does not implement the AsGraphDefInternal() method needed to apply optimizations.
+I1211 16:55:50.243938 139953929926464 train.py:316] 
+
+Training Examples: 836305
+Batch Size: 1024
+Epochs: 1
+Steps per epoch: 816
+Steps per tune: 38
+Num train steps: 816
+
+
+I1211 16:55:50.309715 139953929926464 train.py:384] Starting epoch 0
+I1211 16:55:50.310543 139953929926464 train.py:391] Performing initial evaluation of warmstart model.
+I1211 16:55:50.310585 139953929926464 train.py:361] Running tune at step=0 epoch=0
+I1211 16:55:50.310623 139953929926464 train.py:366] Tune step 0 / 38 (0.0%)
+I1211 17:07:21.738543 139936126965504 logging_writer.py:48] [0] tune/categorical_accuracy=0.9498612284660339, tune/categorical_crossentropy=0.6007066369056702, tune/f1_het=0.9036638140678406, tune/f1_homalt=0.9925796389579773, tune/f1_homref=0.6553713083267212, tune/f1_macro=0.8505382537841797, tune/f1_micro=0.9498612284660339, tune/f1_weighted=0.9454814195632935, tune/false_negatives_1=2203.0, tune/false_positives_1=1695.0, tune/loss=0.6007078289985657, tune/precision_1=0.9558639526367188, tune/precision_het=0.8514492511749268, tune/precision_homalt=0.9908437132835388, tune/precision_homref=0.9110640287399292, tune/recall_1=0.9433850646018982, tune/recall_het=0.9571672677993774, tune/recall_homalt=0.9939008951187134, tune/recall_homref=0.5020419955253601, tune/true_negatives_1=76129.0, tune/true_positives_1=36709.0
+I1211 17:07:21.751348 139953929926464 train.py:394] Warmstart checkpoint best checkpoint metric: tune/f1_weighted=0.9454814
+I1211 17:08:36.267977 139953929926464 train.py:413] Finished training step 0.
+I1211 17:08:36.334363 139936126965504 logging_writer.py:48] [0] epoch=0, train/categorical_accuracy=0.9228515625, train/categorical_crossentropy=0.6257102489471436, train/f1_het=0.879456639289856, train/f1_homalt=0.9906831979751587, train/f1_homref=0.5614035129547119, train/f1_macro=0.8105144500732422, train/f1_micro=0.9228515625, train/f1_weighted=0.9142948389053345, train/false_negatives=89.0, train/false_positives=67.0, train/learning_rate=9.999999747378752e-05, train/loss=0.6257108449935913, train/precision=0.9331337213516235, train/precision_het=0.8181818127632141, train/precision_homalt=0.9906687140464783, train/precision_homref=0.9019607901573181, train/recall=0.9130859375, train/recall_het=0.9298893213272095, train/recall_homalt=0.9937597513198853, train/recall_homref=0.4107142984867096, train/true_negatives=1981.0, train/true_positives=935.0
+I1211 17:09:33.030545 139953929926464 train.py:413] Finished training step 1.
+I1211 17:10:29.368103 139953929926464 train.py:413] Finished training step 2.
+I1211 17:11:25.721622 139953929926464 train.py:413] Finished training step 3.
+I1211 17:12:22.092455 139953929926464 train.py:413] Finished training step 4.
+I1211 17:14:14.956943 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 0.7% (6/816), ETA: 12h42m
+I1211 17:14:14.960579 139936126965504 logging_writer.py:48] [6] steps_per_sec=0.0177154
+I1211 17:14:14.960682 139936126965504 logging_writer.py:48] [6] uptime=1104.71
+I1211 17:19:53.212995 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 1.5% (12/816), ETA: 12h35m
+I1211 17:19:53.220937 139936126965504 logging_writer.py:48] [12] steps_per_sec=0.017738
+I1211 17:19:53.221065 139936126965504 logging_writer.py:48] [12] uptime=1442.97
+I1211 17:25:31.242184 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 2.2% (18/816), ETA: 12h29m
+I1211 17:25:31.246425 139936126965504 logging_writer.py:48] [18] steps_per_sec=0.0177499
+I1211 17:25:31.246528 139936126965504 logging_writer.py:48] [18] uptime=1780.99
+I1211 17:31:09.279382 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 2.9% (24/816), ETA: 12h23m
+I1211 17:31:09.283322 139936126965504 logging_writer.py:48] [24] steps_per_sec=0.0177495
+I1211 17:31:09.283427 139936126965504 logging_writer.py:48] [24] uptime=2119.03
+I1211 17:36:47.126964 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 3.7% (30/816), ETA: 12h17m
+I1211 17:36:47.134916 139936126965504 logging_writer.py:48] [30] steps_per_sec=0.0177595
+I1211 17:36:47.135023 139936126965504 logging_writer.py:48] [30] uptime=2456.88
+I1211 17:42:25.188853 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 4.4% (36/816), ETA: 12h12m
+I1211 17:42:25.195917 139936126965504 logging_writer.py:48] [36] steps_per_sec=0.0177482
+I1211 17:42:25.196022 139936126965504 logging_writer.py:48] [36] uptime=2794.94
+I1211 17:48:03.263073 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 5.1% (42/816), ETA: 12h6m
+I1211 17:48:03.271921 139936126965504 logging_writer.py:48] [42] steps_per_sec=0.0177476
+I1211 17:48:03.272044 139936126965504 logging_writer.py:48] [42] uptime=3133.02
+I1211 17:53:41.042006 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 5.9% (48/816), ETA: 12h0m
+I1211 17:53:41.049208 139936126965504 logging_writer.py:48] [48] steps_per_sec=0.0177631
+I1211 17:53:41.049319 139936126965504 logging_writer.py:48] [48] uptime=3470.8
+I1211 17:59:17.412920 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 6.6% (54/816), ETA: 11h51m
+I1211 17:59:17.416579 139936126965504 logging_writer.py:48] [54] steps_per_sec=0.0178375
+I1211 17:59:17.416680 139936126965504 logging_writer.py:48] [54] uptime=3807.16
+I1211 18:04:53.823508 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 7.4% (60/816), ETA: 11h46m
+I1211 18:04:53.829916 139936126965504 logging_writer.py:48] [60] steps_per_sec=0.0178353
+I1211 18:04:53.830022 139936126965504 logging_writer.py:48] [60] uptime=4143.58
+I1211 18:10:30.220478 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 8.1% (66/816), ETA: 11h40m
+I1211 18:10:30.224487 139936126965504 logging_writer.py:48] [66] steps_per_sec=0.0178361
+I1211 18:10:30.224591 139936126965504 logging_writer.py:48] [66] uptime=4479.97
+I1211 18:16:06.641417 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 8.8% (72/816), ETA: 11h35m
+I1211 18:16:06.645322 139936126965504 logging_writer.py:48] [72] steps_per_sec=0.0178348
+I1211 18:16:06.645423 139936126965504 logging_writer.py:48] [72] uptime=4816.39
+I1211 18:21:43.144015 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 9.6% (78/816), ETA: 11h29m
+I1211 18:21:43.147878 139936126965504 logging_writer.py:48] [78] steps_per_sec=0.0178305
+I1211 18:21:43.147975 139936126965504 logging_writer.py:48] [78] uptime=5152.9
+I1211 18:27:19.830644 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 10.3% (84/816), ETA: 11h24m
+I1211 18:27:19.943972 139936126965504 logging_writer.py:48] [84] steps_per_sec=0.0178207
+I1211 18:27:19.944167 139936126965504 logging_writer.py:48] [84] uptime=5489.69
+I1211 18:32:56.483761 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 11.0% (90/816), ETA: 11h18m
+I1211 18:32:56.487468 139936126965504 logging_writer.py:48] [90] steps_per_sec=0.0178225
+I1211 18:32:56.487570 139936126965504 logging_writer.py:48] [90] uptime=5826.24
+I1211 18:38:33.178449 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 11.8% (96/816), ETA: 11h13m
+I1211 18:38:33.182531 139936126965504 logging_writer.py:48] [96] steps_per_sec=0.0178203
+I1211 18:38:33.182633 139936126965504 logging_writer.py:48] [96] uptime=6162.93
+I1211 18:42:17.660033 139936126965504 logging_writer.py:48] [100] epoch=0, train/categorical_accuracy=0.9385839700698853, train/categorical_crossentropy=0.6122487783432007, train/f1_het=0.911300778388977, train/f1_homalt=0.9919558167457581, train/f1_homref=0.6390255093574524, train/f1_macro=0.8474273681640625, train/f1_micro=0.9385839700698853, train/f1_weighted=0.9321994781494141, train/false_negatives=7038.0, train/false_positives=5636.0, train/learning_rate=0.00010621273395372555, train/loss=0.6122497320175171, train/precision=0.9441969394683838, train/precision_het=0.8605988025665283, train/precision_homalt=0.9883922338485718, train/precision_homref=0.9175460338592529, train/recall=0.9312695264816284, train/recall_het=0.9642693996429443, train/recall_homalt=0.9951383471488953, train/recall_homref=0.4729854464530945, train/true_negatives=199164.0, train/true_positives=95362.0
+I1211 18:44:09.849453 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 12.5% (102/816), ETA: 11h7m
+I1211 18:44:09.853125 139936126965504 logging_writer.py:48] [102] steps_per_sec=0.0178216
+I1211 18:44:09.853223 139936126965504 logging_writer.py:48] [102] uptime=6499.6
+I1211 18:49:46.469170 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 13.2% (108/816), ETA: 11h2m
+I1211 18:49:46.476781 139936126965504 logging_writer.py:48] [108] steps_per_sec=0.0178243
+I1211 18:49:46.476901 139936126965504 logging_writer.py:48] [108] uptime=6836.22
+I1211 18:55:23.082380 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 14.0% (114/816), ETA: 10h56m
+I1211 18:55:23.090796 139936126965504 logging_writer.py:48] [114] steps_per_sec=0.0178246
+I1211 18:55:23.090921 139936126965504 logging_writer.py:48] [114] uptime=7172.84
+I1211 19:00:59.797347 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 14.7% (120/816), ETA: 10h50m
+I1211 19:00:59.801104 139936126965504 logging_writer.py:48] [120] steps_per_sec=0.0178192
+I1211 19:00:59.801206 139936126965504 logging_writer.py:48] [120] uptime=7509.55
+I1211 19:06:36.758682 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 15.4% (126/816), ETA: 10h45m
+I1211 19:06:36.762581 139936126965504 logging_writer.py:48] [126] steps_per_sec=0.0178062
+I1211 19:06:36.762681 139936126965504 logging_writer.py:48] [126] uptime=7846.51
+I1211 19:12:13.415920 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 16.2% (132/816), ETA: 10h39m
+I1211 19:12:13.419888 139936126965504 logging_writer.py:48] [132] steps_per_sec=0.0178223
+I1211 19:12:13.419993 139936126965504 logging_writer.py:48] [132] uptime=8183.17
+I1211 19:17:50.068088 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 16.9% (138/816), ETA: 10h34m
+I1211 19:17:50.071930 139936126965504 logging_writer.py:48] [138] steps_per_sec=0.0178225
+I1211 19:17:50.072031 139936126965504 logging_writer.py:48] [138] uptime=8519.82
+I1211 19:23:26.681031 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 17.6% (144/816), ETA: 10h28m
+I1211 19:23:26.685049 139936126965504 logging_writer.py:48] [144] steps_per_sec=0.0178246
+I1211 19:23:26.685149 139936126965504 logging_writer.py:48] [144] uptime=8856.43
+I1211 19:29:03.377583 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 18.4% (150/816), ETA: 10h22m
+I1211 19:29:03.385810 139936126965504 logging_writer.py:48] [150] steps_per_sec=0.0178202
+I1211 19:29:03.385928 139936126965504 logging_writer.py:48] [150] uptime=9193.13
+I1211 19:34:39.977226 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 19.1% (156/816), ETA: 10h17m
+I1211 19:34:39.980940 139936126965504 logging_writer.py:48] [156] steps_per_sec=0.0178253
+I1211 19:34:39.981041 139936126965504 logging_writer.py:48] [156] uptime=9529.73
+I1211 19:40:16.634914 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 19.9% (162/816), ETA: 10h11m
+I1211 19:40:16.639425 139936126965504 logging_writer.py:48] [162] steps_per_sec=0.0178223
+I1211 19:40:16.639527 139936126965504 logging_writer.py:48] [162] uptime=9866.39
+I1211 19:45:53.258843 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 20.6% (168/816), ETA: 10h5m
+I1211 19:45:53.267885 139936126965504 logging_writer.py:48] [168] steps_per_sec=0.017824
+I1211 19:45:53.268001 139936126965504 logging_writer.py:48] [168] uptime=10203
+I1211 19:51:29.900398 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 21.3% (174/816), ETA: 10h0m
+I1211 19:51:29.904452 139936126965504 logging_writer.py:48] [174] steps_per_sec=0.0178231
+I1211 19:51:29.904556 139936126965504 logging_writer.py:48] [174] uptime=10539.7
+I1211 19:57:06.584023 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 22.1% (180/816), ETA: 9h54m
+I1211 19:57:06.587958 139936126965504 logging_writer.py:48] [180] steps_per_sec=0.0178209
+I1211 19:57:06.588064 139936126965504 logging_writer.py:48] [180] uptime=10876.3
+I1211 20:02:43.208846 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 22.8% (186/816), ETA: 9h49m
+I1211 20:02:43.212502 139936126965504 logging_writer.py:48] [186] steps_per_sec=0.017824
+I1211 20:02:43.212604 139936126965504 logging_writer.py:48] [186] uptime=11213
+I1211 20:08:19.821887 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 23.5% (192/816), ETA: 9h43m
+I1211 20:08:19.825848 139936126965504 logging_writer.py:48] [192] steps_per_sec=0.0178246
+I1211 20:08:19.827296 139936126965504 logging_writer.py:48] [192] uptime=11549.6
+I1211 20:13:56.402213 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 24.3% (198/816), ETA: 9h37m
+I1211 20:13:56.405878 139936126965504 logging_writer.py:48] [198] steps_per_sec=0.0178264
+I1211 20:13:56.405982 139936126965504 logging_writer.py:48] [198] uptime=11886.2
+I1211 20:15:48.695209 139936126965504 logging_writer.py:48] [200] epoch=0, train/categorical_accuracy=0.9389941692352295, train/categorical_crossentropy=0.6117215156555176, train/f1_het=0.9130046367645264, train/f1_homalt=0.991935670375824, train/f1_homref=0.6371902227401733, train/f1_macro=0.847376823425293, train/f1_micro=0.9389941692352295, train/f1_weighted=0.9323286414146423, train/false_negatives=6960.0, train/false_positives=5587.0, train/learning_rate=0.00011242547043366358, train/loss=0.6117221117019653, train/precision=0.9446979761123657, train/precision_het=0.8618885278701782, train/precision_homalt=0.9881464242935181, train/precision_homref=0.9310724139213562, train/recall=0.9320312738418579, train/recall_het=0.9657265543937683, train/recall_homalt=0.9958745241165161, train/recall_homref=0.4706263840198517, train/true_negatives=199213.0, train/true_positives=95440.0
+I1211 20:15:48.730891 139953929926464 train.py:361] Running tune at step=200 epoch=0
+I1211 20:15:48.731030 139953929926464 train.py:366] Tune step 0 / 38 (0.0%)
+I1211 20:27:10.053735 139936126965504 logging_writer.py:48] [200] tune/categorical_accuracy=0.9507864117622375, tune/categorical_crossentropy=0.6002222299575806, tune/f1_het=0.9057683944702148, tune/f1_homalt=0.992714524269104, tune/f1_homref=0.6530990600585938, tune/f1_macro=0.850527286529541, tune/f1_micro=0.9507864117622375, tune/f1_weighted=0.9457770586013794, tune/false_negatives_1=2155.0, tune/false_positives_1=1706.0, tune/loss=0.6002230048179626, tune/precision_1=0.9556456804275513, tune/precision_het=0.8489975929260254, tune/precision_homalt=0.9897267818450928, tune/precision_homref=0.9361110925674438, tune/recall_1=0.9446186423301697, tune/recall_het=0.9643280506134033, tune/recall_homalt=0.9951223134994507, tune/recall_homref=0.4908243417739868, tune/true_negatives_1=76118.0, tune/true_positives_1=36757.0
+I1211 20:27:11.650084 139953929926464 train.py:456] Saved checkpoint tune/f1_weighted=0.94577706 step=200 epoch=0 path=/home/final_training_run/LR0.001_BS1024/checkpoints/ckpt-200
+I1211 20:27:11.650520 139936126965504 logging_writer.py:48] [200] tune/early_stopping=0
+I1211 20:28:07.038298 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 24.6% (201/816), ETA: 2d26m
+I1211 20:28:07.042037 139936126965504 logging_writer.py:48] [201] steps_per_sec=0.00352677
+I1211 20:28:07.042140 139936126965504 logging_writer.py:48] [201] uptime=12736.8
+I1211 20:33:43.470983 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 25.4% (207/816), ETA: 9h29m
+I1211 20:33:43.474882 139936126965504 logging_writer.py:48] [207] steps_per_sec=0.0178342
+I1211 20:33:43.474983 139936126965504 logging_writer.py:48] [207] uptime=13073.2
+I1211 20:39:20.216593 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 26.1% (213/816), ETA: 9h24m
+I1211 20:39:20.220520 139936126965504 logging_writer.py:48] [213] steps_per_sec=0.0178176
+I1211 20:39:20.220621 139936126965504 logging_writer.py:48] [213] uptime=13410
+I1211 20:44:56.971785 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 26.8% (219/816), ETA: 9h18m
+I1211 20:44:56.975688 139936126965504 logging_writer.py:48] [219] steps_per_sec=0.0178171
+I1211 20:44:56.975788 139936126965504 logging_writer.py:48] [219] uptime=13746.7
+I1211 20:50:33.811878 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 27.6% (225/816), ETA: 9h12m
+I1211 20:50:33.815818 139936126965504 logging_writer.py:48] [225] steps_per_sec=0.0178126
+I1211 20:50:33.815922 139936126965504 logging_writer.py:48] [225] uptime=14083.6
+I1211 20:56:10.549422 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 28.3% (231/816), ETA: 9h7m
+I1211 20:56:10.556917 139936126965504 logging_writer.py:48] [231] steps_per_sec=0.017818
+I1211 20:56:10.557027 139936126965504 logging_writer.py:48] [231] uptime=14420.3
+I1211 21:01:47.358976 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 29.0% (237/816), ETA: 9h1m
+I1211 21:01:47.362891 139936126965504 logging_writer.py:48] [237] steps_per_sec=0.0178142
+I1211 21:01:47.362990 139936126965504 logging_writer.py:48] [237] uptime=14757.1
+I1211 21:07:24.108947 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 29.8% (243/816), ETA: 8h55m
+I1211 21:07:24.112677 139936126965504 logging_writer.py:48] [243] steps_per_sec=0.0178174
+I1211 21:07:24.112779 139936126965504 logging_writer.py:48] [243] uptime=15093.9
+I1211 21:13:00.836108 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 30.5% (249/816), ETA: 8h50m
+I1211 21:13:00.840046 139936126965504 logging_writer.py:48] [249] steps_per_sec=0.0178186
+I1211 21:13:00.840150 139936126965504 logging_writer.py:48] [249] uptime=15430.6
+I1211 21:18:37.644333 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 31.2% (255/816), ETA: 8h44m
+I1211 21:18:37.648292 139936126965504 logging_writer.py:48] [255] steps_per_sec=0.0178143
+I1211 21:18:37.648392 139936126965504 logging_writer.py:48] [255] uptime=15767.4
+I1211 21:24:14.462307 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 32.0% (261/816), ETA: 8h39m
+I1211 21:24:14.466242 139936126965504 logging_writer.py:48] [261] steps_per_sec=0.0178138
+I1211 21:24:14.466342 139936126965504 logging_writer.py:48] [261] uptime=16104.2
+I1211 21:29:51.220745 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 32.7% (267/816), ETA: 8h33m
+I1211 21:29:51.224693 139936126965504 logging_writer.py:48] [267] steps_per_sec=0.0178169
+I1211 21:29:51.224793 139936126965504 logging_writer.py:48] [267] uptime=16441
+I1211 21:35:27.965144 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 33.5% (273/816), ETA: 8h27m
+I1211 21:35:27.969080 139936126965504 logging_writer.py:48] [273] steps_per_sec=0.0178177
+I1211 21:35:27.969182 139936126965504 logging_writer.py:48] [273] uptime=16777.7
+I1211 21:41:04.761294 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 34.2% (279/816), ETA: 8h22m
+I1211 21:41:04.765051 139936126965504 logging_writer.py:48] [279] steps_per_sec=0.0178149
+I1211 21:41:04.765152 139936126965504 logging_writer.py:48] [279] uptime=17114.5
+I1211 21:46:41.495536 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 34.9% (285/816), ETA: 8h16m
+I1211 21:46:41.499278 139936126965504 logging_writer.py:48] [285] steps_per_sec=0.0178182
+I1211 21:46:41.499377 139936126965504 logging_writer.py:48] [285] uptime=17451.2
+I1211 21:52:18.244145 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 35.7% (291/816), ETA: 8h11m
+I1211 21:52:18.248229 139936126965504 logging_writer.py:48] [291] steps_per_sec=0.0178174
+I1211 21:52:18.248334 139936126965504 logging_writer.py:48] [291] uptime=17788
+I1211 21:57:54.974164 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 36.4% (297/816), ETA: 8h5m
+I1211 21:57:54.978079 139936126965504 logging_writer.py:48] [297] steps_per_sec=0.0178184
+I1211 21:57:54.978182 139936126965504 logging_writer.py:48] [297] uptime=18124.7
+I1211 22:00:43.454831 139936126965504 logging_writer.py:48] [300] epoch=0, train/categorical_accuracy=0.9399316310882568, train/categorical_crossentropy=0.6112956404685974, train/f1_het=0.9112522006034851, train/f1_homalt=0.9924709796905518, train/f1_homref=0.6427980065345764, train/f1_macro=0.8488404154777527, train/f1_micro=0.9399316310882568, train/f1_weighted=0.9332777857780457, train/false_negatives=6938.0, train/false_positives=5561.0, train/learning_rate=0.00011863819963764399, train/loss=0.6112960577011108, train/precision=0.9449531435966492, train/precision_het=0.8563783764839172, train/precision_homalt=0.9886179566383362, train/precision_homref=0.9405995607376099, train/recall=0.9322460889816284, train/recall_het=0.9687252044677734, train/recall_homalt=0.9958436489105225, train/recall_homref=0.46684423089027405, train/true_negatives=199239.0, train/true_positives=95462.0
+I1211 22:03:31.748974 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 37.1% (303/816), ETA: 7h59m
+I1211 22:03:31.752923 139936126965504 logging_writer.py:48] [303] steps_per_sec=0.0178161
+I1211 22:03:31.753024 139936126965504 logging_writer.py:48] [303] uptime=18461.5
+I1211 22:09:08.593415 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 37.9% (309/816), ETA: 7h54m
+I1211 22:09:08.597347 139936126965504 logging_writer.py:48] [309] steps_per_sec=0.0178124
+I1211 22:09:08.597450 139936126965504 logging_writer.py:48] [309] uptime=18798.3
+I1211 22:14:45.308258 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 38.6% (315/816), ETA: 7h48m
+I1211 22:14:45.312131 139936126965504 logging_writer.py:48] [315] steps_per_sec=0.0178192
+I1211 22:14:45.312231 139936126965504 logging_writer.py:48] [315] uptime=19135.1
+I1211 22:20:22.050412 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 39.3% (321/816), ETA: 7h43m
+I1211 22:20:22.054241 139936126965504 logging_writer.py:48] [321] steps_per_sec=0.0178178
+I1211 22:20:22.054340 139936126965504 logging_writer.py:48] [321] uptime=19471.8
+I1211 22:25:58.761000 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 40.1% (327/816), ETA: 7h37m
+I1211 22:25:58.764917 139936126965504 logging_writer.py:48] [327] steps_per_sec=0.0178195
+I1211 22:25:58.765017 139936126965504 logging_writer.py:48] [327] uptime=19808.5
+I1211 22:31:35.559810 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 40.8% (333/816), ETA: 7h31m
+I1211 22:31:35.563719 139936126965504 logging_writer.py:48] [333] steps_per_sec=0.0178148
+I1211 22:31:35.563822 139936126965504 logging_writer.py:48] [333] uptime=20145.3
+I1211 22:37:12.286686 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 41.5% (339/816), ETA: 7h26m
+I1211 22:37:12.290574 139936126965504 logging_writer.py:48] [339] steps_per_sec=0.0178186
+I1211 22:37:12.290677 139936126965504 logging_writer.py:48] [339] uptime=20482
+I1211 22:42:49.023205 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 42.3% (345/816), ETA: 7h20m
+I1211 22:42:49.027056 139936126965504 logging_writer.py:48] [345] steps_per_sec=0.0178181
+I1211 22:42:49.027159 139936126965504 logging_writer.py:48] [345] uptime=20818.8
+I1211 22:48:25.795341 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 43.0% (351/816), ETA: 7h14m
+I1211 22:48:25.802917 139936126965504 logging_writer.py:48] [351] steps_per_sec=0.0178162
+I1211 22:48:25.803027 139936126965504 logging_writer.py:48] [351] uptime=21155.6
+I1211 22:54:02.615911 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 43.8% (357/816), ETA: 7h9m
+I1211 22:54:02.622847 139936126965504 logging_writer.py:48] [357] steps_per_sec=0.0178136
+I1211 22:54:02.622960 139936126965504 logging_writer.py:48] [357] uptime=21492.4
+I1211 22:59:39.347586 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 44.5% (363/816), ETA: 7h3m
+I1211 22:59:39.351536 139936126965504 logging_writer.py:48] [363] steps_per_sec=0.0178183
+I1211 22:59:39.351640 139936126965504 logging_writer.py:48] [363] uptime=21829.1
+I1211 23:05:16.052602 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 45.2% (369/816), ETA: 6h58m
+I1211 23:05:16.056573 139936126965504 logging_writer.py:48] [369] steps_per_sec=0.0178198
+I1211 23:05:16.056674 139936126965504 logging_writer.py:48] [369] uptime=22165.8
+I1211 23:10:52.770178 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 46.0% (375/816), ETA: 6h52m
+I1211 23:10:52.774152 139936126965504 logging_writer.py:48] [375] steps_per_sec=0.0178191
+I1211 23:10:52.774251 139936126965504 logging_writer.py:48] [375] uptime=22502.5
+I1211 23:16:29.485919 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 46.7% (381/816), ETA: 6h46m
+I1211 23:16:29.489819 139936126965504 logging_writer.py:48] [381] steps_per_sec=0.0178192
+I1211 23:16:29.502394 139936126965504 logging_writer.py:48] [381] uptime=22839.2
+I1211 23:22:06.281718 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 47.4% (387/816), ETA: 6h41m
+I1211 23:22:06.285646 139936126965504 logging_writer.py:48] [387] steps_per_sec=0.0178149
+I1211 23:22:06.285748 139936126965504 logging_writer.py:48] [387] uptime=23176
+I1211 23:27:43.012162 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 48.2% (393/816), ETA: 6h35m
+I1211 23:27:43.016068 139936126965504 logging_writer.py:48] [393] steps_per_sec=0.0178184
+I1211 23:27:43.016167 139936126965504 logging_writer.py:48] [393] uptime=23512.8
+I1211 23:33:19.764386 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 48.9% (399/816), ETA: 6h30m
+I1211 23:33:19.768312 139936126965504 logging_writer.py:48] [399] steps_per_sec=0.0178173
+I1211 23:33:19.768413 139936126965504 logging_writer.py:48] [399] uptime=23849.5
+I1211 23:34:15.971046 139936126965504 logging_writer.py:48] [400] epoch=0, train/categorical_accuracy=0.9392383098602295, train/categorical_crossentropy=0.611764132976532, train/f1_het=0.9108256101608276, train/f1_homalt=0.9926542043685913, train/f1_homref=0.6360158324241638, train/f1_macro=0.8464984893798828, train/f1_micro=0.9392383098602295, train/f1_weighted=0.932519793510437, train/false_negatives=6986.0, train/false_positives=5608.0, train/learning_rate=0.00012485093611758202, train/loss=0.6117648482322693, train/precision=0.9444873332977295, train/precision_het=0.8571518063545227, train/precision_homalt=0.9892264008522034, train/precision_homref=0.9322097301483154, train/recall=0.9317773580551147, train/recall_het=0.9668139219284058, train/recall_homalt=0.99603670835495, train/recall_homref=0.4620382487773895, train/true_negatives=199192.0, train/true_positives=95414.0
+I1211 23:34:16.007214 139953929926464 train.py:361] Running tune at step=400 epoch=0
+I1211 23:34:16.007348 139953929926464 train.py:366] Tune step 0 / 38 (0.0%)
+I1211 23:45:37.896504 139936126965504 logging_writer.py:48] [400] tune/categorical_accuracy=0.9509919881820679, tune/categorical_crossentropy=0.6001537442207336, tune/f1_het=0.9060921669006348, tune/f1_homalt=0.9927675127983093, tune/f1_homref=0.654188334941864, tune/f1_macro=0.8510160446166992, tune/f1_micro=0.9509919881820679, tune/f1_weighted=0.9459828734397888, tune/false_negatives_1=2151.0, tune/false_positives_1=1712.0, tune/loss=0.6001548171043396, tune/precision_1=0.9555012583732605, tune/precision_het=0.8483412265777588, tune/precision_homalt=0.989725649356842, tune/precision_homref=0.9374651312828064, tune/recall_1=0.9447214007377625, tune/recall_het=0.9655308723449707, tune/recall_homalt=0.9950860738754272, tune/recall_homref=0.4893617033958435, tune/true_negatives_1=76112.0, tune/true_positives_1=36761.0
+I1211 23:45:39.003690 139953929926464 train.py:456] Saved checkpoint tune/f1_weighted=0.9459829 step=400 epoch=0 path=/home/final_training_run/LR0.001_BS1024/checkpoints/ckpt-400
+I1211 23:45:39.004175 139936126965504 logging_writer.py:48] [400] tune/early_stopping=0
+I1211 23:46:34.407655 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 49.1% (401/816), ETA: 1d21h48m
+I1211 23:46:34.411401 139936126965504 logging_writer.py:48] [401] steps_per_sec=0.00251685
+I1211 23:46:34.411500 139936126965504 logging_writer.py:48] [401] uptime=24644.2
+I1211 23:52:11.267624 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 49.9% (407/816), ETA: 6h22m
+I1211 23:52:11.271556 139936126965504 logging_writer.py:48] [407] steps_per_sec=0.0178116
+I1211 23:52:11.271656 139936126965504 logging_writer.py:48] [407] uptime=24981
+I1211 23:57:48.113331 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 50.6% (413/816), ETA: 6h17m
+I1211 23:57:48.117062 139936126965504 logging_writer.py:48] [413] steps_per_sec=0.0178123
+I1211 23:57:48.117163 139936126965504 logging_writer.py:48] [413] uptime=25317.9
+I1212 00:03:25.004040 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 51.3% (419/816), ETA: 6h11m
+I1212 00:03:25.007944 139936126965504 logging_writer.py:48] [419] steps_per_sec=0.0178099
+I1212 00:03:25.009367 139936126965504 logging_writer.py:48] [419] uptime=25654.8
+I1212 00:09:01.841676 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 52.1% (425/816), ETA: 6h5m
+I1212 00:09:01.845591 139936126965504 logging_writer.py:48] [425] steps_per_sec=0.0178127
+I1212 00:09:01.845690 139936126965504 logging_writer.py:48] [425] uptime=25991.6
+I1212 00:14:38.740663 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 52.8% (431/816), ETA: 6h0m
+I1212 00:14:38.744380 139936126965504 logging_writer.py:48] [431] steps_per_sec=0.0178095
+I1212 00:14:38.744480 139936126965504 logging_writer.py:48] [431] uptime=26328.5
+I1212 00:20:15.604011 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 53.6% (437/816), ETA: 5h54m
+I1212 00:20:15.607742 139936126965504 logging_writer.py:48] [437] steps_per_sec=0.0178114
+I1212 00:20:15.607843 139936126965504 logging_writer.py:48] [437] uptime=26665.4
+I1212 00:25:52.434831 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 54.3% (443/816), ETA: 5h48m
+I1212 00:25:52.438776 139936126965504 logging_writer.py:48] [443] steps_per_sec=0.0178131
+I1212 00:25:52.438884 139936126965504 logging_writer.py:48] [443] uptime=27002.2
+I1212 00:31:29.297029 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 55.0% (449/816), ETA: 5h43m
+I1212 00:31:29.300762 139936126965504 logging_writer.py:48] [449] steps_per_sec=0.0178114
+I1212 00:31:29.300871 139936126965504 logging_writer.py:48] [449] uptime=27339
+I1212 00:37:06.214551 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 55.8% (455/816), ETA: 5h37m
+I1212 00:37:06.218486 139936126965504 logging_writer.py:48] [455] steps_per_sec=0.0178085
+I1212 00:37:06.218585 139936126965504 logging_writer.py:48] [455] uptime=27676
+I1212 00:42:43.075155 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 56.5% (461/816), ETA: 5h32m
+I1212 00:42:43.078915 139936126965504 logging_writer.py:48] [461] steps_per_sec=0.0178115
+I1212 00:42:43.079015 139936126965504 logging_writer.py:48] [461] uptime=28012.8
+I1212 00:48:19.920813 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 57.2% (467/816), ETA: 5h26m
+I1212 00:48:19.924513 139936126965504 logging_writer.py:48] [467] steps_per_sec=0.0178123
+I1212 00:48:19.924621 139936126965504 logging_writer.py:48] [467] uptime=28349.7
+I1212 00:53:56.775788 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 58.0% (473/816), ETA: 5h20m
+I1212 00:53:56.779470 139936126965504 logging_writer.py:48] [473] steps_per_sec=0.0178118
+I1212 00:53:56.779573 139936126965504 logging_writer.py:48] [473] uptime=28686.5
+I1212 00:59:33.683044 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 58.7% (479/816), ETA: 5h15m
+I1212 00:59:33.686710 139936126965504 logging_writer.py:48] [479] steps_per_sec=0.0178091
+I1212 00:59:33.686811 139936126965504 logging_writer.py:48] [479] uptime=29023.4
+I1212 01:05:10.520917 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 59.4% (485/816), ETA: 5h9m
+I1212 01:05:10.524810 139936126965504 logging_writer.py:48] [485] steps_per_sec=0.0178127
+I1212 01:05:10.524922 139936126965504 logging_writer.py:48] [485] uptime=29360.3
+I1212 01:10:47.408432 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 60.2% (491/816), ETA: 5h4m
+I1212 01:10:47.412307 139936126965504 logging_writer.py:48] [491] steps_per_sec=0.0178101
+I1212 01:10:47.412409 139936126965504 logging_writer.py:48] [491] uptime=29697.2
+I1212 01:16:24.275097 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 60.9% (497/816), ETA: 4h58m
+I1212 01:16:24.278845 139936126965504 logging_writer.py:48] [497] steps_per_sec=0.0178112
+I1212 01:16:24.278956 139936126965504 logging_writer.py:48] [497] uptime=30034
+I1212 01:19:12.831270 139936126965504 logging_writer.py:48] [500] epoch=0, train/categorical_accuracy=0.940869152545929, train/categorical_crossentropy=0.6103824377059937, train/f1_het=0.9110197424888611, train/f1_homalt=0.992720365524292, train/f1_homref=0.6461575031280518, train/f1_macro=0.8499658703804016, train/f1_micro=0.940869152545929, train/f1_weighted=0.9344662427902222, train/false_negatives=6781.0, train/false_positives=5507.0, train/learning_rate=0.00013106367259752005, train/loss=0.610383152961731, train/precision=0.9455431699752808, train/precision_het=0.8563209176063538, train/precision_homalt=0.9890143871307373, train/precision_homref=0.9392757415771484, train/recall=0.9337792992591858, train/recall_het=0.9694334268569946, train/recall_homalt=0.9958713054656982, train/recall_homref=0.4712129533290863, train/true_negatives=199293.0, train/true_positives=95619.0
+I1212 01:22:01.199982 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 61.6% (503/816), ETA: 4h52m
+I1212 01:22:01.203916 139936126965504 logging_writer.py:48] [503] steps_per_sec=0.0178081
+I1212 01:22:01.204020 139936126965504 logging_writer.py:48] [503] uptime=30371
+I1212 01:27:38.147597 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 62.4% (509/816), ETA: 4h47m
+I1212 01:27:38.155023 139936126965504 logging_writer.py:48] [509] steps_per_sec=0.0178069
+I1212 01:27:38.155137 139936126965504 logging_writer.py:48] [509] uptime=30707.9
+I1212 01:33:15.011716 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 63.1% (515/816), ETA: 4h41m
+I1212 01:33:15.015646 139936126965504 logging_writer.py:48] [515] steps_per_sec=0.0178113
+I1212 01:33:15.015769 139936126965504 logging_writer.py:48] [515] uptime=31044.8
+I1212 01:38:51.907049 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 63.8% (521/816), ETA: 4h36m
+I1212 01:38:51.914919 139936126965504 logging_writer.py:48] [521] steps_per_sec=0.0178097
+I1212 01:38:51.915030 139936126965504 logging_writer.py:48] [521] uptime=31381.7
+I1212 01:44:28.805133 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 64.6% (527/816), ETA: 4h30m
+I1212 01:44:28.812588 139936126965504 logging_writer.py:48] [527] steps_per_sec=0.0178095
+I1212 01:44:28.812701 139936126965504 logging_writer.py:48] [527] uptime=31718.6
+I1212 01:50:05.860784 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 65.3% (533/816), ETA: 4h24m
+I1212 01:50:05.864643 139936126965504 logging_writer.py:48] [533] steps_per_sec=0.0178012
+I1212 01:50:05.864746 139936126965504 logging_writer.py:48] [533] uptime=32055.6
+I1212 01:55:42.757199 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 66.1% (539/816), ETA: 4h19m
+I1212 01:55:42.761113 139936126965504 logging_writer.py:48] [539] steps_per_sec=0.0178096
+I1212 01:55:42.761215 139936126965504 logging_writer.py:48] [539] uptime=32392.5
+I1212 02:01:19.563345 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 66.8% (545/816), ETA: 4h13m
+I1212 02:01:19.567145 139936126965504 logging_writer.py:48] [545] steps_per_sec=0.0178144
+I1212 02:01:19.567243 139936126965504 logging_writer.py:48] [545] uptime=32729.3
+I1212 02:06:56.444259 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 67.5% (551/816), ETA: 4h7m
+I1212 02:06:56.448186 139936126965504 logging_writer.py:48] [551] steps_per_sec=0.0178104
+I1212 02:06:56.448284 139936126965504 logging_writer.py:48] [551] uptime=33066.2
+I1212 02:12:33.348585 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 68.3% (557/816), ETA: 4h2m
+I1212 02:12:33.352399 139936126965504 logging_writer.py:48] [557] steps_per_sec=0.0178092
+I1212 02:12:33.352500 139936126965504 logging_writer.py:48] [557] uptime=33403.1
+I1212 02:18:10.216887 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 69.0% (563/816), ETA: 3h56m
+I1212 02:18:10.220875 139936126965504 logging_writer.py:48] [563] steps_per_sec=0.0178111
+I1212 02:18:10.220973 139936126965504 logging_writer.py:48] [563] uptime=33740
+I1212 02:23:47.063978 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 69.7% (569/816), ETA: 3h51m
+I1212 02:23:47.067976 139936126965504 logging_writer.py:48] [569] steps_per_sec=0.0178122
+I1212 02:23:47.068078 139936126965504 logging_writer.py:48] [569] uptime=34076.8
+I1212 02:29:23.930610 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 70.5% (575/816), ETA: 3h45m
+I1212 02:29:23.934489 139936126965504 logging_writer.py:48] [575] steps_per_sec=0.0178112
+I1212 02:29:23.934592 139936126965504 logging_writer.py:48] [575] uptime=34413.7
+I1212 02:35:00.782553 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 71.2% (581/816), ETA: 3h39m
+I1212 02:35:00.786292 139936126965504 logging_writer.py:48] [581] steps_per_sec=0.017812
+I1212 02:35:00.786396 139936126965504 logging_writer.py:48] [581] uptime=34750.5
+I1212 02:40:37.679932 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 71.9% (587/816), ETA: 3h34m
+I1212 02:40:37.683831 139936126965504 logging_writer.py:48] [587] steps_per_sec=0.0178096
+I1212 02:40:37.683936 139936126965504 logging_writer.py:48] [587] uptime=35087.4
+I1212 02:46:14.549235 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 72.7% (593/816), ETA: 3h28m
+I1212 02:46:14.553100 139936126965504 logging_writer.py:48] [593] steps_per_sec=0.0178111
+I1212 02:46:14.553199 139936126965504 logging_writer.py:48] [593] uptime=35424.3
+I1212 02:51:51.367052 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 73.4% (599/816), ETA: 3h23m
+I1212 02:51:51.371006 139936126965504 logging_writer.py:48] [599] steps_per_sec=0.0178138
+I1212 02:51:51.371107 139936126965504 logging_writer.py:48] [599] uptime=35761.1
+I1212 02:52:47.577300 139936126965504 logging_writer.py:48] [600] epoch=0, train/categorical_accuracy=0.9408398270606995, train/categorical_crossentropy=0.6105132102966309, train/f1_het=0.9109087586402893, train/f1_homalt=0.9925270080566406, train/f1_homref=0.6485078930854797, train/f1_macro=0.8506479263305664, train/f1_micro=0.9408398270606995, train/f1_weighted=0.9344878196716309, train/false_negatives=6797.0, train/false_positives=5501.0, train/learning_rate=0.00013727640907745808, train/loss=0.6105138659477234, train/precision=0.9455906748771667, train/precision_het=0.8556918501853943, train/precision_homalt=0.989124059677124, train/precision_homref=0.9361507296562195, train/recall=0.9336230754852295, train/recall_het=0.9705546498298645, train/recall_homalt=0.9955901503562927, train/recall_homref=0.4724838435649872, train/true_negatives=199299.0, train/true_positives=95603.0
+I1212 02:52:47.612888 139953929926464 train.py:361] Running tune at step=600 epoch=0
+I1212 02:52:47.613022 139953929926464 train.py:366] Tune step 0 / 38 (0.0%)
+I1212 03:04:10.009146 139936126965504 logging_writer.py:48] [600] tune/categorical_accuracy=0.9505293965339661, tune/categorical_crossentropy=0.600338876247406, tune/f1_het=0.9049248695373535, tune/f1_homalt=0.9926925897598267, tune/f1_homref=0.656460702419281, tune/f1_macro=0.8513593673706055, tune/f1_micro=0.9505293965339661, tune/f1_weighted=0.94593346118927, tune/false_negatives_1=2168.0, tune/false_positives_1=1703.0, tune/loss=0.6003395318984985, tune/precision_1=0.9557052850723267, tune/precision_het=0.8505934476852417, tune/precision_homalt=0.9902125597000122, tune/precision_homref=0.9219591021537781, tune/recall_1=0.9442845582962036, tune/recall_het=0.9610833525657654, tune/recall_homalt=0.9942969679832458, tune/recall_homref=0.5, tune/true_negatives_1=76121.0, tune/true_positives_1=36744.0
+I1212 03:04:10.018316 139953929926464 train.py:471] Skipping checkpoint with tune/f1_weighted=0.94593346 < previous best tune/f1_weighted=0.9459829
+I1212 03:04:10.029921 139936126965504 logging_writer.py:48] [600] tune/early_stopping=1
+I1212 03:05:06.177687 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 73.7% (601/816), ETA: 23h44m
+I1212 03:05:06.181639 139936126965504 logging_writer.py:48] [601] steps_per_sec=0.00251632
+I1212 03:05:06.181755 139936126965504 logging_writer.py:48] [601] uptime=36555.9
+I1212 03:10:43.222488 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 74.4% (607/816), ETA: 3h15m
+I1212 03:10:43.226313 139936126965504 logging_writer.py:48] [607] steps_per_sec=0.0178018
+I1212 03:10:43.226412 139936126965504 logging_writer.py:48] [607] uptime=36893
+I1212 03:16:20.230896 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 75.1% (613/816), ETA: 3h10m
+I1212 03:16:20.234814 139936126965504 logging_writer.py:48] [613] steps_per_sec=0.0178037
+I1212 03:16:20.234924 139936126965504 logging_writer.py:48] [613] uptime=37230
+I1212 03:21:57.280189 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 75.9% (619/816), ETA: 3h4m
+I1212 03:21:57.284123 139936126965504 logging_writer.py:48] [619] steps_per_sec=0.0178016
+I1212 03:21:57.284222 139936126965504 logging_writer.py:48] [619] uptime=37567
+I1212 03:27:34.322088 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 76.6% (625/816), ETA: 2h58m
+I1212 03:27:34.326025 139936126965504 logging_writer.py:48] [625] steps_per_sec=0.0178019
+I1212 03:27:34.326124 139936126965504 logging_writer.py:48] [625] uptime=37904.1
+I1212 03:33:11.291697 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 77.3% (631/816), ETA: 2h53m
+I1212 03:33:11.295629 139936126965504 logging_writer.py:48] [631] steps_per_sec=0.0178058
+I1212 03:33:11.295727 139936126965504 logging_writer.py:48] [631] uptime=38241
+I1212 03:38:48.226845 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 78.1% (637/816), ETA: 2h47m
+I1212 03:38:48.230553 139936126965504 logging_writer.py:48] [637] steps_per_sec=0.0178076
+I1212 03:38:48.230655 139936126965504 logging_writer.py:48] [637] uptime=38578
+I1212 03:44:25.205423 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 78.8% (643/816), ETA: 2h41m
+I1212 03:44:25.209246 139936126965504 logging_writer.py:48] [643] steps_per_sec=0.0178053
+I1212 03:44:25.209349 139936126965504 logging_writer.py:48] [643] uptime=38915
+I1212 03:50:02.395670 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 79.5% (649/816), ETA: 2h36m
+I1212 03:50:02.399535 139936126965504 logging_writer.py:48] [649] steps_per_sec=0.0177941
+I1212 03:50:02.399637 139936126965504 logging_writer.py:48] [649] uptime=39252.1
+I1212 03:55:39.477415 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 80.3% (655/816), ETA: 2h30m
+I1212 03:55:39.481253 139936126965504 logging_writer.py:48] [655] steps_per_sec=0.0177998
+I1212 03:55:39.481356 139936126965504 logging_writer.py:48] [655] uptime=39589.2
+I1212 04:01:16.419788 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 81.0% (661/816), ETA: 2h25m
+I1212 04:01:16.423603 139936126965504 logging_writer.py:48] [661] steps_per_sec=0.0178072
+I1212 04:01:16.423705 139936126965504 logging_writer.py:48] [661] uptime=39926.2
+I1212 04:06:53.374755 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 81.7% (667/816), ETA: 2h19m
+I1212 04:06:53.378713 139936126965504 logging_writer.py:48] [667] steps_per_sec=0.0178065
+I1212 04:06:53.378815 139936126965504 logging_writer.py:48] [667] uptime=40263.1
+I1212 04:12:30.474377 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 82.5% (673/816), ETA: 2h13m
+I1212 04:12:30.478305 139936126965504 logging_writer.py:48] [673] steps_per_sec=0.0177989
+I1212 04:12:30.478410 139936126965504 logging_writer.py:48] [673] uptime=40600.2
+I1212 04:18:07.482396 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 83.2% (679/816), ETA: 2h8m
+I1212 04:18:07.486236 139936126965504 logging_writer.py:48] [679] steps_per_sec=0.0178037
+I1212 04:18:07.486335 139936126965504 logging_writer.py:48] [679] uptime=40937.2
+I1212 04:23:44.460211 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 83.9% (685/816), ETA: 2h2m
+I1212 04:23:44.464065 139936126965504 logging_writer.py:48] [685] steps_per_sec=0.0178053
+I1212 04:23:44.464166 139936126965504 logging_writer.py:48] [685] uptime=41274.2
+I1212 04:29:21.429072 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 84.7% (691/816), ETA: 1h57m
+I1212 04:29:21.432883 139936126965504 logging_writer.py:48] [691] steps_per_sec=0.0178058
+I1212 04:29:21.432982 139936126965504 logging_writer.py:48] [691] uptime=41611.2
+I1212 04:34:58.397353 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 85.4% (697/816), ETA: 1h51m
+I1212 04:34:58.405674 139936126965504 logging_writer.py:48] [697] steps_per_sec=0.0178058
+I1212 04:34:58.405787 139936126965504 logging_writer.py:48] [697] uptime=41948.2
+I1212 04:37:46.997138 139936126965504 logging_writer.py:48] [700] epoch=0, train/categorical_accuracy=0.940722644329071, train/categorical_crossentropy=0.6104592680931091, train/f1_het=0.907777726650238, train/f1_homalt=0.9927547574043274, train/f1_homref=0.6485719084739685, train/f1_macro=0.849701464176178, train/f1_micro=0.940722644329071, train/f1_weighted=0.934481680393219, train/false_negatives=6823.0, train/false_positives=5467.0, train/learning_rate=0.00014348914555739611, train/loss=0.6104598045349121, train/precision=0.9458948373794556, train/precision_het=0.853364109992981, train/precision_homalt=0.9888193011283875, train/precision_homref=0.9366235733032227, train/recall=0.9333691596984863, train/recall_het=0.9655681252479553, train/recall_homalt=0.9962553381919861, train/recall_homref=0.47567516565322876, train/true_negatives=199333.0, train/true_positives=95577.0
+I1212 04:40:35.502530 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 86.2% (703/816), ETA: 1h45m
+I1212 04:40:35.506368 139936126965504 logging_writer.py:48] [703] steps_per_sec=0.0177986
+I1212 04:40:35.506468 139936126965504 logging_writer.py:48] [703] uptime=42285.3
+I1212 04:46:12.477981 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 86.9% (709/816), ETA: 1h40m
+I1212 04:46:12.481754 139936126965504 logging_writer.py:48] [709] steps_per_sec=0.0178055
+I1212 04:46:12.481852 139936126965504 logging_writer.py:48] [709] uptime=42622.2
+I1212 04:51:49.447618 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 87.6% (715/816), ETA: 1h34m
+I1212 04:51:49.451580 139936126965504 logging_writer.py:48] [715] steps_per_sec=0.0178058
+I1212 04:51:49.451676 139936126965504 logging_writer.py:48] [715] uptime=42959.2
+I1212 04:57:26.430585 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 88.4% (721/816), ETA: 1h28m
+I1212 04:57:26.434424 139936126965504 logging_writer.py:48] [721] steps_per_sec=0.0178051
+I1212 04:57:26.434525 139936126965504 logging_writer.py:48] [721] uptime=43296.2
+I1212 05:03:03.580443 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 89.1% (727/816), ETA: 1h23m
+I1212 05:03:03.584305 139936126965504 logging_writer.py:48] [727] steps_per_sec=0.0177962
+I1212 05:03:03.584406 139936126965504 logging_writer.py:48] [727] uptime=43633.3
+I1212 05:08:40.549553 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 89.8% (733/816), ETA: 1h17m
+I1212 05:08:40.553521 139936126965504 logging_writer.py:48] [733] steps_per_sec=0.0178058
+I1212 05:08:40.553625 139936126965504 logging_writer.py:48] [733] uptime=43970.3
+I1212 05:14:17.518536 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 90.6% (739/816), ETA: 1h12m
+I1212 05:14:17.522512 139936126965504 logging_writer.py:48] [739] steps_per_sec=0.0178058
+I1212 05:14:17.522611 139936126965504 logging_writer.py:48] [739] uptime=44307.3
+I1212 05:19:54.491306 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 91.3% (745/816), ETA: 1h6m
+I1212 05:19:54.495304 139936126965504 logging_writer.py:48] [745] steps_per_sec=0.0178056
+I1212 05:19:54.495404 139936126965504 logging_writer.py:48] [745] uptime=44644.2
+I1212 05:25:31.474284 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 92.0% (751/816), ETA: 1h0m
+I1212 05:25:31.478265 139936126965504 logging_writer.py:48] [751] steps_per_sec=0.0178051
+I1212 05:25:31.478367 139936126965504 logging_writer.py:48] [751] uptime=44981.2
+I1212 05:31:08.528298 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 92.8% (757/816), ETA: 55m
+I1212 05:31:08.532299 139936126965504 logging_writer.py:48] [757] steps_per_sec=0.0178013
+I1212 05:31:08.532400 139936126965504 logging_writer.py:48] [757] uptime=45318.3
+I1212 05:36:45.498376 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 93.5% (763/816), ETA: 49m
+I1212 05:36:45.506692 139936126965504 logging_writer.py:48] [763] steps_per_sec=0.0178057
+I1212 05:36:45.506812 139936126965504 logging_writer.py:48] [763] uptime=45655.3
+I1212 05:42:22.487915 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 94.2% (769/816), ETA: 43m
+I1212 05:42:22.491841 139936126965504 logging_writer.py:48] [769] steps_per_sec=0.0178047
+I1212 05:42:22.491944 139936126965504 logging_writer.py:48] [769] uptime=45992.2
+I1212 05:47:59.497946 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 95.0% (775/816), ETA: 38m
+I1212 05:47:59.501871 139936126965504 logging_writer.py:48] [775] steps_per_sec=0.0178036
+I1212 05:47:59.501972 139936126965504 logging_writer.py:48] [775] uptime=46329.2
+I1212 05:53:36.574136 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 95.7% (781/816), ETA: 32m
+I1212 05:53:36.577980 139936126965504 logging_writer.py:48] [781] steps_per_sec=0.0178001
+I1212 05:53:36.578084 139936126965504 logging_writer.py:48] [781] uptime=46666.3
+I1212 05:59:13.528180 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 96.4% (787/816), ETA: 27m
+I1212 05:59:13.532053 139936126965504 logging_writer.py:48] [787] steps_per_sec=0.0178066
+I1212 05:59:13.532150 139936126965504 logging_writer.py:48] [787] uptime=47003.3
+I1212 06:04:50.541489 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 97.2% (793/816), ETA: 21m
+I1212 06:04:50.545435 139936126965504 logging_writer.py:48] [793] steps_per_sec=0.0178035
+I1212 06:04:50.545542 139936126965504 logging_writer.py:48] [793] uptime=47340.3
+I1212 06:10:27.528121 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 97.9% (799/816), ETA: 15m
+I1212 06:10:27.532100 139936126965504 logging_writer.py:48] [799] steps_per_sec=0.0178049
+I1212 06:10:27.532198 139936126965504 logging_writer.py:48] [799] uptime=47677.3
+I1212 06:11:23.757166 139936126965504 logging_writer.py:48] [800] epoch=0, train/categorical_accuracy=0.9417675733566284, train/categorical_crossentropy=0.609372615814209, train/f1_het=0.9078934788703918, train/f1_homalt=0.992097795009613, train/f1_homref=0.6541469097137451, train/f1_macro=0.85137939453125, train/f1_micro=0.9417675733566284, train/f1_weighted=0.9358227849006653, train/false_negatives=6717.0, train/false_positives=5375.0, train/learning_rate=0.00014970188203733414, train/loss=0.6093734502792358, train/precision=0.9468127489089966, train/precision_het=0.853060781955719, train/precision_homalt=0.9881590604782104, train/precision_homref=0.9349608421325684, train/recall=0.9344043135643005, train/recall_het=0.9673985838890076, train/recall_homalt=0.9956110119819641, train/recall_homref=0.47824060916900635, train/true_negatives=199425.0, train/true_positives=95683.0
+I1212 06:11:23.798890 139953929926464 train.py:361] Running tune at step=800 epoch=0
+I1212 06:11:23.799040 139953929926464 train.py:366] Tune step 0 / 38 (0.0%)
+I1212 06:22:46.358384 139936126965504 logging_writer.py:48] [800] tune/categorical_accuracy=0.9503238201141357, tune/categorical_crossentropy=0.6003928184509277, tune/f1_het=0.9039568305015564, tune/f1_homalt=0.9927137494087219, tune/f1_homref=0.6564885377883911, tune/f1_macro=0.85105299949646, tune/f1_micro=0.9503238797187805, tune/f1_weighted=0.9457350969314575, tune/false_negatives_1=2162.0, tune/false_positives_1=1698.0, tune/loss=0.6003938913345337, tune/precision_1=0.9558364748954773, tune/precision_het=0.850822925567627, tune/precision_homalt=0.9898683428764343, tune/precision_homref=0.9264864921569824, tune/recall_1=0.9444387555122375, tune/recall_het=0.9597103595733643, tune/recall_homalt=0.9950510859489441, tune/recall_homref=0.499417245388031, tune/true_negatives_1=76126.0, tune/true_positives_1=36750.0
+I1212 06:22:46.367255 139953929926464 train.py:471] Skipping checkpoint with tune/f1_weighted=0.9457351 < previous best tune/f1_weighted=0.9459829
+I1212 06:22:46.372153 139936126965504 logging_writer.py:48] [800] tune/early_stopping=2
+I1212 06:23:42.522937 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 98.2% (801/816), ETA: 1h39m
+I1212 06:23:42.531305 139936126965504 logging_writer.py:48] [801] steps_per_sec=0.00251574
+I1212 06:23:42.531414 139936126965504 logging_writer.py:48] [801] uptime=48472.3
+I1212 06:29:17.440431 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 98.9% (807/816), ETA: 8m
+I1212 06:29:17.444107 139936126965504 logging_writer.py:48] [807] steps_per_sec=0.0179149
+I1212 06:29:17.444207 139936126965504 logging_writer.py:48] [807] uptime=48807.2
+I1212 06:34:51.588373 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 99.6% (813/816), ETA: 2m
+I1212 06:34:51.591096 139936126965504 logging_writer.py:48] [813] steps_per_sec=0.0179561
+I1212 06:34:51.591195 139936126965504 logging_writer.py:48] [813] uptime=49141.3
+I1212 06:36:42.518831 139953929926464 local.py:41] Setting work unit notes: 0.0 steps/s, 99.9% (815/816), ETA: 0m
+I1212 06:36:42.524944 139936126965504 logging_writer.py:48] [815] steps_per_sec=0.0180293
+I1212 06:36:42.525048 139936126965504 logging_writer.py:48] [815] uptime=49252.3
+I1212 06:36:42.540614 139936126965504 logging_writer.py:48] [815] epoch=0, train/categorical_accuracy=0.943164050579071, train/categorical_crossentropy=0.6082803010940552, train/f1_het=0.9055843353271484, train/f1_homalt=0.9929758906364441, train/f1_homref=0.6674445867538452, train/f1_macro=0.8553349375724792, train/f1_micro=0.943164050579071, train/f1_weighted=0.9378068447113037, train/false_negatives=995.0, train/false_positives=778.0, train/learning_rate=0.00015063378668855876, train/loss=0.6082808375358582, train/precision=0.9486231207847595, train/precision_het=0.85014408826828, train/precision_homalt=0.9898251295089722, train/precision_homref=0.9404205679893494, train/recall=0.9352213740348816, train/recall_het=0.9627413749694824, train/recall_homalt=0.9953312873840332, train/recall_homref=0.4981435537338257, train/true_negatives=29942.0, train/true_positives=14365.0
+I1212 06:36:42.557614 139953929926464 train.py:361] Running tune at step=815 epoch=0
+I1212 06:36:42.557711 139953929926464 train.py:366] Tune step 0 / 38 (0.0%)
+I1212 06:48:04.034103 139936126965504 logging_writer.py:48] [815] tune/categorical_accuracy=0.9503495097160339, tune/categorical_crossentropy=0.6005087494850159, tune/f1_het=0.904461681842804, tune/f1_homalt=0.9926061034202576, tune/f1_homref=0.6561077833175659, tune/f1_macro=0.8510585427284241, tune/f1_micro=0.9503495097160339, tune/f1_weighted=0.9457306861877441, tune/false_negatives_1=2167.0, tune/false_positives_1=1705.0, tune/loss=0.6005100011825562, tune/precision_1=0.9556567072868347, tune/precision_het=0.850810706615448, tune/precision_homalt=0.9897263646125793, tune/precision_homref=0.925162672996521, tune/recall_1=0.9443102478981018, tune/recall_het=0.9593581557273865, tune/recall_homalt=0.9951578378677368, tune/recall_homref=0.49752113223075867, tune/true_negatives_1=76119.0, tune/true_positives_1=36745.0
+I1212 06:48:04.043376 139953929926464 train.py:471] Skipping checkpoint with tune/f1_weighted=0.9457307 < previous best tune/f1_weighted=0.9459829
+I1212 06:48:04.052238 139936126965504 logging_writer.py:48] [815] tune/early_stopping=3
+I1212 06:48:04.094423 139953929926464 train.py:497] Loading best checkpoint: /home/final_training_run/LR0.001_BS1024/checkpoints/ckpt-400
+I1212 06:48:05.947504 139953929926464 train.py:500] Saving model using saved_model format.
+WARNING:tensorflow:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+W1212 06:48:05.947715 139953929926464 saving_utils.py:359] Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+W1212 06:48:25.141951 139953929926464 save.py:271] Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 94). These functions will not be directly callable after loading.
+INFO:tensorflow:Assets written to: /home/final_training_run/LR0.001_BS1024/checkpoints/ckpt-400/assets
+I1212 06:48:28.519232 139953929926464 builder_impl.py:797] Assets written to: /home/final_training_run/LR0.001_BS1024/checkpoints/ckpt-400/assets
+WARNING:tensorflow:Detecting that an object or model or tf.train.Checkpoint is being deleted with unrestored values. See the following logs for the specific values in question. To silence these warnings, use `status.expect_partial()`. See https://www.tensorflow.org/api_docs/python/tf/train/Checkpoint#restorefor details about the status object returned by the restore function.
+W1212 06:48:55.258124 139953929926464 checkpoint.py:205] Detecting that an object or model or tf.train.Checkpoint is being deleted with unrestored values. See the following logs for the specific values in question. To silence these warnings, use `status.expect_partial()`. See https://www.tensorflow.org/api_docs/python/tf/train/Checkpoint#restorefor details about the status object returned by the restore function.
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).early_stopping
+W1212 06:48:55.258296 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).early_stopping
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).global_step
+W1212 06:48:55.258334 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).global_step
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._iterations
+W1212 06:48:55.258364 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._iterations
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._current_learning_rate
+W1212 06:48:55.258391 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._current_learning_rate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1
+W1212 06:48:55.258417 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2
+W1212 06:48:55.258441 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3
+W1212 06:48:55.258466 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4
+W1212 06:48:55.258489 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5
+W1212 06:48:55.258513 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6
+W1212 06:48:55.258537 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7
+W1212 06:48:55.258561 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8
+W1212 06:48:55.258585 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9
+W1212 06:48:55.258889 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10
+W1212 06:48:55.258918 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11
+W1212 06:48:55.258943 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12
+W1212 06:48:55.258968 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.13
+W1212 06:48:55.258992 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.13
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.14
+W1212 06:48:55.259016 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.14
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.15
+W1212 06:48:55.259041 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.15
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.16
+W1212 06:48:55.259066 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.16
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.17
+W1212 06:48:55.259090 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.17
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.18
+W1212 06:48:55.259114 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.18
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.19
+W1212 06:48:55.259138 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.19
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.20
+W1212 06:48:55.259163 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.20
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.21
+W1212 06:48:55.259188 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.21
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.22
+W1212 06:48:55.259212 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.22
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.23
+W1212 06:48:55.259236 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.23
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.24
+W1212 06:48:55.259260 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.24
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.25
+W1212 06:48:55.259401 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.25
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.26
+W1212 06:48:55.259428 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.26
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.27
+W1212 06:48:55.259453 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.27
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.28
+W1212 06:48:55.259478 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.28
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.29
+W1212 06:48:55.259502 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.29
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.30
+W1212 06:48:55.259526 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.30
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.31
+W1212 06:48:55.259550 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.31
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.32
+W1212 06:48:55.259574 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.32
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.33
+W1212 06:48:55.259598 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.33
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.34
+W1212 06:48:55.259622 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.34
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.35
+W1212 06:48:55.259646 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.35
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.36
+W1212 06:48:55.259670 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.36
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.37
+W1212 06:48:55.259694 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.37
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.38
+W1212 06:48:55.259718 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.38
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.39
+W1212 06:48:55.259742 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.39
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.40
+W1212 06:48:55.259851 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.40
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.41
+W1212 06:48:55.259881 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.41
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.42
+W1212 06:48:55.259905 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.42
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.43
+W1212 06:48:55.259929 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.43
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.44
+W1212 06:48:55.259952 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.44
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.45
+W1212 06:48:55.259976 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.45
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.46
+W1212 06:48:55.260000 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.46
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.47
+W1212 06:48:55.260024 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.47
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.48
+W1212 06:48:55.260048 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.48
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.49
+W1212 06:48:55.260071 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.49
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.50
+W1212 06:48:55.260095 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.50
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.51
+W1212 06:48:55.260119 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.51
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.52
+W1212 06:48:55.260143 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.52
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.53
+W1212 06:48:55.260166 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.53
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.54
+W1212 06:48:55.260190 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.54
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.55
+W1212 06:48:55.260214 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.55
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.56
+W1212 06:48:55.260320 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.56
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.57
+W1212 06:48:55.260344 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.57
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.58
+W1212 06:48:55.260368 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.58
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.59
+W1212 06:48:55.260391 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.59
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.60
+W1212 06:48:55.260415 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.60
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.61
+W1212 06:48:55.260439 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.61
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.62
+W1212 06:48:55.260463 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.62
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.63
+W1212 06:48:55.260487 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.63
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.64
+W1212 06:48:55.260511 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.64
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.65
+W1212 06:48:55.260535 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.65
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.66
+W1212 06:48:55.260558 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.66
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.67
+W1212 06:48:55.260582 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.67
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.68
+W1212 06:48:55.260606 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.68
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.69
+W1212 06:48:55.260630 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.69
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.70
+W1212 06:48:55.260654 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.70
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.71
+W1212 06:48:55.260772 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.71
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.72
+W1212 06:48:55.260797 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.72
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.73
+W1212 06:48:55.260821 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.73
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.74
+W1212 06:48:55.260844 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.74
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.75
+W1212 06:48:55.260874 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.75
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.76
+W1212 06:48:55.260898 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.76
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.77
+W1212 06:48:55.260921 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.77
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.78
+W1212 06:48:55.260946 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.78
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.79
+W1212 06:48:55.260969 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.79
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.80
+W1212 06:48:55.260993 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.80
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.81
+W1212 06:48:55.261017 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.81
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.82
+W1212 06:48:55.261040 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.82
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.83
+W1212 06:48:55.261065 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.83
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.84
+W1212 06:48:55.261088 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.84
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.85
+W1212 06:48:55.261112 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.85
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.86
+W1212 06:48:55.261135 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.86
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.87
+W1212 06:48:55.261243 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.87
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.88
+W1212 06:48:55.261268 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.88
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.89
+W1212 06:48:55.261292 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.89
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.90
+W1212 06:48:55.261316 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.90
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.91
+W1212 06:48:55.261340 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.91
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.92
+W1212 06:48:55.261363 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.92
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.93
+W1212 06:48:55.261387 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.93
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.94
+W1212 06:48:55.261411 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.94
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.95
+W1212 06:48:55.261435 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.95
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.96
+W1212 06:48:55.261459 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.96
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.97
+W1212 06:48:55.261483 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.97
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.98
+W1212 06:48:55.261507 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.98
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.99
+W1212 06:48:55.261530 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.99
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.100
+W1212 06:48:55.261554 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.100
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.101
+W1212 06:48:55.261577 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.101
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.102
+W1212 06:48:55.261686 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.102
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.103
+W1212 06:48:55.261711 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.103
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.104
+W1212 06:48:55.261735 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.104
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.105
+W1212 06:48:55.261759 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.105
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.106
+W1212 06:48:55.261784 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.106
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.107
+W1212 06:48:55.261808 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.107
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.108
+W1212 06:48:55.261832 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.108
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.109
+W1212 06:48:55.261856 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.109
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.110
+W1212 06:48:55.261885 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.110
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.111
+W1212 06:48:55.261909 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.111
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.112
+W1212 06:48:55.261932 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.112
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.113
+W1212 06:48:55.261956 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.113
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.114
+W1212 06:48:55.261979 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.114
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.115
+W1212 06:48:55.262003 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.115
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.116
+W1212 06:48:55.262027 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.116
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.117
+W1212 06:48:55.262051 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.117
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.118
+W1212 06:48:55.295588 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.118
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.119
+W1212 06:48:55.295640 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.119
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.120
+W1212 06:48:55.295670 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.120
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.121
+W1212 06:48:55.295698 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.121
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.122
+W1212 06:48:55.295725 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.122
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.123
+W1212 06:48:55.295751 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.123
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.124
+W1212 06:48:55.295774 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.124
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.125
+W1212 06:48:55.295799 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.125
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.126
+W1212 06:48:55.295822 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.126
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.127
+W1212 06:48:55.295845 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.127
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.128
+W1212 06:48:55.295879 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.128
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.129
+W1212 06:48:55.295903 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.129
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.130
+W1212 06:48:55.295927 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.130
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.131
+W1212 06:48:55.295951 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.131
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.132
+W1212 06:48:55.295974 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.132
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.133
+W1212 06:48:55.296155 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.133
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.134
+W1212 06:48:55.296179 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.134
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.135
+W1212 06:48:55.296203 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.135
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.136
+W1212 06:48:55.296226 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.136
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.137
+W1212 06:48:55.296250 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.137
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.138
+W1212 06:48:55.296274 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.138
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.139
+W1212 06:48:55.296298 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.139
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.140
+W1212 06:48:55.296322 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.140
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.141
+W1212 06:48:55.296346 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.141
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.142
+W1212 06:48:55.296370 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.142
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.143
+W1212 06:48:55.296394 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.143
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.144
+W1212 06:48:55.296417 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.144
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.145
+W1212 06:48:55.296441 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.145
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.146
+W1212 06:48:55.296465 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.146
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.147
+W1212 06:48:55.296489 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.147
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.148
+W1212 06:48:55.296617 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.148
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.149
+W1212 06:48:55.296643 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.149
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.150
+W1212 06:48:55.296666 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.150
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.151
+W1212 06:48:55.296690 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.151
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.152
+W1212 06:48:55.296714 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.152
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.153
+W1212 06:48:55.296738 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.153
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.154
+W1212 06:48:55.296762 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.154
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.155
+W1212 06:48:55.296787 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.155
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.156
+W1212 06:48:55.296810 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.156
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.157
+W1212 06:48:55.296834 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.157
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.158
+W1212 06:48:55.296858 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.158
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.159
+W1212 06:48:55.296889 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.159
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.160
+W1212 06:48:55.296912 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.160
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.161
+W1212 06:48:55.296936 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.161
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.162
+W1212 06:48:55.296960 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.162
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.163
+W1212 06:48:55.296984 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.163
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.164
+W1212 06:48:55.297103 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.164
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.165
+W1212 06:48:55.297128 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.165
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.166
+W1212 06:48:55.297152 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.166
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.167
+W1212 06:48:55.297175 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.167
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.168
+W1212 06:48:55.297199 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.168
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.169
+W1212 06:48:55.297223 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.169
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.170
+W1212 06:48:55.297246 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.170
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.171
+W1212 06:48:55.297271 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.171
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.172
+W1212 06:48:55.297294 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.172
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.173
+W1212 06:48:55.297317 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.173
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.174
+W1212 06:48:55.297341 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.174
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.175
+W1212 06:48:55.297364 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.175
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.176
+W1212 06:48:55.297388 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.176
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.177
+W1212 06:48:55.297412 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.177
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.178
+W1212 06:48:55.297435 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.178
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.179
+W1212 06:48:55.297533 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.179
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.180
+W1212 06:48:55.297558 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.180
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.181
+W1212 06:48:55.297581 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.181
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.182
+W1212 06:48:55.297605 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.182
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.183
+W1212 06:48:55.297628 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.183
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.184
+W1212 06:48:55.297652 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.184
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.185
+W1212 06:48:55.297676 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.185
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.186
+W1212 06:48:55.297699 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.186
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.187
+W1212 06:48:55.297723 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.187
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.188
+W1212 06:48:55.297747 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.188
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.189
+W1212 06:48:55.297770 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.189
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.190
+W1212 06:48:55.297794 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.190
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.191
+W1212 06:48:55.297817 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.191
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.192
+W1212 06:48:55.297841 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.192
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.193
+W1212 06:48:55.297870 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.193
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.194
+W1212 06:48:55.298035 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.194
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.195
+W1212 06:48:55.298060 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.195
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.196
+W1212 06:48:55.298084 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.196
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.197
+W1212 06:48:55.298107 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.197
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.198
+W1212 06:48:55.298131 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.198
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.199
+W1212 06:48:55.298155 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.199
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.200
+W1212 06:48:55.298179 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.200
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.201
+W1212 06:48:55.298202 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.201
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.202
+W1212 06:48:55.298226 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.202
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.203
+W1212 06:48:55.298249 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.203
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.204
+W1212 06:48:55.298273 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.204
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.205
+W1212 06:48:55.298297 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.205
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.206
+W1212 06:48:55.298320 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.206
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.207
+W1212 06:48:55.298344 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.207
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.208
+W1212 06:48:55.298368 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.208
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.209
+W1212 06:48:55.298393 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.209
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.210
+W1212 06:48:55.298535 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.210
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.211
+W1212 06:48:55.298560 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.211
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.212
+W1212 06:48:55.298585 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.212
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.213
+W1212 06:48:55.298609 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.213
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.214
+W1212 06:48:55.298632 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.214
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.215
+W1212 06:48:55.298656 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.215
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.216
+W1212 06:48:55.298680 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.216
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.217
+W1212 06:48:55.298704 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.217
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.218
+W1212 06:48:55.298727 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.218
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.219
+W1212 06:48:55.298751 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.219
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.220
+W1212 06:48:55.298774 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.220
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.221
+W1212 06:48:55.298798 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.221
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.222
+W1212 06:48:55.298822 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.222
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.223
+W1212 06:48:55.298846 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.223
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.224
+W1212 06:48:55.298874 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.224
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.225
+W1212 06:48:55.298981 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.225
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.226
+W1212 06:48:55.299005 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.226
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.227
+W1212 06:48:55.299029 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.227
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.228
+W1212 06:48:55.299052 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.228
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.229
+W1212 06:48:55.299076 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.229
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.230
+W1212 06:48:55.299100 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.230
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.231
+W1212 06:48:55.299123 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.231
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.232
+W1212 06:48:55.299147 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.232
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.233
+W1212 06:48:55.299171 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.233
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.234
+W1212 06:48:55.299194 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.234
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.235
+W1212 06:48:55.299218 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.235
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.236
+W1212 06:48:55.299242 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.236
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.237
+W1212 06:48:55.299265 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.237
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.238
+W1212 06:48:55.299289 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.238
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.239
+W1212 06:48:55.299313 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.239
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.240
+W1212 06:48:55.299336 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.240
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.241
+W1212 06:48:55.299678 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.241
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.242
+W1212 06:48:55.299701 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.242
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.243
+W1212 06:48:55.299725 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.243
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.244
+W1212 06:48:55.299749 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.244
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.245
+W1212 06:48:55.299772 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.245
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.246
+W1212 06:48:55.299796 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.246
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.247
+W1212 06:48:55.299819 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.247
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.248
+W1212 06:48:55.299843 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.248
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.249
+W1212 06:48:55.299873 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.249
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.250
+W1212 06:48:55.299897 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.250
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.251
+W1212 06:48:55.299920 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.251
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.252
+W1212 06:48:55.299944 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.252
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.253
+W1212 06:48:55.299967 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.253
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.254
+W1212 06:48:55.299991 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.254
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.255
+W1212 06:48:55.300015 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.255
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.256
+W1212 06:48:55.300217 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.256
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.257
+W1212 06:48:55.300241 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.257
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.258
+W1212 06:48:55.300265 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.258
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.259
+W1212 06:48:55.300288 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.259
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.260
+W1212 06:48:55.300312 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.260
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.261
+W1212 06:48:55.300337 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.261
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.262
+W1212 06:48:55.300361 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.262
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.263
+W1212 06:48:55.300384 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.263
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.264
+W1212 06:48:55.300408 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.264
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.265
+W1212 06:48:55.300432 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.265
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.266
+W1212 06:48:55.300457 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.266
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.267
+W1212 06:48:55.300481 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.267
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.268
+W1212 06:48:55.300506 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.268
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.269
+W1212 06:48:55.300529 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.269
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.270
+W1212 06:48:55.300552 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.270
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.271
+W1212 06:48:55.300691 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.271
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.272
+W1212 06:48:55.300715 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.272
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.273
+W1212 06:48:55.300739 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.273
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.274
+W1212 06:48:55.300762 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.274
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.275
+W1212 06:48:55.300786 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.275
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.276
+W1212 06:48:55.300810 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.276
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.277
+W1212 06:48:55.300833 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.277
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.278
+W1212 06:48:55.300857 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.278
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.279
+W1212 06:48:55.300886 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.279
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.280
+W1212 06:48:55.300909 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.280
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.281
+W1212 06:48:55.300933 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.281
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.282
+W1212 06:48:55.300957 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.282
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.283
+W1212 06:48:55.300981 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.283
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.284
+W1212 06:48:55.301004 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.284
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.285
+W1212 06:48:55.301028 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.285
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.286
+W1212 06:48:55.301051 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.286
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.287
+W1212 06:48:55.301153 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.287
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.288
+W1212 06:48:55.301177 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.288
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.289
+W1212 06:48:55.301201 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.289
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.290
+W1212 06:48:55.301224 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.290
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.291
+W1212 06:48:55.301248 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.291
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.292
+W1212 06:48:55.301272 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.292
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.293
+W1212 06:48:55.301297 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.293
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.294
+W1212 06:48:55.301321 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.294
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.295
+W1212 06:48:55.301345 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.295
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.296
+W1212 06:48:55.301369 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.296
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.297
+W1212 06:48:55.301393 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.297
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.298
+W1212 06:48:55.301417 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.298
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.299
+W1212 06:48:55.301440 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.299
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.300
+W1212 06:48:55.301464 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.300
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.301
+W1212 06:48:55.301488 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.301
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.302
+W1212 06:48:55.301586 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.302
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.303
+W1212 06:48:55.301610 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.303
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.304
+W1212 06:48:55.301634 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.304
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.305
+W1212 06:48:55.301657 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.305
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.306
+W1212 06:48:55.301681 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.306
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.307
+W1212 06:48:55.301705 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.307
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.308
+W1212 06:48:55.301728 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.308
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.309
+W1212 06:48:55.301752 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.309
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.310
+W1212 06:48:55.301776 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.310
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.311
+W1212 06:48:55.301799 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.311
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.312
+W1212 06:48:55.301822 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.312
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.313
+W1212 06:48:55.301846 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.313
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.314
+W1212 06:48:55.301875 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.314
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.315
+W1212 06:48:55.301899 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.315
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.316
+W1212 06:48:55.301922 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.316
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.317
+W1212 06:48:55.301946 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.317
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.318
+W1212 06:48:55.302096 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.318
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.319
+W1212 06:48:55.302119 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.319
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.320
+W1212 06:48:55.302143 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.320
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.321
+W1212 06:48:55.302166 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.321
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.322
+W1212 06:48:55.302190 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.322
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.323
+W1212 06:48:55.302214 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.323
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.324
+W1212 06:48:55.302237 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.324
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.325
+W1212 06:48:55.302261 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.325
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.326
+W1212 06:48:55.302284 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.326
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.327
+W1212 06:48:55.302308 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.327
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.328
+W1212 06:48:55.302332 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.328
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.329
+W1212 06:48:55.302356 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.329
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.330
+W1212 06:48:55.302380 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.330
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.331
+W1212 06:48:55.302405 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.331
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.332
+W1212 06:48:55.302429 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.332
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.333
+W1212 06:48:55.302532 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.333
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.334
+W1212 06:48:55.302556 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.334
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.335
+W1212 06:48:55.302580 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.335
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.336
+W1212 06:48:55.302603 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.336
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.337
+W1212 06:48:55.302627 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.337
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.338
+W1212 06:48:55.302650 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.338
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.339
+W1212 06:48:55.302674 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.339
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.340
+W1212 06:48:55.302697 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.340
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.341
+W1212 06:48:55.302721 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.341
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.342
+W1212 06:48:55.302744 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.342
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.343
+W1212 06:48:55.302767 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.343
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.344
+W1212 06:48:55.302791 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.344
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.345
+W1212 06:48:55.302815 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.345
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.346
+W1212 06:48:55.302839 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.346
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.347
+W1212 06:48:55.302868 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.347
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.348
+W1212 06:48:55.302965 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.348
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.349
+W1212 06:48:55.302990 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.349
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.350
+W1212 06:48:55.303016 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.350
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.351
+W1212 06:48:55.303040 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.351
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.352
+W1212 06:48:55.303065 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.352
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.353
+W1212 06:48:55.303089 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.353
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.354
+W1212 06:48:55.303112 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.354
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.355
+W1212 06:48:55.303136 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.355
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.356
+W1212 06:48:55.303160 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.356
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.357
+W1212 06:48:55.303183 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.357
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.358
+W1212 06:48:55.303207 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.358
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.359
+W1212 06:48:55.303231 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.359
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.360
+W1212 06:48:55.303254 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.360
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.361
+W1212 06:48:55.303278 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.361
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.362
+W1212 06:48:55.303302 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.362
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.363
+W1212 06:48:55.303325 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.363
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.364
+W1212 06:48:55.303516 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.364
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.365
+W1212 06:48:55.303541 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.365
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.366
+W1212 06:48:55.303565 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.366
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.367
+W1212 06:48:55.303588 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.367
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.368
+W1212 06:48:55.303612 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.368
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.369
+W1212 06:48:55.303636 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.369
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.370
+W1212 06:48:55.303660 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.370
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.371
+W1212 06:48:55.303683 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.371
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.372
+W1212 06:48:55.303707 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.372
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.373
+W1212 06:48:55.303731 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.373
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.374
+W1212 06:48:55.303755 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.374
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.375
+W1212 06:48:55.303778 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.375
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.376
+W1212 06:48:55.303802 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.376
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.377
+W1212 06:48:55.303826 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.377
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.378
+W1212 06:48:55.303849 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.378
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.379
+W1212 06:48:55.304020 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.379
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.380
+W1212 06:48:55.304045 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).optimizer._variables.380
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.0.total
+W1212 06:48:55.304069 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.0.total
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.0.count
+W1212 06:48:55.304093 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.0.count
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.1.total
+W1212 06:48:55.304117 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.1.total
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.1.count
+W1212 06:48:55.304141 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.1.count
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.2.accumulator
+W1212 06:48:55.304165 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.2.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.3.accumulator
+W1212 06:48:55.304188 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.3.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.4.accumulator
+W1212 06:48:55.304212 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.4.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.5.accumulator
+W1212 06:48:55.304235 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.5.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.6.true_positives
+W1212 06:48:55.304259 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.6.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.6.false_positives
+W1212 06:48:55.304283 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.6.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.7.true_positives
+W1212 06:48:55.304306 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.7.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.7.false_positives
+W1212 06:48:55.304330 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.7.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.8.true_positives
+W1212 06:48:55.304354 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.8.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.8.false_positives
+W1212 06:48:55.304451 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.8.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.9.true_positives
+W1212 06:48:55.304475 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.9.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.9.false_positives
+W1212 06:48:55.304499 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.9.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.10.true_positives
+W1212 06:48:55.304522 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.10.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.10.false_negatives
+W1212 06:48:55.304546 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.10.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.11.true_positives
+W1212 06:48:55.304569 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.11.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.11.false_negatives
+W1212 06:48:55.304593 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.11.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.12.true_positives
+W1212 06:48:55.304616 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.12.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.12.false_negatives
+W1212 06:48:55.304640 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.12.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.13.true_positives
+W1212 06:48:55.304663 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.13.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.13.false_negatives
+W1212 06:48:55.304687 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.13.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.14.true_positives
+W1212 06:48:55.304710 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.14.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.14.false_positives
+W1212 06:48:55.304734 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.14.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.14.false_negatives
+W1212 06:48:55.304758 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.14.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.14.weights_intermediate
+W1212 06:48:55.304783 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.14.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.15.true_positives
+W1212 06:48:55.304900 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.15.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.15.false_positives
+W1212 06:48:55.304925 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.15.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.15.false_negatives
+W1212 06:48:55.304949 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.15.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.15.weights_intermediate
+W1212 06:48:55.304972 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.15.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.16.true_positives
+W1212 06:48:55.304996 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.16.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.16.false_positives
+W1212 06:48:55.305019 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.16.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.16.false_negatives
+W1212 06:48:55.305043 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.16.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.16.weights_intermediate
+W1212 06:48:55.305067 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.16.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.17.true_positives
+W1212 06:48:55.305090 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.17.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.17.false_positives
+W1212 06:48:55.305114 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.17.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.17.false_negatives
+W1212 06:48:55.305138 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.17.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.17.weights_intermediate
+W1212 06:48:55.305161 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.17.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.18.true_positives
+W1212 06:48:55.305185 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.18.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.18.false_positives
+W1212 06:48:55.305209 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.18.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.18.false_negatives
+W1212 06:48:55.305308 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.18.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.18.weights_intermediate
+W1212 06:48:55.305333 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.18.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.19.true_positives
+W1212 06:48:55.305357 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.19.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.19.false_positives
+W1212 06:48:55.305382 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.19.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.19.false_negatives
+W1212 06:48:55.305405 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.19.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.19.weights_intermediate
+W1212 06:48:55.305430 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.19.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.20.total
+W1212 06:48:55.305453 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.20.total
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).train_metrics.20.count
+W1212 06:48:55.305477 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).train_metrics.20.count
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.0.total
+W1212 06:48:55.305500 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.0.total
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.0.count
+W1212 06:48:55.305525 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.0.count
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.1.total
+W1212 06:48:55.305548 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.1.total
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.1.count
+W1212 06:48:55.305572 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.1.count
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.2.accumulator
+W1212 06:48:55.305596 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.2.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.3.accumulator
+W1212 06:48:55.305620 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.3.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.4.accumulator
+W1212 06:48:55.305644 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.4.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.5.accumulator
+W1212 06:48:55.305667 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.5.accumulator
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.6.true_positives
+W1212 06:48:55.305816 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.6.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.6.false_positives
+W1212 06:48:55.305840 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.6.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.7.true_positives
+W1212 06:48:55.305868 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.7.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.7.false_positives
+W1212 06:48:55.305891 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.7.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.8.true_positives
+W1212 06:48:55.305915 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.8.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.8.false_positives
+W1212 06:48:55.305939 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.8.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.9.true_positives
+W1212 06:48:55.305963 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.9.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.9.false_positives
+W1212 06:48:55.305986 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.9.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.10.true_positives
+W1212 06:48:55.306010 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.10.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.10.false_negatives
+W1212 06:48:55.306033 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.10.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.11.true_positives
+W1212 06:48:55.306057 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.11.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.11.false_negatives
+W1212 06:48:55.306081 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.11.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.12.true_positives
+W1212 06:48:55.306104 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.12.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.12.false_negatives
+W1212 06:48:55.306128 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.12.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.13.true_positives
+W1212 06:48:55.306229 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.13.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.13.false_negatives
+W1212 06:48:55.306253 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.13.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.true_positives
+W1212 06:48:55.306277 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.false_positives
+W1212 06:48:55.306301 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.false_negatives
+W1212 06:48:55.306324 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.weights_intermediate
+W1212 06:48:55.306349 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.14.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.true_positives
+W1212 06:48:55.306372 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.false_positives
+W1212 06:48:55.306396 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.false_negatives
+W1212 06:48:55.306419 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.weights_intermediate
+W1212 06:48:55.306443 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.15.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.true_positives
+W1212 06:48:55.306466 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.false_positives
+W1212 06:48:55.306490 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.false_negatives
+W1212 06:48:55.306513 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.weights_intermediate
+W1212 06:48:55.306537 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.16.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.true_positives
+W1212 06:48:55.306560 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.false_positives
+W1212 06:48:55.306672 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.false_negatives
+W1212 06:48:55.306695 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.weights_intermediate
+W1212 06:48:55.306719 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.17.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.true_positives
+W1212 06:48:55.306743 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.false_positives
+W1212 06:48:55.306767 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.false_negatives
+W1212 06:48:55.306791 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.weights_intermediate
+W1212 06:48:55.306814 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.18.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.true_positives
+W1212 06:48:55.306838 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.true_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.false_positives
+W1212 06:48:55.306865 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.false_positives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.false_negatives
+W1212 06:48:55.306889 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.false_negatives
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.weights_intermediate
+W1212 06:48:55.306913 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.19.weights_intermediate
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.20.total
+W1212 06:48:55.306936 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.20.total
+WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).tune_metrics.20.count
+W1212 06:48:55.306960 139953929926464 checkpoint.py:214] Value in checkpoint could not be found in the restored object: (root).tune_metrics.20.count

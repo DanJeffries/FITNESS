@@ -1,0 +1,11 @@
+## MultiQC --------------------------
+
+I ran multiqc (v1.8) per run for all the fastqc outputs distributed with the raw data. 
+
+Manually checking the outputs showed no concerning patterns. The samples that failed the 
+GC or sequence quality checks were always those with extremely low yeild (due to low input DNA).
+
+I will retain all samples at this stage. I will trim in the next step and then align. Only after alignment 
+will I remove samples which are not worth continuing with. 
+
+
